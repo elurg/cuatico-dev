@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Contactos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Histórico de Contactos</h2>
+
+        <div class="d-flex justify-content-center mt-5">
+            <div class="row w-75">
+                <!-- Sección del formulario -->
+                <div class="col-md-4">
+                    <h4 class="text-center">Agregar Contacto</h4>
+                    <form>
+                        <div class="mb-3">
+                            <input type="date" class="form-control" placeholder="Fecha" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Tipo de Contacto (Email, Llamada, Reunión, etc.)" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Detalles de la Interacción" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Agregar Contacto</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Sección del histórico -->
+                <div class="col-md-8">
+                    <h4 class="text-center">Histórico</h4>
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary rounded-circle p-3"></div>
+                            <div class="ms-3 text-center">
+                                <h5>10 de enero de 2025 - Llamada</h5>
+                                <p>El cliente pidió información sobre nuestros servicios.</p>
+                            </div>
+                        </div>
+                        <div class="border-start border-primary ps-4 py-2"></div>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-warning rounded-circle p-3"></div>
+                            <div class="ms-3 text-center">
+                                <h5>15 de febrero de 2025 - Reunión</h5>
+                                <p>Se realizó una presentación de la propuesta.</p>
+                            </div>
+                        </div>
+                        <div class="border-start border-warning ps-4 py-2"></div>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-success rounded-circle p-3"></div>
+                            <div class="ms-3 text-center">
+                                <h5>1 de marzo de 2025 - Seguimiento</h5>
+                                <p>Se envió un email para confirmar avances.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
