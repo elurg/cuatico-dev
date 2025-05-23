@@ -3,6 +3,101 @@
     font-size: 1.5rem;
 }
 
+.logo-navbar {
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(75, 49, 253, 0.8), rgba(75, 49, 253, 0.9)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80') no-repeat center center;
+    background-size: cover;
+    padding: 150px 0;
+    position: relative;
+}
+
+/* Servicios Section */
+.card {
+    border: none;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card .bi {
+    color: #4b31fd;
+}
+
+/* Formación Section */
+.bg-light {
+    background: linear-gradient(135deg, #2812c5 0%, #3621d9 100%) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-light::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.1) 1px, transparent 0);
+    background-size: 20px 20px;
+    pointer-events: none;
+}
+
+.bg-light .card {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.bg-light h2 {
+    color: white;
+}
+
+.bg-light .h4 {
+    color: #4b31fd;
+}
+
+/* Marcas Section */
+.marcas-section {
+    background: linear-gradient(135deg, rgba(75, 49, 253, 0.03) 0%, rgba(75, 49, 253, 0.08) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.marcas-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(75, 49, 253, 0.05) 1px, transparent 0);
+    background-size: 20px 20px;
+    pointer-events: none;
+}
+
+/* Botones */
+.btn-primary {
+    background-color: #4b31fd;
+    border-color: #4b31fd;
+}
+
+.btn-primary:hover {
+    background-color: #3621d9;
+    border-color: #3621d9;
+}
+
+/* Formulario de contacto */
+.form-control:focus {
+    border-color: #4b31fd;
+    box-shadow: 0 0 0 0.25rem rgba(75, 49, 253, 0.25);
+}
+
 .back-button {
     position: fixed;
     top: 127px;
