@@ -85,5 +85,38 @@
   },
   "cli": {
     "analytics": false
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "path": "src/app/components"
+    },
+    "@schematics/angular:directive": {
+      "type": "directive",
+      "path": "src/app/directivas"
+    },
+    "@schematics/angular:service": {
+      "type": "service",
+      "path": "src/app/servicios"
+    },
+    "@schematics/angular:guard": {
+      "typeSeparator": ".",
+      "path": "src/app/guards"
+    },
+    "@schematics/angular:interceptor": {
+      "typeSeparator": ".",
+      "path": "src/app/interceptores"
+    },
+    "@schematics/angular:module": {
+      "typeSeparator": ".",
+      "path": "src/app/modulos"
+    },
+    "@schematics/angular:pipe": {
+      "typeSeparator": ".",
+      "path": "src/app/pipes"
+    },
+    "@schematics/angular:resolver": {
+      "typeSeparator": ".",
+      "path": "src/app/resolvers"
+    }
   }
 }
