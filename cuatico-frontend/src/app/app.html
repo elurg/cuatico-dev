@@ -1,4 +1,25 @@
 <app-navbar></app-navbar>
 <app-tarjeta></app-tarjeta>
 <app-sidebar></app-sidebar>
+<app-label-input
+  label="Nombre completo"
+  id="nombre"
+  placeholder="Ej: Javier Lete"
+  [required]="true"
+  [(model)]="usuario.nombre"
+></app-label-input>
+<app-label-input
+  label="Email"
+  id="email"
+  placeholder="deLete@team.com"
+  [required]="true"
+  [(model)]="usuario.email"
+></app-label-input>
+<app-label-input
+  label="Teléfono"
+  id="telefono"
+  placeholder="666 66 66 66"
+  [required]="false"
+  [(model)]="usuario.telefono"
+></app-label-input>
 <router-outlet></router-outlet>
