@@ -1,0 +1,13 @@
+<app-navbar></app-navbar>
+<div style="display: flex;">
+  <app-sidebar></app-sidebar>
+  <div style="flex: 1; padding: 24px;">
+    <h2>{{ title }}</h2>
+    <div style="display: flex; gap: 16px;">
+      <div *ngFor="let curso of courses" style="border: 1px solid #ccc; border-radius: 8px; padding: 16px; width: 200px;">
+        <h3>{{ curso.nombre }}</h3>
+        <p>Profesor: {{ curso.profesor }}</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
-import { Dashboard } from './app/view/dashboard/dashboard_estudiante';
-bootstrapApplication(Dashboard, appConfig)
+import { App } from './app/app'; // Asegúrate que este es tu componente raíz
+
+bootstrapApplication(App, appConfig)
   .catch((err) => console.error(err));
