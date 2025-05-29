@@ -1,17 +1,26 @@
+@if (!horizontal) {
 <div class="form-group">
-    <label [for]="id">
-      {{ label }}
-      @if (required) {
-        <span class="required">*</span>
-      }
-    </label>
-    <input
-      [type]="type"
-      [id]="id"
-      [placeholder]="placeholder"
-      [required]="required"
-      [value]="model"
-      (input)="onInput($event)"
-    >
-  </div>
-  
+  <label [for]="id">
+    {{ label }}
+    @if (required) {
+    <span class="required">*</span>
+    }
+  </label>
+  <input [type]="type" [id]="id" [placeholder]="placeholder" [required]="required" [value]="model"
+    (input)="onInput($event)">
+</div>
+}
+@if(horizontal) {
+<div class="flex items-center gap-x-2">
+  <label [for]="id">
+    {{ label }}
+    @if (required) {
+    <span class="required">*</span>
+    }
+  </label>
+  <div class="w-33">
+  <input [type]="type" [id]="id"[placeholder]="placeholder" [required]="required" [value]="model"
+    (input)="onInput($event)">
+    </div>
+</div>
+}

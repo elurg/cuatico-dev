@@ -13,6 +13,8 @@ export class LabelInput {
   @Input() placeholder = '';
   @Input() required = false;
 
+  @Input() horizontal = false;
+
   @Input() model: any = '';
   @Output() modelChange = new EventEmitter<any>();
 
