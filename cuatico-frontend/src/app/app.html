@@ -1,2 +1,9 @@
-<app-navbar *ngIf="currentRoute !== '/login' && currentRoute !== '/register' && currentRoute !== '/'"></app-navbar>
-<router-outlet></router-outlet>
+<div class="flex flex-col min-h-screen">
+  <app-navbar *ngIf="currentRoute !== '/login' && currentRoute !== '/register' && currentRoute !== '/'"></app-navbar>
+  <div class="flex flex-1">
+    <app-sidebar *ngIf="currentRoute !== '/login' && currentRoute !== '/register' && currentRoute !== '/' && currentRoute !== '/perfil'"></app-sidebar>
+    <div class="flex-1">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
