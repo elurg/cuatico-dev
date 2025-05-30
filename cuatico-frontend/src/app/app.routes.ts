@@ -12,6 +12,7 @@ import { Horario } from './components/horario/horario';
 import { Calificaciones } from './components/calificaciones/calificaciones';
 import { Tareas } from './components/tareas/tareas';
 import { Moduloid } from './components/moduloid/moduloid';
+import { EditProfile } from './components/edit-profile/edit-profile';
 
 export const routes: Routes = [
   {
@@ -50,6 +51,11 @@ export const routes: Routes = [
   {
     path: 'certificado',
     component: Certificado
+  },
+
+   {
+    path: 'edit-profile',
+    component: EditProfile
   },
 
    {
