@@ -11,6 +11,7 @@ import { Feedback } from './components/feedback/feedback';
 import { Horario } from './components/horario/horario';
 import { Calificaciones } from './components/calificaciones/calificaciones';
 import { Tareas } from './components/tareas/tareas';
+import { Moduloid } from './components/moduloid/moduloid';
 
 export const routes: Routes = [
   {
@@ -39,6 +40,12 @@ export const routes: Routes = [
     path: 'courses/:id',
     component: Courseid
   },
+
+    {
+    path: 'modulo/:id',
+    component: Moduloid
+  },
+
 
   {
     path: 'certificado',
