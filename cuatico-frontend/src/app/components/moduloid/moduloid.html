@@ -1,1 +1,64 @@
-<p>moduloid works!</p>
+<div class="flex min-h-screen">
+  <div class="flex-1 space-y-6 p-6 bg-white rounded-lg shadow-md">
+    <div class="mb-6">
+      <h2 class="text-3xl font-bold text-primario">Módulo 1</h2>
+    </div>
+
+    <div class="bg-secundario/40 p-4 rounded-md">
+      <p class="text-gray-600 text-2xl font-bold">
+        Diseño de experiencia, Interfaz de usuario y Estrategia de contenido
+      </p>
+    </div>
+
+    <div class="bg-gray-50 p-4 rounded-md space-y-2">
+      <p class="text-gray-700 text-base font-semibold mb-2">
+        Recursos y Actividades:
+      </p>
+      <ul class="space-y-1">
+        <li class="flex items-center gap-2 text-gray-800">
+          📄 Temario (PDF):
+          <a href="#" class="text-blue-600 hover:underline font-medium"
+            >Descargar PDF</a
+          >
+        </li>
+        <li class="flex items-center gap-2 text-gray-800">
+          📝 Test (Quiz):
+          <a href="#" class="text-blue-600 hover:underline font-medium"
+            >Acceder al cuestionario</a
+          >
+        </li>
+        <li class="flex items-center gap-2 text-gray-800">
+          🎥 Vídeo Explicativo:
+          <a href="#" class="text-blue-600 hover:underline font-medium"
+            >Ver en YouTube</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div
+  class="bg-secundario/20 border border-secundario/50 p-4 rounded-md space-y-4"
+>
+  <p class="text-primario text-xl font-semibold mb-2">Entrega de tareas:</p>
+
+  <div class="flex items-center gap-6">
+    <p class="text-sm text-gray-500 flex items-center gap-1">
+      📆 Fecha límite:
+      <span class="font-semibold">15/06/2025</span>
+    </p>
+    <p class="text-sm text-gray-500 flex items-center gap-1">
+      ✅ Estado:
+      <span class="font-semibold text-green-600">Entregado</span>
+    </p>
+  </div>
+
+  <div class="flex items-center gap-4">
+    <app-input-file (fileSelected)="handleFile($event)"></app-input-file>
+    <span class="text-sm text-secundario" *ngIf="selectedFileName">
+      {{ selectedFileName }}
+    </span>
+  </div>
+</div>
+
+  </div>
+</div>

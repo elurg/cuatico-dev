@@ -1,0 +1,19 @@
+<div class="flex items-center gap-4">
+  <input
+    type="file"
+    #fileInput
+    class="hidden"
+    (change)="onFileChange($event)"
+  />
+  <button
+    type="button"
+    class="bg-primario text-white px-4 py-2 rounded hover:bg-primario/90 transition"
+    (click)="triggerFileInput(fileInput)"
+  >
+    📤 Subir tarea
+  </button>
+
+  <span class="text-sm text-bold text-primario/60 ">
+    {{ selectedFileName || 'Ninguno seleccionado' }}
+  </span>
+</div>

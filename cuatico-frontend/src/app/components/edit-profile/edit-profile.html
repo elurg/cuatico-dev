@@ -1,1 +1,131 @@
-<p>edit-profile works!</p>
+<div class="flex min-h-screen">
+
+  <!-- Contenido principal -->
+  <main class="flex-1 overflow-y-auto bg-gray-50 p-8">
+    <div class="flex justify-center">
+      <div class="w-full md:w-4/5 lg:w-3/4 bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
+        <h1 class="text-2xl font-bold text-primario mb-6">Editar cuenta</h1>
+
+        <div class="flex flex-col md:flex-row gap-8">
+          <!-- Sidebar interno de perfil -->
+          <aside class="w-full md:w-1/4">
+            <nav class="flex flex-col gap-2">
+              <button (click)="setActiveTab('profile')" [class.bg-gray-100]="activeTab === 'profile'" class="px-4 py-2 rounded-lg hover:bg-gray-100 font-medium text-left">Perfil</button>
+              <button (click)="setActiveTab('password')" [class.bg-gray-100]="activeTab === 'password'" class="px-4 py-2 rounded-lg hover:bg-gray-100 font-medium text-left">Contraseña</button>
+              <button (click)="setActiveTab('notifications')" [class.bg-gray-100]="activeTab === 'notifications'" class="px-4 py-2 rounded-lg hover:bg-gray-100 font-medium text-left">Notificaciones</button>
+              <button (click)="setActiveTab('account-settings')" [class.bg-gray-100]="activeTab === 'account-settings'" class="px-4 py-2 rounded-lg hover:bg-gray-100 font-medium text-left">Configuración de la cuenta</button>
+            </nav>
+          </aside>
+
+          <!-- Área principal de edición -->
+          <div class="flex-1">
+            @if (activeTab === 'profile') {
+              <div class="bg-white rounded-lg p-6">
+                <h2 class="text-xl font-semibold mb-4">Editar perfil</h2>
+                <div class="flex flex-col md:flex-row gap-6">
+                  <div class="flex flex-col items-center gap-4">
+                    <img src="https://via.placeholder.com/150" alt="Avatar" class="w-24 h-24 rounded-full object-cover border-2 border-gray-300">
+                    <button class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 text-sm font-medium">Cambiar foto</button>
+                  </div>
+                  <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-gray-600 text-sm mb-1">Nombre</label>
+                      <input type="text" [(ngModel)]="user.name" class="w-full border border-gray-300 rounded-lg px-4 py-2">
+                    </div>
+                    <div>
+                      <label class="block text-gray-600 text-sm mb-1">Email</label>
+                      <input type="email" [(ngModel)]="user.email" class="w-full border border-gray-300 rounded-lg px-4 py-2">
+                    </div>
+                    <div>
+                      <label class="block text-gray-600 text-sm mb-1">Teléfono</label>
+                      <input type="tel" [(ngModel)]="user.phone" class="w-full border border-gray-300 rounded-lg px-4 py-2">
+                    </div>
+                    <div>
+                      <label class="block text-gray-600 text-sm mb-1">Dirección</label>
+                      <input type="text" [(ngModel)]="user.address" class="w-full border border-gray-300 rounded-lg px-4 py-2">
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-6 flex gap-4">
+                  <button class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Guardar cambios</button>
+                  <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300">Cancelar</button>
+                </div>
+              </div>
+            }
+            @if (activeTab === 'password') {
+              <div class="bg-white rounded-lg p-6">
+                <h2 class="text-xl font-semibold mb-4">Cambiar contraseña</h2>
+                <div class="grid grid-cols-1 gap-4">
+                  <div>
+                    <label class="block text-gray-600 text-sm mb-1">Contraseña actual</label>
+                    <input type="password" [(ngModel)]="currentPassword" class="w-full border border-gray-300 rounded-lg px-4 py-2">
+                  </div>
+                  <div>
+                    <label class="block text-gray-600 text-sm mb-1">Nueva contraseña</label>
+                    <input type="password" [(ngModel)]="newPassword" class="w-full border border-gray-300 rounded-lg px-4 py-2">
+                  </div>
+                  <div>
+                    <label class="block text269gray-600 text-sm mb-1">Confirmar nueva contraseña</label>
+                    <input type="password" [(ngModel)]="confirmNewPassword" class="w-full border border-gray-300 rounded-lg px-4 py-2">
+                  </div>
+                </div>
+                <div class="mt-6 flex gap-4">
+                  <button class="px-4 py-2 bg-blue-500 text269white rounded-lg hover:bg-blue-600">Guardar cambios</button>
+                  <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300">Cancelar</button>
+                </div>
+              </div>
+            }
+            @if (activeTab === 'notifications') {
+              <div class="bg-white rounded-lg p-6">
+                <h2 class="text-xl font-semibold mb-4">Notificaciones</h2>
+                <div class="flex flex-col gap-4">
+                  <div class="flex items-center gap-4">
+                    <input type="checkbox" [(ngModel)]="emailNotifications" id="email-notifications" class="w-5 h-5">
+                    <label for="email-notifications">Recibir notificaciones por email</label>
+                  </div>
+                  <div class="flex items-center gap-4">
+                    <input type="checkbox" [(ngModel)]="pushNotifications" id="push-notifications" class="w-5 h-5">
+                    <label for="push-notifications">Recibir notificaciones push</label>
+                  </div>
+                  <div class="flex items-center gap-4">
+                    <input type="checkbox" [(ngModel)]="smsNotifications" id="sms-notifications" class="w-5 h-5">
+                    <label for="269sms-notifications">Recibir notificaciones por SMS</label>
+                  </div>
+                </div>
+                <div class="mt-6 flex gap-4">
+                  <button class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Guardar cambios</button>
+                  <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300">Cancelar</button>
+                </div>
+              </div>
+            }
+            @if (activeTab === 'account-settings') {
+              <div class="bg-white rounded-lg p-6">
+                <h2 class="text-xl font-semibold mb-4">Configuración de la cuenta</h2>
+                <div class="grid grid-cols-1 gap-4">
+                  <div>
+                    <label class="block text-gray-600 text-sm mb-1">Idioma</label>
+                    <select [(ngModel)]="language" class="w-full border border-gray-300 rounded-lg px-4 py-2">
+                      <option value="es">Español</option>
+                      <option value="en">English</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-gray-600 text-sm mb-1">Tema</label>
+                    <select [(ngModel)]="theme" class="w-full border border-gray-300 rounded-lg px-4 py-2">
+                      <option value="light">Claro</option>
+                      <option value="dark">Oscuro</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="mt-6 flex gap-4">
+                  <button class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Guardar cambios</button>
+                  <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300">Cancelar</button>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
