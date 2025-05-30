@@ -9,4 +9,5 @@ import { Component, Input } from '@angular/core';
 export class Modulo {
   @Input() titulo!: string;
   @Input() numero!: number;
+  @Input() estado!: 'habilitado'| 'deshabilitado';
 }
