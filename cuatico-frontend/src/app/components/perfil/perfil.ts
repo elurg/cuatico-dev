@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Sidebar } from "../../core/sidebar/sidebar";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
-  imports: [Sidebar],
+  imports: [Sidebar, RouterModule],
   templateUrl: './perfil.html'
 })
 export class Perfil {
@@ -23,8 +24,6 @@ export class Perfil {
     github: 'https://github.com/tuperfil',
   };
 
-  openEditProfile() {
-    // Lógica para abrir la edición del perfil
-    console.log('Abrir edición de perfil');
-  }
+
+  
 }
