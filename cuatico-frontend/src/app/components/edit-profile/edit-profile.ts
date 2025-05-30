@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { LabelInput } from '../../core/label-input/label-input';
 
-
-  
-  
 @Component({
   selector: 'app-edit-profile',
-  imports: [BrowserModule, FormsModule, RouterModule],
+  standalone: true,
+  imports: [FormsModule, RouterModule, LabelInput],
   templateUrl: './edit-profile.html'
 })
 export class EditProfile {
@@ -17,11 +15,19 @@ export class EditProfile {
 
   // Variables para el perfil
   user = {
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
-    avatar: 'https://via.placeholder.com/150'
+    name: 'Juan Pérez',
+    role: 'Product Designer',
+    email: 'juan.perez@email.com',
+    phone: '+34 600 123 456',
+    address: 'Calle Falsa 123, Madrid',
+    memberSince: 'Marzo 2021',
+    avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
+    projects: 245,
+    followers: 1200,
+    following: 36,
+    profileProgress: 75, // Porcentaje de completado del perfil (0-100)
+    linkedin: 'https://linkedin.com/in/tuperfil',
+    github: 'https://github.com/tuperfil',
   };
 
   // Variables para cambio de contraseña
@@ -39,7 +45,7 @@ export class EditProfile {
   theme = 'light';
 
   // Método para cambiar de pestaña
-  setActiveTab(tab: string): void {
-    this.activeTab = tab;
-  }
+setActiveTab(tab: string): void {
+  this.activeTab = tab;
+}
 }
