@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule]
 })
 export class Card {
+  @Input() id!: number;
   @Input() titulo!: string;
   @Input() descripcion?: string;
   @Input() profesor?: string;
@@ -16,4 +17,10 @@ export class Card {
   @Input() precio?: number | string;
   @Input() tipo!: 'venta' | 'curso' | 'certificado';
   @Input() modalidad?: 'presencial' | 'remoto' | 'ninguno';
+
+  @Output() navigate = new EventEmitter<number>();
+
+  onClick() {
+    this.navigate.emit(this.id);
+  }
 }

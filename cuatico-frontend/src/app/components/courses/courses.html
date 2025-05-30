@@ -8,7 +8,8 @@
       </app-card>
 
       <!-- CURSO COMPRADO -->
-      <app-card titulo="UX Research"
+      <app-card [id]="1"
+  (navigate)="irADetalle($event)" titulo="UX Research"
         descripcion="Aprenderás los fundamentos de la investigación de usuarios para mejorar el diseño de productos digitales mediante métodos cualitativos y cuantitativos."
         profesor="Diana Henao" modalidad="remoto"  duracion="3 semanas" tipo="curso">
       </app-card>

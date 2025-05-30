@@ -1,33 +1,51 @@
 <div
-    class="w-[368px] h-auto bg-secundario/30 rounded-lg p-6 shadow-md border border-secundario/50 hover:shadow-lg transition-all">
-    <div *ngIf="tipo === 'certificado'" class="mb-4">
-        <img src="./assets/provisional.jpg" alt="Certificado" class="w-full h-40 object-cover rounded-lg">
+  class="w-[368px] h-auto bg-secundario/30 rounded-lg p-6 shadow-md border border-secundario/50 hover:shadow-lg transition-all"
+>
+  <div *ngIf="tipo === 'certificado'" class="mb-4">
+    <img
+      src="./assets/provisional.jpg"
+      alt="Certificado"
+      class="w-full h-40 object-cover rounded-lg"
+    />
+  </div>
+  <h2 class="text-2xl font-bold text-primario mb-6">{{ titulo }}</h2>
+  <div class="flex flex-col">
+    <div
+      *ngIf="tipo !== 'certificado'"
+      class="flex items-center justify-between mb-2"
+    >
+      <span class="text-gray-500">{{ duracion }}</span>
+      <span *ngIf="tipo === 'venta'" class="text-lg font-bold text-gray-600">
+        {{ precio }} €
+      </span>
     </div>
-    <h2 class="text-2xl font-bold text-primario mb-6">{{ titulo }}</h2>
-    <div class="flex flex-col">
 
-        <div *ngIf="tipo !== 'certificado'" class="flex items-center justify-between mb-2">
-            <span class="text-gray-500">{{ duracion }}</span>
-            <span *ngIf="tipo === 'venta'" class="text-lg font-bold text-gray-600"> {{ precio }} € </span>
-        </div>
+    <p class="text-gray-800 mb-4">{{ descripcion }}</p>
 
-        <p class="text-gray-800 mb-4">{{ descripcion }}</p>
-
-        <div *ngIf="tipo !== 'certificado'" class="flex items-center justify-between text-sm text-gray-600 mb-2">
-            <span>👨‍🏫 {{ profesor }}</span>
-            <span *ngIf="fecha">📅 {{ fecha }}</span>
-        </div>
-
-        <div *ngIf="modalidad && tipo !== 'certificado'" class="text-sm text-gray-600 mb-2">
-            {{ modalidad === 'presencial' ? '📍 Presencial' : modalidad === 'remoto' ? '💻 Remoto' : '' }}
-        </div>
-
-
-        <div class="mt-auto">
-            <button
-                class="w-full py-2 mt-4 rounded-lg bg-primario text-white font-semibold hover:bg-primario/80 transition">
-                {{ tipo === 'curso' ? 'Entra' : tipo === 'venta' ? 'Accede' : 'Descarga' }}
-            </button>
-        </div>
+    <div
+      *ngIf="tipo !== 'certificado'"
+      class="flex items-center justify-between text-sm text-gray-600 mb-2"
+    >
+      <span>👨‍🏫 {{ profesor }}</span>
+      <span *ngIf="fecha">📅 {{ fecha }}</span>
     </div>
+
+    <div
+      *ngIf="modalidad && tipo !== 'certificado'"
+      class="text-sm text-gray-600 mb-2"
+    >
+      {{ modalidad === 'presencial' ? '📍 Presencial' : modalidad === 'remoto' ?
+      '💻 Remoto' : '' }}
+    </div>
+
+    <div class="mt-auto">
+      <button
+        (click)="onClick()"
+        class="w-full py-2 mt-4 rounded-lg bg-primario text-white font-semibold hover:bg-primario/80 transition"
+      >
+        {{ tipo === 'curso' ? 'Entra' : tipo === 'venta' ? 'Accede' : 'Descarga'
+        }}
+      </button>
+    </div>
+  </div>
 </div>
