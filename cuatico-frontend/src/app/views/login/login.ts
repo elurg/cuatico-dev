@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { LabelInput } from '../../components/label-input/label-input';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [LabelInput],
+  imports: [LabelInput, RouterLink],
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
