@@ -3,8 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-label-input',
   standalone: true,
-  templateUrl: './label-input.html',
-  styleUrls: ['./label-input.css']
+  templateUrl: './label-input.html'
 })
 export class LabelInput {
   @Input() label = '';
