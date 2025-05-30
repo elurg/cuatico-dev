@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LabelInput } from '../../components/label-input/label-input';
+import { LabelInput } from '../../core/label-input/label-input';
 import { RouterLink } from '@angular/router';
 
 @Component({

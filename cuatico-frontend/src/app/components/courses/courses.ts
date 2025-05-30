@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Navbar } from '../navbar/navbar';
-import { Sidebar } from '../sidebar/sidebar';
-import { Card } from '../card/card';
+import { Navbar } from '../../core/navbar/navbar';
+import { Sidebar } from '../../core/sidebar/sidebar';
+import { Card } from '../../core/card/card';
 
 @Component({
   selector: 'app-courses',

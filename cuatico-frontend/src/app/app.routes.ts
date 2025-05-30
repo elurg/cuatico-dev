@@ -1,8 +1,14 @@
-import { Login } from './views/login/login';
+import { Login } from './components/login/login';
 import { Routes } from '@angular/router';
 import { Courses } from './components/courses/courses';
-import { Dashboard } from './views/dashboard/dashboard_estudiante';
-import { Register } from './views/register/register';
+import { Dashboard } from './components/dashboard/dashboard_estudiante';
+import { Register } from './components/register/register';
+import { Perfil } from './components/perfil/perfil';
+import { Courseid } from './components/courseid/courseid';
+import { Certificado } from './core/certificado/certificado';
+import { Insignias } from './components/insignias/insignias';
+import { Feedback } from './components/feedback/feedback';
+import { Horario } from './components/horario/horario';
 
 export const routes: Routes = [
   {
@@ -22,7 +28,39 @@ export const routes: Routes = [
     component: Register
   },
 
+  {
+    path: 'perfil',
+    component: Perfil
+  },
+
+  {
+    path: 'courses/:id',
+    component: Courseid
+  },
+
+  {
+    path: 'certificado',
+    component: Certificado
+  },
+
+   {
+    path: 'insignias',
+    component: Insignias
+  },
+
+  {
+    path: 'feedback',
+    component: Feedback
+  },
+
+  {
+    path: 'horario',
+    component: Horario
+  },
+
+
+
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  
-  {path: '**', redirectTo: 'login' }
+
+  { path: '**', redirectTo: 'login' }
 ];

@@ -4,9 +4,9 @@ import { filter } from 'rxjs/operators';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Navbar } from './components/navbar/navbar';
-import { Card } from './components/card/card';
-import { Sidebar } from './components/sidebar/sidebar';
+import { Navbar } from './core/navbar/navbar';
+import { Card } from './core/card/card';
+import { Sidebar } from './core/sidebar/sidebar';
 
 @Component({
   selector: 'app-root',
