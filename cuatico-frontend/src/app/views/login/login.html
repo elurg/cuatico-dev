@@ -10,7 +10,7 @@
 
     <!-- Formulario: fondo blanco -->
     <div class="bg-white p-10">
-      <form action="/dashboard" method="get" class="space-y-6">
+      <form action="login" method="post" class="space-y-6">
         
         <app-label-input
             label="Email Address"
@@ -31,7 +31,8 @@
         </div>
 
         <button
-          type="submit"
+          type="button"
+          routerLink="/dashboard"
           class="w-full bg-primario text-white font-semibold py-3 px-4 rounded-xl hover:bg-indigo-700 transition duration-300"
         >
           Log In
@@ -40,7 +41,7 @@
 
       <p class="mt-6 text-sm text-center text-gray-600">
         Don’t have an account?
-        <a href="register" class="text-primario hover:underline">Join Us</a>
+        <a routerLink="/register" class="text-primario hover:underline">Join Us</a>
       </p>
     </div>
   </div>
