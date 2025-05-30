@@ -8,10 +8,11 @@ import { Navbar } from './core/navbar/navbar';
 import { Card } from './core/card/card';
 import { Sidebar } from './core/sidebar/sidebar';
 import { Searchbar } from "./core/searchbar/searchbar";
+import { Footer } from './core/footer/footer';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Sidebar, FormsModule, CommonModule, Navbar],
+  imports: [RouterOutlet, Sidebar, FormsModule, CommonModule, Navbar, Footer],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
