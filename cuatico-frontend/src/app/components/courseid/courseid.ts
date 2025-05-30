@@ -4,7 +4,7 @@ import { Modulo } from '../../core/modulo/modulo';
 
 @Component({
   selector: 'app-courseid',
-  imports: [Sidebar, Modulo],
+  imports: [Modulo],
   templateUrl: './courseid.html'
 })
 export class Courseid {

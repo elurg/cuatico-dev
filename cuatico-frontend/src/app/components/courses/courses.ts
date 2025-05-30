@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.html',
-  imports: [CommonModule, Sidebar, Card]
+  imports: [CommonModule, Card]
 })
 export class Courses {
    constructor(private router: Router) {}

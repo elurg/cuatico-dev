@@ -11,7 +11,7 @@ import { Searchbar } from "./core/searchbar/searchbar";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Card, Sidebar, FormsModule, CommonModule, Navbar, Searchbar],
+  imports: [RouterOutlet, Sidebar, FormsModule, CommonModule, Navbar],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
