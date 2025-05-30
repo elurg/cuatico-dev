@@ -10,9 +10,9 @@ import { Insignias } from './components/insignias/insignias';
 import { Feedback } from './components/feedback/feedback';
 import { Horario } from './components/horario/horario';
 import { Calificaciones } from './components/calificaciones/calificaciones';
-import { tasks } from './components/tasks/tasks';
 import { Moduloid } from './components/moduloid/moduloid';
 import { EditProfile } from './components/edit-profile/edit-profile';
+import { tasks } from './components/tasks/tasks';
 
 export const routes: Routes = [
   {
