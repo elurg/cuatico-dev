@@ -9,6 +9,8 @@ import { Certificado } from './core/certificado/certificado';
 import { Insignias } from './components/insignias/insignias';
 import { Feedback } from './components/feedback/feedback';
 import { Horario } from './components/horario/horario';
+import { Calificaciones } from './components/calificaciones/calificaciones';
+import { Tareas } from './components/tareas/tareas';
 
 export const routes: Routes = [
   {
@@ -56,6 +58,16 @@ export const routes: Routes = [
   {
     path: 'horario',
     component: Horario
+  },
+  
+    {
+    path: 'calificaciones',
+    component: Calificaciones
+  },
+
+    {
+    path: 'tareas',
+    component: Tareas
   },
 
 
