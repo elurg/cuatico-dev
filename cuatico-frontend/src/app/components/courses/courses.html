@@ -1,27 +1,23 @@
-<app-navbar></app-navbar>
-<div class="flex">
+<div class="flex gap-6">
   <app-sidebar></app-sidebar>
   <div class="flex-1 p-6">
-    <h2 class="text-2xl font-bold mb-6">{{ title }}</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div *ngFor="let curso of courses"
-           class="bg-primario/10 rounded-lg group p-6 shadow-md border border-gray-200 hover:shadow-lg transition-all cursor-pointer flex flex-col">
-        <div class="flex items-center justify-between mb-2">
-          <span class="text-xs font-semibold uppercase text-gray-500">{{ curso.categoria }}</span>
-          <span class="text-xs text-gray-500">{{ curso.duracion }}</span>
-        </div>
-        <h3 class="text-lg font-bold mb-2 text-gray-900">{{ curso.nombre }}</h3>
-        <p class="text-gray-700 mb-4">{{ curso.descripcion }}</p>
-        <div class="flex items-center justify-between text-sm text-gray-600 mb-2">
-          <span>👨‍🏫 {{ curso.profesor }}</span>
-          <span>📚 {{ curso.lecciones }} lecciones</span>
-        </div>
-        <div class="mt-auto">
-          <button class="w-full py-2 mt-4 rounded-lg bg-black text-white font-semibold hover:bg-gray-800 transition">
-            Conoce más
-          </button>
-        </div>
-      </div>
+    <div class="flex flex-wrap gap-6">
+      <!-- CURSO A LA VENTA -->
+      <app-card titulo="Desarrolla tu creatividad" descripcion="Despierta tu creatividad y aprende técnicas para generar ideas innovadoras en diseño digital." profesor="Itxintxu" lecciones=12 duracion="4 semanas" 
+      precio=110 
+      tipo="venta">
+      </app-card>
+
+      <!-- CURSO COMPRADO -->
+      <app-card titulo="UX Research"
+        descripcion="Aprenderás los fundamentos de la investigación de usuarios para mejorar el diseño de productos digitales mediante métodos cualitativos y cuantitativos."
+        profesor="Diana Henao" lecciones=8 duracion="3 semanas" tipo="curso">
+      </app-card>
+
+      <!-- CERTIFICADO -->
+      <app-card titulo="Certificación en Desarrollo Web"
+        descripcion="Obtén tu certificado que avala tus conocimientos en desarrollo web." tipo="certificado">
+      </app-card>
     </div>
   </div>
 </div>
