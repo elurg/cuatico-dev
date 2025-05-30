@@ -7,10 +7,11 @@ import { CommonModule } from '@angular/common';
 import { Navbar } from './core/navbar/navbar';
 import { Card } from './core/card/card';
 import { Sidebar } from './core/sidebar/sidebar';
+import { Searchbar } from "./core/searchbar/searchbar";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,Card, Sidebar, FormsModule, CommonModule, Navbar],
+  imports: [RouterOutlet, Card, Sidebar, FormsModule, CommonModule, Navbar, Searchbar],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
