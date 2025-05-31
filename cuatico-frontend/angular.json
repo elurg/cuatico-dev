@@ -92,11 +92,11 @@
     },
     "@schematics/angular:directive": {
       "type": "directive",
-      "path": "src/app/directivas"
+      "path": "src/app/directives"
     },
     "@schematics/angular:service": {
       "type": "service",
-      "path": "src/app/servicios"
+      "path": "src/app/services"
     },
     "@schematics/angular:guard": {
       "typeSeparator": ".",
@@ -104,11 +104,11 @@
     },
     "@schematics/angular:interceptor": {
       "typeSeparator": ".",
-      "path": "src/app/interceptores"
+      "path": "src/app/interceptors"
     },
     "@schematics/angular:module": {
       "typeSeparator": ".",
-      "path": "src/app/modulos"
+      "path": "src/app/modules"
     },
     "@schematics/angular:pipe": {
       "typeSeparator": ".",

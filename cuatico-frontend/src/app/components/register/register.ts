@@ -5,8 +5,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-register',
   imports: [LabelInput,RouterLink],
-  templateUrl: './register.html',
-  styleUrl: './register.css'
+  templateUrl: './register.html'
 })
 export class Register {
 

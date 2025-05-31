@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Card } from '../../core/card/card';
-import { Calendario } from '../../core/calendario/calendario';
+import { Calendar } from '../../core/calendar/calendar';
 
 @Component({
   selector: 'app-dashboard_estudiante',
-  imports: [Card,Calendario],
+  imports: [Card,Calendar],
   templateUrl: './dashboard_estudiante.html'
 })
 export class Dashboard {
