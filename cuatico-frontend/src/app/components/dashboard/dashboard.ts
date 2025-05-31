@@ -3,9 +3,9 @@ import { Card } from '../../core/card/card';
 import { Calendar } from '../../core/calendar/calendar';
 
 @Component({
-  selector: 'app-dashboard_estudiante',
+  selector: 'app-dashboard',
   imports: [Card,Calendar],
-  templateUrl: './dashboard_estudiante.html'
+  templateUrl: './dashboard.html'
 })
 export class Dashboard {
   protected title = 'cuatico-frontend';
