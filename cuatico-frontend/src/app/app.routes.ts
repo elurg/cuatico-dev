@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { Courses } from './components/courses/courses';
-import { Dashboard } from './components/dashboard/dashboard_estudiante';
+import { Dashboard } from './components/dashboard/dashboard';
 import { Login } from './components/login/login';
 import { Register } from './components/register/register';
 import { Profile } from './components/profile/profile';
