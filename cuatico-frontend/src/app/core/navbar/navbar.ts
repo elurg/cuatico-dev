@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 export class Navbar {
   user = {
     name: 'Juan Pérez',
+    username: 'Juan',
     role: 'Product Designer',
     email: 'juan.perez@email.com',
     phone: '+34 600 123 456',
