@@ -104,10 +104,10 @@
             @if (activeTab === 'profile') {
             <div class="bg-white rounded-lg p-6">
                 <!-- Foto arriba a la derecha fuera del formulario -->
-                <div class="absolute right-6 top-6 flex flex-col items-center gap-2">
+                <div class="absolute right-12 top-0 flex flex-col items-center gap-2">
                     <img [src]="user.avatar" alt="Avatar"
-                        class="w-32 h-32 rounded-full object-cover border-2 border-gray-300">
-                    <button class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 text-sm font-medium">
+                        class="w-48 h-48 rounded-full object-cover border-2 border-gray-300">
+                    <button class="px-4 py-2 bg-primario text-white rounded-lg hover:bg-primario/80 text-sm font-medium">
                         Cambiar foto
                     </button>
                 </div>
@@ -135,7 +135,7 @@
                         [(model)]="user.github" [horizontal]="false" type="url"></app-label-input>
                 </div>
                 <div class="mt-8 flex gap-4">
-                    <button class="px-4 py-2 bg-primario text-white rounded-lg hover:bg-primario/90">Guardar
+                    <button class="px-4 py-2 bg-primario text-white rounded-lg hover:bg-primario/80">Guardar
                         cambios</button>
                     <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300">Cancelar</button>
                 </div>
@@ -158,7 +158,7 @@
                         [horizontal]="false" type="password"></app-label-input>
                 </div>
                 <div class="mt-6 flex gap-4">
-                    <button class="px-4 py-2 bg-primario text-white rounded-lg hover:bg-primario/90">Guardar
+                    <button class="px-4 py-2 bg-primario text-white rounded-lg hover:bg-primario/80">Guardar
                         cambios</button>
                     <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300">Cancelar</button>
                 </div>
@@ -178,7 +178,7 @@
                         [(model)]="smsNotifications"></app-label-input>
                 </div>
                 <div class="mt-6 flex gap-4">
-                    <button class="px-4 py-2 bg-primario text-white rounded-lg hover:bg-primario/90">Guardar
+                    <button class="px-4 py-2 bg-primario text-white rounded-lg hover:bg-primario/80">Guardar
                         cambios</button>
                     <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300">Cancelar</button>
                 </div>
