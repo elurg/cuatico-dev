@@ -45,18 +45,18 @@
       <div class="relative group">
         <button class="flex items-center space-x-3 focus:outline-none">
           <div class="flex flex-col items-end text-white dark:text-gray-100">
-            <span class="text-sm font-medium">Ale</span>
-            <span class="text-xs text-gray-300 dark:text-gray-400">Estudiante</span>
+            <span class="text-sm font-medium">{{ user.name }}</span>
+            <span class="text-xs text-gray-300 dark:text-gray-400">{{ user.role }}</span>
           </div>
-          <img src="./assets/ale.jpg" alt="Perfil" class="h-8 w-8 rounded-full object-cover ring-2 ring-white">
+          <img [src]="user.avatar" alt="Perfil" class="h-8 w-8 rounded-full object-cover ring-2 ring-white">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/60 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
         <!-- Menú perfil -->
         <div class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg py-2 border border-gray-200 dark:border-gray-700 hidden group-hover:block z-20">
-          <a routerLink = "/perfil" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">Mi Perfil</a>
-          <a routerLink = "/editar-perfil" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">Configuración</a>
+          <a routerLink="/perfil" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">Mi Perfil</a>
+          <a routerLink="/editar-perfil" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700">Configuración</a>
           <hr class="my-1 border-gray-100 dark:border-gray-700">
           <a href="#" class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-700 dark:text-red-400">Cerrar Sesión</a>
         </div>
@@ -65,7 +65,7 @@
 
     <!-- Botón hamburguesa móvil -->
     <div class="md:hidden">
-      <button id="mobileMenuButton" class="text-white dark:text-gray-100 focus:outline-none">
+      <button (click)="toggleMobileMenu()" class="text-white dark:text-gray-100 focus:outline-none">
         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
@@ -74,17 +74,9 @@
   </div>
 
   <!-- Menú móvil -->
-  <div id="mobileMenu" class="md:hidden hidden mt-4 space-y-2 text-white dark:text-gray-100">
+  <div class="md:hidden mt-4 space-y-2 text-white dark:text-gray-100 px-6" [class.hidden]="!mobileMenuOpen">
     <a href="#" class="block">Mi Perfil</a>
     <a href="#" class="block">Configuración</a>
     <a href="#" class="block text-red-400">Cerrar Sesión</a>
   </div>
 </nav>
-
-<script>
-  const btn = document.getElementById('mobileMenuButton');
-  const menu = document.getElementById('mobileMenu');
-  btn.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
-  });
-</script>
