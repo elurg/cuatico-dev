@@ -1,6 +1,6 @@
 <div
-  class="w-[368px] h-auto bg-secundario/30 rounded-lg p-6 shadow-md border border-secundario/50 hover:shadow-lg transition-all"
->
+  class="w-full max-w-lg min-h-[430px] bg-secundario/30 rounded-lg p-4 md:p-6 shadow-md border border-secundario/50 hover:shadow-lg transition-all flex flex-col">
+  <!-- Imagen solo para certificados -->
   <div *ngIf="tipo === 'certificado'" class="mb-4">
     <img
       src="./assets/provisional.jpg"
@@ -8,43 +8,65 @@
       class="w-full h-40 object-cover rounded-lg"
     />
   </div>
-  <h2 class="text-2xl font-bold text-primario mb-6">{{ titulo }}</h2>
-  <div class="flex flex-col">
-    <div
-      *ngIf="tipo !== 'certificado'"
-      class="flex items-center justify-between mb-2"
-    >
-      <span class="text-gray-500">{{ duracion }}</span>
-      <span *ngIf="tipo === 'venta'" class="text-lg font-bold text-gray-600">
-        {{ precio }} €
-      </span>
+
+  <!-- Título con altura mínima reservada -->
+  <h2 class="text-2xl font-bold text-primario mb-4 md:mb-6 flex-shrink-0 min-h-[56px] flex items-center">
+    {{ titulo }}
+  </h2>
+
+  <div class="flex flex-col flex-1 overflow-hidden">
+    <!-- Barra de progreso: espacio reservado siempre -->
+    <ng-container *ngIf="tipo === 'venta' || tipo === 'curso'; else emptyProgress">
+      <div class="mb-4 min-h-[48px] flex flex-col justify-center">
+        <div class="text-sm font-medium text-gray-600 mb-1">Progreso en tu aprendizaje</div>
+        <div class="w-full bg-gray-200 rounded-full h-2.5">
+          <div
+            class="h-2.5 rounded-full"
+            [style.width.%]="progreso"
+            style="background: linear-gradient(to right, #d2ccff, #4B31FD);"
+          ></div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #emptyProgress>
+      <div class="mb-4 min-h-[48px]"></div>
+    </ng-template>
+
+    <!-- Descripción: altura fija y truncada -->
+    <p class="text-gray-800 mb-4 flex-1 overflow-hidden line-clamp-3 min-h-[72px]">
+      {{ descripcion }}
+    </p>
+
+    <!-- Bloque de información en dos filas y dos columnas -->
+    <div class="flex flex-col space-y-1 text-sm text-gray-600 mb-2">
+      <!-- Primera fila: profesor y duración -->
+      <div class="flex justify-between min-h-[24px]">
+        <div class="w-1/2 truncate">
+          <span *ngIf="profesor">👨‍🏫 {{ profesor }}</span>
+        </div>
+        <div class="w-1/2 text-right truncate">
+          <span *ngIf="duracion">⏳ {{ duracion }}</span>
+        </div>
+      </div>
+      <!-- Segunda fila: fecha y modalidad -->
+      <div class="flex justify-between min-h-[24px]">
+        <div class="w-1/2 truncate">
+          <span *ngIf="fecha">📅 {{ fecha }}</span>
+        </div>
+        <div class="w-1/2 text-right truncate">
+          <span *ngIf="modalidad === 'presencial'">📍 Presencial</span>
+          <span *ngIf="modalidad === 'remoto'">💻 Remoto</span>
+        </div>
+      </div>
     </div>
 
-    <p class="text-gray-800 mb-4">{{ descripcion }}</p>
-
-    <div
-      *ngIf="tipo !== 'certificado'"
-      class="flex items-center justify-between text-sm text-gray-600 mb-2"
-    >
-      <span>👨‍🏫 {{ profesor }}</span>
-      <span *ngIf="fecha">📅 {{ fecha }}</span>
-    </div>
-
-    <div
-      *ngIf="modalidad && tipo !== 'certificado'"
-      class="text-sm text-gray-600 mb-2"
-    >
-      {{ modalidad === 'presencial' ? '📍 Presencial' : modalidad === 'remoto' ?
-      '💻 Remoto' : '' }}
-    </div>
-
-    <div class="mt-auto">
+    <!-- Botón de acción siempre alineado abajo -->
+    <div class="mt-auto flex-shrink-0">
       <button
         (click)="onClick()"
-        class="w-full py-2 mt-4 rounded-lg bg-primario text-white font-semibold hover:bg-primario/80 transition"
+        class="w-full py-2 rounded-lg bg-primario text-white font-semibold hover:bg-primario/80 transition"
       >
-        {{ tipo === 'curso' ? 'Entra' : tipo === 'venta' ? 'Accede' : 'Descarga'
-        }}
+        {{ tipo === 'curso' ? 'Entra' : tipo === 'venta' ? 'Accede' : 'Descarga' }}
       </button>
     </div>
   </div>

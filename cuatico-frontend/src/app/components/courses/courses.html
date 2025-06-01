@@ -1,22 +1,63 @@
-<div class="flex gap-6">
-  <div class="flex-1 p-6">
-    <div class="flex flex-wrap gap-6">
-      <!-- CURSO A LA VENTA -->
-      <app-card titulo="Desarrolla tu creatividad" descripcion="Despierta tu creatividad y aprende técnicas para generar ideas innovadoras en diseño digital." profesor="Itxintxu" lecciones=12 duracion="4 semanas" 
-      precio=110 fecha="10 de Junio de 2025" modalidad="presencial" tipo="venta">
-      </app-card>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto py-8 px-4">
+  <app-card
+    class="h-full flex flex-col"
+    titulo="Desarrolla tu creatividad"
+    descripcion="Despierta tu creatividad y aprende técnicas para generar ideas innovadoras en diseño digital."
+    profesor="Itxintxu"
+    lecciones="12"
+    duracion="4 semanas"
+    [progreso]="70"
+    fecha="10 de Junio"
+    modalidad="presencial"
+    tipo="venta">
+  </app-card>
 
-      <!-- CURSO COMPRADO -->
-      <app-card [id]="1"
-  (navigate)="irADetalle($event)" titulo="UX Research"
-        descripcion="Aprenderás los fundamentos de la investigación de usuarios para mejorar el diseño de productos digitales mediante métodos cualitativos y cuantitativos."
-        profesor="Diana Henao" modalidad="remoto"  duracion="3 semanas" tipo="curso">
-      </app-card>
+  <app-card
+    class="h-full flex flex-col"
+    titulo="Diseño de propósito"
+    descripcion="Conoce metodologías clave para entender a los usuarios y realizar investigaciones que mejoren el diseño de productos digitales."
+    profesor="Mister Jonan"
+    duracion="6 semanas"
+    [progreso]="40"
+    fecha="20 de Octubre"
+    modalidad="presencial"
+    tipo="venta">
+  </app-card>
 
-      <!-- CERTIFICADO -->
-      <app-card titulo="Certificación en Desarrollo Web"
-        descripcion="Obtén tu certificado que avala tus conocimientos en desarrollo web." tipo="certificado">
-      </app-card>
-    </div>
-  </div>
+  <app-card
+  class="h-full flex flex-col"
+  titulo="Introducción a la Inteligencia Artificial"
+  [progreso]="70"
+  descripcion="Descubre los conceptos básicos de la inteligencia artificial y cómo se aplican distintos sectores profesionales."
+  profesor="Carlos Martínez"
+  modalidad="presencial"
+  fecha="30 de Octubre"
+  duracion="5 semanas"
+  tipo="venta">
+</app-card>
+
+  <app-card
+    class="h-full flex flex-col"
+    [id]="1"
+    (navigate)="irADetalle($event)"
+    titulo="UX Research"
+    [progreso]="70"
+    descripcion="Aprenderás los fundamentos de la investigación de usuarios para mejorar el diseño de productos digitales mediante métodos cualitativos y cuantitativos."
+    profesor="Diana Henao"
+    fecha="15 de Octubre"
+    modalidad="remoto"
+    duracion="3 semanas"
+    tipo="curso">
+  </app-card>
+
+
+
+  <app-card
+    class="h-full flex flex-col"
+    titulo="Certificación en Desarrollo Web"
+    descripcion="Obtén tu certificado que avala tus conocimientos en desarrollo web."
+    tipo="certificado">
+  </app-card>
+
+
 </div>

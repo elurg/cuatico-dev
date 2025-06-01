@@ -17,6 +17,7 @@ export class Card {
   @Input() precio?: number | string;
   @Input() tipo!: 'venta' | 'curso' | 'certificado';
   @Input() modalidad?: 'presencial' | 'remoto' | 'ninguno';
+  @Input() progreso: number = 0;
 
   @Output() navigate = new EventEmitter<number>();
 
