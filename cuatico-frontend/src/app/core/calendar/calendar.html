@@ -1,4 +1,4 @@
-<div class="w-full max-w-md mx-auto bg-white rounded-xl shadow-lg overflow-hidden border border-primario/20 transition-all duration-300 hover:shadow-xl">
+<div [ngClass]="size === 'small' ? 'w-full max-w-xs p-2 text-xs' : 'w-full max-w-md p-4 text-base'" class="mx-auto bg-white rounded-xl shadow-lg overflow-hidden border border-primario/20 transition-all duration-300 hover:shadow-xl">
   <!-- Cabecera del calendario con gradiente de color -->
   <div class="bg-gradient-to-r from-primario to-primario/80 text-white p-4">
     <div class="flex justify-between items-center">

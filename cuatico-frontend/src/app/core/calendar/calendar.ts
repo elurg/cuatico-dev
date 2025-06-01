@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -12,11 +12,12 @@ interface DiaCalendario {
 
 @Component({
   selector: 'app-calendar',
-  imports: [CommonModule, FormsModule], // Añadido FormsModule para trabajar con formularios
+  imports: [CommonModule, FormsModule],
   templateUrl: './calendar.html',
   
 })
 export class Calendar implements OnInit {
+  @Input() size: 'small' | 'large' = 'large';
   diasSemana: string[] = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
   meses: string[] = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
   dias: DiaCalendario[] = [];
@@ -32,7 +33,7 @@ export class Calendar implements OnInit {
 
   ngOnInit(): void {
     this.generarDiasCalendario();
-    // Simulamos algunas notas 
+    // Simulamos algunas notas
     this.inicializarNotasEjemplo();
   }
 
@@ -174,8 +175,8 @@ export class Calendar implements OnInit {
 
   esDiaActual(dia: DiaCalendario): boolean {
     const hoy = new Date();
-    return dia.fecha.getDate() === hoy.getDate() && 
-           dia.fecha.getMonth() === hoy.getMonth() && 
+    return dia.fecha.getDate() === hoy.getDate() &&
+           dia.fecha.getMonth() === hoy.getMonth() &&
            dia.fecha.getFullYear() === hoy.getFullYear();
   }
 }
