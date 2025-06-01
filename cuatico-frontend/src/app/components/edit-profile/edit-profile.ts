@@ -28,6 +28,7 @@ export class EditProfile {
     profileProgress: 75, // Porcentaje de completado del perfil (0-100)
     linkedin: 'https://linkedin.com/in/tuperfil',
     github: 'https://github.com/tuperfil',
+    bio: ''
   };
 
   // Variables para cambio de contraseña
@@ -45,7 +46,7 @@ export class EditProfile {
   theme = 'light';
 
   // Método para cambiar de pestaña
-setActiveTab(tab: string): void {
-  this.activeTab = tab;
-}
+  setActiveTab(tab: string): void {
+    this.activeTab = tab;
+  }
 }
