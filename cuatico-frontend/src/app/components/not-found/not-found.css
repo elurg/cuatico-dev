@@ -1,0 +1,35 @@
+.gradient-bg {
+  background: linear-gradient(45deg, #251e4c, #2a0b4c, #1a237e, #0d47a1, #251e4c);
+  background-size: 400% 400%;
+  animation: gradient 45s ease infinite;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #fff;
+  animation: glowing-stars 2s infinite alternate;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes glowing-stars {
+  0%   { opacity: 0; }
+  50%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.astronaut-float {
+  animation: floatAstronaut 3s ease-in-out infinite;
+}
+
+@keyframes floatAstronaut {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-18px) rotate(3deg); }
+}
