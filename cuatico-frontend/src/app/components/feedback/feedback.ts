@@ -171,4 +171,12 @@ export class Feedback {
     alert('¡Tutoría solicitada! Te contactaremos pronto.');
   }
 
+  getSubjectIndex(subject: string): number {
+  // Si 'Todas' no debe aparecer en las tarjetas, puedes filtrarla del array
+  // pero aquí asumimos que 'Todas' está en el array y no aparece en las tarjetas
+  const index = this.uniqueSubjects.indexOf(subject);
+  return index > -1 ? index : 0; // Si no se encuentra, usa el índice 0 (por defecto)
+}
+
+
 }
