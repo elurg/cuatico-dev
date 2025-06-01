@@ -35,5 +35,5 @@ export const routes: Routes = [
   {path: '404',component: NotFound},
 
   {path: '', redirectTo: 'login', pathMatch: 'full' },
-  {path: '**', redirectTo: 'login' }
+  {path: '**', redirectTo: '404' }
 ];
