@@ -1,7 +1,7 @@
 <div class="flex flex-col min-h-screen">
-  <app-navbar *ngIf="currentRoute !== '/login' && currentRoute !== '/register' && currentRoute !== '/'"></app-navbar>
+  <app-navbar *ngIf="currentRoute !== '/login' && currentRoute !== '/register' && currentRoute !== '/'&& currentRoute !== '/404'"></app-navbar>
   <div class="flex flex-1">
-    <app-sidebar *ngIf="currentRoute !== '/login' && currentRoute !== '/register' && currentRoute !== '/' && currentRoute !== '/perfil'"></app-sidebar>
+    <app-sidebar *ngIf="currentRoute !== '/login' && currentRoute !== '/register' && currentRoute !== '/' && currentRoute !== '/perfil' && currentRoute !== '/404' "></app-sidebar>
     <div class="flex-1">
       <router-outlet></router-outlet>
     </div>
