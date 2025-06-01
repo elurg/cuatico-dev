@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Calendar } from '../../core/calendar/calendar';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Notes } from '../notes/notes';
+import { TeamTasks } from '../team-tasks/team-tasks';
 
 interface EventoHorario {
   id: string;
@@ -15,10 +17,13 @@ interface EventoHorario {
 
 @Component({
   selector: 'app-timetable',
-  imports: [Calendar, FormsModule, CommonModule],
+  imports: [Calendar, FormsModule, CommonModule, Notes, TeamTasks],
   templateUrl: './timetable.html'
 })
 export class Timetable {
+  // Control de pestañas
+  tabActivo: string = 'calendario';
+  
   // Array de horas para el horario
   horas: string[] = [
     '8:00 AM',
@@ -50,9 +55,6 @@ export class Timetable {
   nuevoEvento: EventoHorario = this.inicializarNuevoEvento();
 
   // Array de eventos del horario
-
-
-
   eventos: EventoHorario[] = [
     {
       id: '1',

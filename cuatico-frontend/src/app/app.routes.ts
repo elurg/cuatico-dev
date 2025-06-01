@@ -12,7 +12,6 @@ import { Badges } from './components/badges/badges';
 import { Feedback } from './components/feedback/feedback';
 import { Timetable } from './components/timetable/timetable';
 import { Grades } from './components/grades/grades';
-import { Tasks } from './components/tasks/tasks';
 import { Calendar } from './core/calendar/calendar';
 import { NotFound } from './components/not-found/not-found';
 
@@ -30,7 +29,6 @@ export const routes: Routes = [
   {path: 'feedback',component: Feedback},
   {path: 'horario',component: Timetable},
   {path: 'calificaciones',component: Grades},
-  {path: 'tareas',component: Tasks},
   {path: 'calendario',component: Calendar},
   {path: '404',component: NotFound},
 
