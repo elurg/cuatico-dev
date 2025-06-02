@@ -1,63 +1,53 @@
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto py-8 px-4">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto py-8 px-8">
   <app-card
-    class="h-full flex flex-col"
+    [id]="1"
+    (navigate)="irADetalle($event)"
     titulo="Desarrolla tu creatividad"
-    descripcion="Despierta tu creatividad y aprende técnicas para generar ideas innovadoras en diseño digital."
     profesor="Itxintxu"
-    lecciones="12"
+    lecciones="8"
     duracion="4 semanas"
-    [progreso]="70"
-    fecha="10 de Junio"
+    [progreso]="95"
+    fecha="5 de Mayo"
     modalidad="presencial"
     tipo="venta">
   </app-card>
 
   <app-card
-    class="h-full flex flex-col"
-    titulo="Diseño de propósito"
-    descripcion="Conoce metodologías clave para entender a los usuarios y realizar investigaciones que mejoren el diseño de productos digitales."
-    profesor="Mister Jonan"
+    [id]="1"
+    (navigate)="irADetalle($event)"
+    titulo="Diseño de Interfaces"
+    profesor="Diana"
+    lecciones="14"
     duracion="6 semanas"
-    [progreso]="40"
-    fecha="20 de Octubre"
+    [progreso]="70"
+    fecha="19 de Abril"
     modalidad="presencial"
     tipo="venta">
   </app-card>
 
   <app-card
-  class="h-full flex flex-col"
-  titulo="Introducción a la Inteligencia Artificial"
-  [progreso]="70"
-  descripcion="Descubre los conceptos básicos de la inteligencia artificial y cómo se aplican distintos sectores profesionales."
-  profesor="Carlos Martínez"
-  modalidad="presencial"
-  fecha="30 de Octubre"
-  duracion="5 semanas"
-  tipo="venta">
-</app-card>
-
-  <app-card
-    class="h-full flex flex-col"
     [id]="1"
     (navigate)="irADetalle($event)"
     titulo="UX Research"
-    [progreso]="70"
-    descripcion="Aprenderás los fundamentos de la investigación de usuarios para mejorar el diseño de productos digitales mediante métodos cualitativos y cuantitativos."
-    profesor="Diana Henao"
-    fecha="15 de Octubre"
+    profesor="Diana"
+    lecciones="10"
+    duracion="5 semanas"
+    [progreso]="80"
+    fecha="12 de Mayo"
     modalidad="remoto"
-    duracion="3 semanas"
-    tipo="curso">
+    tipo="venta">
   </app-card>
-
-
 
   <app-card
-    class="h-full flex flex-col"
-    titulo="Certificación en Desarrollo Web"
-    descripcion="Obtén tu certificado que avala tus conocimientos en desarrollo web."
-    tipo="certificado">
+    [id]="1"
+    (navigate)="irADetalle($event)"
+    titulo="Diseño de producto"
+    profesor="Carlos"
+    lecciones="12"
+    duracion="6 semanas"
+    [progreso]="65"
+    fecha="26 de Abril"
+    modalidad="remoto"
+    tipo="venta">
   </app-card>
-
-
 </div>
