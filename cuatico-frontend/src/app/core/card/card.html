@@ -1,23 +1,22 @@
 <div
   class="w-full max-w-[17rem] min-h-[12rem] bg-gradient-to-b from-secundario/20 to-secundario/10 rounded-xl p-4 md:p-6 shadow-md border border-secundario/40 hover:shadow-lg transition-all flex flex-col group">
   <!-- Imagen solo para certificados -->
-  <div *ngIf="tipo === 'certificado'" class="mb-4">
-    <img src="./assets/provisional.jpg" alt="Certificado"
-      class="w-full h-36 md:h-40 object-cover rounded-lg shadow-inner border border-secundario/30" />
-  </div>
+    <ng-content></ng-content>
+
 
   <!-- Título -->
-  <div class="min-h-[4.5rem] flex items-center justify-center text-center p-1">
-    <h2
-      class="text-2xl font-bold text-primario group-hover:text-primario/80 transition line-clamp-2"
-      [title]="titulo">
-      {{ titulo }}
-    </h2>
+  <div *ngIf="tipo === 'venta' || tipo === 'curso'" class="flex justify-between">
+    <div class="min-h-[4.5rem] flex items-center justify-center text-center p-1">
+      <h2 class="text-2xl font-bold text-primario group-hover:text-primario/80 transition line-clamp-2"
+        [title]="titulo">
+        {{ titulo }}
+      </h2>
+    </div>
   </div>
 
-  <div class="flex flex-col flex-1 overflow-hidden">
-    <!-- Barra de progreso -->
-    <ng-container *ngIf="tipo === 'venta' || tipo === 'curso'; else emptyProgress">
+  <ng-container *ngIf="tipo === 'venta' || tipo === 'curso';">
+    <div class="flex flex-col flex-1 overflow-hidden">
+      <!-- Barra de progreso -->
       <div class="mb-4 min-h-[2.5rem] flex flex-col justify-center">
         <div class="text-sm font-medium text-gray-600 mb-1">Progreso en tu aprendizaje</div>
         <div class="w-full bg-gray-200 rounded-full h-2.5">
@@ -25,20 +24,25 @@
             style="background: linear-gradient(to right, #d2ccff, #4B31FD);"></div>
         </div>
       </div>
-    </ng-container>
-    <ng-template #emptyProgress>
-      <div class="mb-4 min-h-[2.5rem]"></div>
-    </ng-template>
+    </div> 
+  </ng-container>
+  <ng-template #emptyProgress>
+    <div class="mb-4 min-h-[2.5rem]"></div>
+  </ng-template>
 
-    <!-- Descripción (solo si hay contenido) -->
+  <!-- Descripción (solo si hay contenido) -->
+  <div *ngIf="tipo === 'venta' || tipo === 'curso'" class="flex justify-between">
     <p *ngIf="descripcion?.trim()" class="text-gray-800 mb-4 flex-1 overflow-hidden line-clamp-3">
       {{ descripcion }}
     </p>
+  </div>
 
-    <!-- Bloque de información -->
+  <!-- Bloque de información -->
+  <div class="flex flex-col space-y-2 text-sm text-gray-600 mb-3">
+    <!-- Primera fila: profesor y duración -->
     <div class="flex flex-col space-y-2 text-sm text-gray-600 mb-3">
-      <!-- Primera fila: profesor y duración -->
-      <div class="flex justify-between">
+      <!-- Primera fila: profesor y duración SOLO para venta y curso -->
+      <div *ngIf="tipo === 'venta' || tipo === 'curso'" class="flex justify-between">
         <div class="w-1/2 truncate flex items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="size-5 text-primario">
@@ -57,7 +61,7 @@
         </div>
       </div>
       <!-- Segunda fila: fecha y modalidad -->
-      <div class="flex justify-between">
+      <div *ngIf="tipo === 'venta' || tipo === 'curso'" class="flex justify-between">
         <div class="w-1/2 truncate flex items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="size-5 text-primario">
