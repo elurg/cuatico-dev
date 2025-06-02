@@ -7,5 +7,7 @@ import { Module } from '../../core/module/module';
   templateUrl: './course-id.html'
 })
 export class CourseId {
-
+solicitarTutoria(): void {
+    alert('¡Tutoría solicitada! Te contactaremos pronto.');
+  }
 }

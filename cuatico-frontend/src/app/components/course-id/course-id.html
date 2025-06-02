@@ -13,65 +13,197 @@
       </h2>
     </div>
 
-    <div class="bg-gray-100 p-4 rounded-md">
-      <p class="text-gray-600 text-sm font-medium mb-2">COMPONENTE PROGRESO</p>
+    <div
+      class="mb-8 bg-gradient-to-r from-primario to-primario/80 rounded-2xl p-8 text-white shadow-lg relative overflow-hidden grid grid-cols-1 md:grid-cols-3 gap-6 mt-6"
+    >
+      <div class="bg-white/10 backdrop-blur-lg rounded-xl p-4">
+        <p class="text-emerald-50 text-sm">Lecciones Completadas</p>
+        <p class="text-2xl font-bold mt-1">5/7</p>
+      </div>
+      <div class="bg-white/10 backdrop-blur-lg rounded-xl p-4">
+        <p class="text-emerald-50 text-sm">Tiempo de Estudio</p>
+        <p class="text-2xl font-bold mt-1">2.5h</p>
+      </div>
+      <div class="bg-white/10 backdrop-blur-lg rounded-xl p-4">
+        <p class="text-emerald-50 text-sm">Progreso General</p>
+        <p class="text-2xl font-bold mt-1">85%</p>
+      </div>
     </div>
 
-    <div class="flex gap-6">
-      <a
-        href="#"
-        class="flex items-center gap-2 text-blue-600 font-medium hover:underline hover:text-blue-800 transition"
-      >
-        <img
-        src="./assets/teams.png"
-        alt="Icono de Teams"
-        class="w-6 h-6 object-cover"
-      />
-        Enlace a Teams
-      </a>
-      <a
-        href="#"
-        class="flex items-center gap-2 text-blue-600 font-medium hover:underline hover:text-blue-800 transition"
-      >
-        <img
-        src="./assets/slack.svg"
-        alt="Icono de Slack"
-        class="w-6 h-6 object-cover"
-      />
-        Enlace a Slack
-      </a>
-    </div>
+    <div class="flex gap-4 items-start">
+      <div class="bg-white border border-gray-200 rounded-md p-4 flex-1">
+        <div class="flex justify-between items-center mb-2">
+          <p class="text-gray-700 text-base font-semibold">
+            CONTENIDO DEL CURSO
+          </p>
+        </div>
 
-    <div class="bg-gray-50 p-4 rounded-md">
-      <div class="flex justify-between items-center mb-2">
-        <p class="text-gray-700 text-base font-semibold">CALIFICACIÓN</p>
-        <span class="text-gray-400 text-sm font-medium">No disponible</span>
+        <app-module
+          class="m-2"
+          titulo="Diseño de experiencia, interfaz de usuario y estrategia de contenido"
+          [numero]="1"
+          estado="habilitado"
+          [nota]="80"
+        ></app-module>
+        <app-module
+          class="m-2"
+          titulo="Transformación digital"
+          [numero]="2"
+          estado="habilitado"
+          [nota]="45"
+        ></app-module>
+        <app-module
+          class="m-2"
+          titulo="Dirección de producto: gestión de proyectos y comunicación"
+          [numero]="3"
+          estado="deshabilitado"
+        ></app-module>
+        <app-module
+          class="m-2"
+          titulo="Aula de prototipado y lenguajes de desarrollo"
+          [numero]="4"
+          estado="deshabilitado"
+        ></app-module>
       </div>
 
-      <app-module
-        class="m-2"
-        titulo="Diseño de experiencia, interfaz de usuario y estrategia de contenido"
-        [numero]="1"
-        estado="habilitado"
-      ></app-module>
-      <app-module
-        class="m-2"
-        titulo="Transformación digital"
-        [numero]="2"
-        estado="habilitado"
-      ></app-module>
-      <app-module
-        class="m-2"
-        titulo="Dirección de producto: gestión de proyectos y comunicación"
-        [numero]="3"
-        estado="deshabilitado"
-      ></app-module>
-      <app-module
-        class="m-2"
-        titulo="Aula de prototipado y lenguajes de desarrollo"
-        [numero]="4"
-        estado="deshabilitado"
-      ></app-module>
+      <div class="w-full sm:w-64 flex flex-col gap-4">
+        <!-- Bloque de información del profesor -->
+        <div class="bg-white border border-gray-200 rounded-md p-4 w-64">
+          <p class="text-gray-700 text-base font-semibold mb-2">PROFESOR</p>
+          <div class="flex items-center gap-4">
+            <img
+              src="./assets/Diana.png"
+              alt="Foto del profesor"
+              class="w-12 sm:w-16 h-12 sm:h-16 rounded-full border-2 border-secundario mb-4 sm:mb-0"
+            />
+            <div>
+              <p class="text-sm font-medium text-gray-900">Diana Henao</p>
+              <p class="text-xs text-gray-500">Diseño UX/UI</p>
+              <p class="text-xs text-gray-500">dianahenao&#64;cuatico.com</p>
+            </div>
+          </div>
+          <div class="flex gap-6 mt-6">
+            <a
+              href="#"
+              class="flex items-center gap-2 text-sm text-blue-600 font-medium hover:underline hover:text-blue-800 transition"
+            >
+              <img
+                src="./assets/teams.png"
+                alt="Icono de Teams"
+                class="w-6 h-6 object-cover"
+              />
+              Enlace a Teams
+            </a>
+            <a
+              href="#"
+              class="flex items-center gap-2 text-sm text-blue-600 font-medium hover:underline hover:text-blue-800 transition"
+            >
+              <img
+                src="./assets/slack.svg"
+                alt="Icono de Slack"
+                class="w-6 h-6 object-cover"
+              />
+              Enlace a Slack
+            </a>
+          </div>
+
+          <!-- Botón para solicitar tutoría -->
+          <div class="flex justify-center mt-6 sm:mt-8 mb-3">
+            <button
+              (click)="solicitarTutoria()"
+              class="bg-primario bg-opacity-50 text-white px-3 py-1.5 rounded-md shadow-md hover:bg-opacity-70 transition text-sm"
+            >
+              <span class="flex items-center gap-1.5">
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span class="hidden sm:inline">Solicita una tutoría</span>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Bloque tareas-->
+        <div class="bg-white border border-gray-200 rounded-md p-2 w-64">
+          <p class="text-gray-700 text-base font-semibold mb-2 ml-2 mt-2">
+            PRÓXIMAS TAREAS
+          </p>
+          <div class="space-y-3">
+            <div class="flex items-center pl-2 pr-3 py-2 bg-gray-50 rounded-xl">
+              <div
+                class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center"
+              >
+                <svg
+                  class="w-4 h-4 text-blue-500"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                  />
+                </svg>
+              </div>
+              <div class="ml-3">
+                <h3 class="text-sm font-medium text-gray-800">
+                  Diseño de Algoritmos
+                </h3>
+                <p class="text-xs text-gray-500">Vence en 2 días</p>
+              </div>
+              <span
+                class="ml-auto text-xs font-medium text-blue-500 bg-blue-50 px-3 py-1 rounded-full whitespace-nowrap"
+              >
+                En Progreso
+              </span>
+            </div>
+
+            <div class="flex items-center pl-2 pr-3 py-2 bg-gray-50 rounded-xl">
+              <div
+                class="flex-shrink-0 w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center"
+              >
+                <svg
+                  class="w-4 h-4 text-purple-500"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                  />
+                </svg>
+              </div>
+              <div class="ml-3">
+                <h3 class="text-sm font-medium text-gray-800">
+                  Diseño Web Responsive
+                </h3>
+                <p class="text-xs text-gray-500">Vence en 5 días</p>
+              </div>
+              <span
+                class="ml-auto text-xs font-medium text-purple-500 bg-purple-50 px-3 py-1 rounded-full whitespace-nowrap"
+              >
+                Pendiente
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
