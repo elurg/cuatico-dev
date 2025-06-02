@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Card } from '../../core/card/card';
 import { Calendar } from '../../core/calendar/calendar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [Card,Calendar],
+  imports: [Card, Calendar],
   templateUrl: './dashboard.html'
 })
 export class Dashboard {
@@ -25,4 +26,8 @@ export class Dashboard {
     linkedin: 'https://linkedin.com/in/tuperfil',
     github: 'https://github.com/tuperfil',
   };
+   constructor(readonly router: Router) {}
+    irADetalle(id: number) {
+    this.router.navigate(['/cursos', id]);
+  }
 }

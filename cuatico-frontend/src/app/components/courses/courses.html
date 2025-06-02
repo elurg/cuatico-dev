@@ -1,53 +1,70 @@
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto py-8 px-8">
-  <app-card
-    [id]="1"
-    (navigate)="irADetalle($event)"
-    titulo="Desarrolla tu creatividad"
-    profesor="Itxintxu"
-    lecciones="8"
-    duracion="4 semanas"
-    [progreso]="95"
-    fecha="5 de Mayo"
-    modalidad="presencial"
-    tipo="venta">
-  </app-card>
+<div class="min-h-[90vh] flex flex-col bg-gray-50">
+  <div class="flex-1 overflow-auto">
+    <div class="px-4 sm:px-8 py-6 sm:py-10 max-w-7xl mx-auto">
+      <!-- Cabecera con el componente app-header -->
+      <app-header
+        [titulo]="'Mis cursos'"
+        [iconoD]="'M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25'">
+        <!-- Aquí puedes proyectar contenido (por ejemplo, filtros) -->
+        <div class="filtros">
+          <!-- Tus filtros aquí -->
+        </div>
+      </app-header>
 
-  <app-card
-    [id]="1"
-    (navigate)="irADetalle($event)"
-    titulo="Diseño de Interfaces"
-    profesor="Diana"
-    lecciones="14"
-    duracion="6 semanas"
-    [progreso]="70"
-    fecha="19 de Abril"
-    modalidad="presencial"
-    tipo="venta">
-  </app-card>
+      <!-- Grid de tarjetas -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto py-8 px-8">
+        <app-card
+          [id]="1"
+          (navigate)="irADetalle($event)"
+          titulo="Desarrolla tu creatividad"
+          profesor="Itxintxu"
+          lecciones="8"
+          duracion="4 semanas"
+          [progreso]="95"
+          fecha="5 de Mayo"
+          modalidad="presencial"
+          tipo="venta">
+        </app-card>
 
-  <app-card
-    [id]="1"
-    (navigate)="irADetalle($event)"
-    titulo="UX Research"
-    profesor="Diana"
-    lecciones="10"
-    duracion="5 semanas"
-    [progreso]="80"
-    fecha="12 de Mayo"
-    modalidad="remoto"
-    tipo="venta">
-  </app-card>
+        <app-card
+          [id]="1"
+          (navigate)="irADetalle($event)"
+          titulo="Diseño de Interfaces"
+          profesor="Diana"
+          lecciones="14"
+          duracion="6 semanas"
+          [progreso]="70"
+          fecha="19 de Abril"
+          modalidad="presencial"
+          tipo="venta">
+        </app-card>
 
-  <app-card
-    [id]="1"
-    (navigate)="irADetalle($event)"
-    titulo="Diseño de producto"
-    profesor="Carlos"
-    lecciones="12"
-    duracion="6 semanas"
-    [progreso]="65"
-    fecha="26 de Abril"
-    modalidad="remoto"
-    tipo="venta">
-  </app-card>
+        <app-card
+          [id]="1"
+          (navigate)="irADetalle($event)"
+          titulo="UX Research"
+          profesor="Diana"
+          lecciones="10"
+          duracion="5 semanas"
+          [progreso]="80"
+          fecha="12 de Mayo"
+          modalidad="remoto"
+          tipo="venta">
+        </app-card>
+
+        <app-card
+          [id]="1"
+          (navigate)="irADetalle($event)"
+          titulo="Diseño de producto"
+          profesor="Carlos"
+          lecciones="12"
+          duracion="6 semanas"
+          [progreso]="65"
+          fecha="26 de Abril"
+          modalidad="remoto"
+          tipo="venta">
+        </app-card>
+      </div>
+    </div>
+  </div>
 </div>

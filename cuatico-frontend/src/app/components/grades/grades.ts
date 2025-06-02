@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Header } from '../header/header';
 
 @Component({
   selector: 'app-grades',
   templateUrl: './grades.html',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, Header],
 })
 export class Grades {
   calificaciones = [
@@ -14,7 +15,7 @@ export class Grades {
       asignatura: 'Desarolla tu creatividad',
       fecha: 'May 15, 2025',
       nota: 100,
-      estado: 'Cuatico',
+      estado: 'Cuatico!',
       modulos: [
         { nombre: 'Introducion a la creatividad', nota: 100 },
         { nombre: 'Procesos creativos', nota: 100 },
@@ -70,23 +71,22 @@ export class Grades {
     this.abiertos[id] = !this.abiertos[id];
   }
 
-  // NUEVO: Asocia color a cada asignatura
+  // Asocia color a cada asignatura
   asignaturaColorIdx(asignatura: string): number {
     return this.etiquetas.indexOf(asignatura);
   }
 
   getGradientColorByAsignatura(asignatura: string): string {
-    const gradients = [
-      '#6366f1, #00bfae',
-      '#a855f7, #ec4899',
-      '#3b82f6, #60a5fa',
-      '#f97316, #f59e0b',
-      '#ef4444, #f87171',
-      '#eab308, #fde047',
-      '#8b5cf6, #c084fc',
-      '#14b8a6, #2dd4bf'
-    ];
-    const idx = this.asignaturaColorIdx(asignatura);
-    return gradients[idx % gradients.length];
-  }
+  const gradients = [
+      '#a855f7, #ec4899', // morado a rosa
+      '#3b82f6, #60a5fa', // azul
+      '#f97316, #f59e0b', // naranja
+      '#ef4444, #f87171', // rojo
+      '#eab308, #fde047', // amarillo
+      '#8b5cf6, #c084fc', // morado claro
+      '#14b8a6, #2dd4bf'  // verde turquesa
+  ];
+  const idx = this.asignaturaColorIdx(asignatura);
+  return gradients[idx % gradients.length];
+}
 }
