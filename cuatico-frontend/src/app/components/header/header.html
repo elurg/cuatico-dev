@@ -1,0 +1,22 @@
+<div class="bg-secundario bg-opacity-20 border border-secundario rounded-2xl p-4 sm:p-6 mb-6 sm:mb-8 w-full">
+  <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-4 sm:mb-6">
+    <svg class="h-14 sm:h-16 w-14 sm:w-16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="degradado" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="var(--color-primary, #6366f1)" />
+          <stop offset="100%" stop-color="var(--color-secundario, #00bfae)" />
+        </linearGradient>
+      </defs>
+      <path
+        stroke="url(#degradado)"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        [attr.d]="iconoD"
+      />
+    </svg>
+    <h2 class="text600-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 text-center sm:text-left">
+      {{ titulo }}
+    </h2>
+  </div>
+</div>

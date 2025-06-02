@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Card } from '../../core/card/card';
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   imports: [CommonModule, Card]
 })
 export class Courses {
-   constructor(private router: Router) {}
+   constructor(readonly router: Router) {}
 
   irADetalle(id: number) {
     this.router.navigate(['/cursos', id]);
