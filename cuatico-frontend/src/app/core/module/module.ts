@@ -11,6 +11,7 @@ export class Module {
   @Input() titulo!: string;
   @Input() numero!: number;
   @Input() estado!: 'habilitado'| 'deshabilitado';
+  @Input() nota?: number;
 
   constructor(private router: Router) {}
 
