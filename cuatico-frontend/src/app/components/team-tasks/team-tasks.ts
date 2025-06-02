@@ -21,7 +21,7 @@ export class TeamTasks {
   tareas: Tarea[] = [
     {
       id: '1',
-      titulo: 'Finalizar presupuesto',
+      titulo: 'Trabajo ux',
       responsable: 'Ana',
       progreso: 80,
       estado: 'Listo',
@@ -37,7 +37,7 @@ export class TeamTasks {
     },
     {
       id: '3',
-      titulo: 'Analizar el rendimiento de la campaña',
+      titulo: 'Analisis modulo 1',
       responsable: 'David',
       progreso: 100,
       estado: 'Listo',
@@ -45,7 +45,7 @@ export class TeamTasks {
     },
     {
       id: '4',
-      titulo: 'Realizar investigación de usuarios',
+      titulo: 'Realizar investigación',
       responsable: 'Elena',
       progreso: 20,
       estado: 'Detenido',
@@ -72,7 +72,7 @@ export class TeamTasks {
     },
     {
       id: '7',
-      titulo: 'Controlar el presupuesto',
+      titulo: 'Estrategia de contenido ',
       responsable: 'David',
       progreso: 10,
       estado: 'Detenido',

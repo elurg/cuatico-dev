@@ -121,6 +121,7 @@
             <div>
               <label class="block text-sm font-medium text-gray-700">Día</label>
               <select [(ngModel)]="nuevoEvento.dia" name="dia" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primario focus:ring-primario">
+                <option [value]="-1">Todos los días</option>
                 @for (dia of diasSemana; track $index) {
                   <option [value]="$index">{{dia}}</option>
                 }

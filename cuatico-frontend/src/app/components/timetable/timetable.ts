@@ -117,12 +117,20 @@ export class Timetable {
   // Método para agregar evento desde formulario
   agregarEventoDesdeFormulario() {
     if (this.nuevoEvento.titulo && this.nuevoEvento.dia >= 0 && this.nuevoEvento.horaInicio) {
-      // Generar nuevo ID único
-      this.nuevoEvento.id = Date.now().toString();
-      // Crear copia del evento
-      const nuevoEvento = { ...this.nuevoEvento };
-      // Agregar al array de eventos
-      this.eventos.push(nuevoEvento);
+      // Si el usuario selecciona -1 (Todos los días), agregar el evento a cada día de la semana
+      if (this.nuevoEvento.dia === -1) {
+        for (let d = 0; d <= 4; d++) { // 0 = Lunes, 4 = Viernes
+          const nuevoEvento = { ...this.nuevoEvento, id: Date.now().toString() + '-' + d, dia: d };
+          this.eventos.push(nuevoEvento);
+        }
+      } else {
+        // Generar nuevo ID único
+        this.nuevoEvento.id = Date.now().toString();
+        // Crear copia del evento
+        const nuevoEvento = { ...this.nuevoEvento };
+        // Agregar al array de eventos
+        this.eventos.push(nuevoEvento);
+      }
       // Cerrar formulario
       this.cerrarFormulario();
       // Forzar detección de cambios
