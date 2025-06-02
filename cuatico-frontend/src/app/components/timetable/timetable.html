@@ -152,14 +152,8 @@
     </div>
   </div>
 
-  <!-- Mis Notas Tab -->
-  <div *ngIf="tabActivo === 'notas'" class="grid md:grid-cols-2 gap-6">
-    <div class="w-full">
-      <app-notes></app-notes>
-    </div>
-    <!-- Mis Tareas Tab -->
+     <!-- Mis Tareas Tab -->
     <div *ngIf="tabActivo === 'notas'" class="w-full">
       <app-team-tasks></app-team-tasks>
     </div>
-  </div>
 </div>

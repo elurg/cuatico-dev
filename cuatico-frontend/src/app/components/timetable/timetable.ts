@@ -17,7 +17,7 @@ interface EventoHorario {
 
 @Component({
   selector: 'app-timetable',
-  imports: [Calendar, FormsModule, CommonModule, Notes, TeamTasks],
+  imports: [Calendar, FormsModule, CommonModule, TeamTasks],
   templateUrl: './timetable.html'
 })
 export class Timetable {

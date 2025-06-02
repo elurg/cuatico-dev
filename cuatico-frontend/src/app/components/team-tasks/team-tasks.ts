@@ -109,4 +109,29 @@ export class TeamTasks {
   getProgresoClase(progreso: number): string {
     return `w-[${progreso}%]`;
   }
+
+  nuevaTarea: Tarea = {
+    id: '',
+    titulo: '',
+    responsable: '',
+    progreso: 0,
+    estado: 'En curso',
+    prioridad: 'Media'
+  };
+  mostrarFormulario: boolean = false;
+
+  agregarTarea() {
+    if (this.nuevaTarea.titulo && this.nuevaTarea.responsable) {
+      const nueva = { ...this.nuevaTarea, id: (Date.now()).toString() };
+      this.tareas.push(nueva);
+      this.nuevaTarea = {
+        id: '', titulo: '', responsable: '', progreso: 0, estado: 'En curso', prioridad: 'Media'
+      };
+      this.mostrarFormulario = false;
+    }
+  }
+
+  eliminarTarea(id: string) {
+    this.tareas = this.tareas.filter(t => t.id !== id);
+  }
 }
