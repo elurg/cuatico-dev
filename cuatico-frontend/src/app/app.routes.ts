@@ -27,7 +27,7 @@ export const routes: Routes = [
   {path: 'editar-perfil',component: EditProfile},
   {path: 'insignias',component: Badges},
   {path: 'feedback',component: Feedback},
-  {path: 'horario',component: Timetable},
+  {path: 'organizacion',component: Timetable},
   {path: 'calificaciones',component: Grades},
   {path: 'calendario',component: Calendar},
   {path: '404',component: NotFound},
