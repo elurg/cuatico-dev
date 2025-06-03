@@ -1,110 +1,97 @@
 <div class="min-h-[90vh] flex flex-col bg-gray-50">
-  <div class="flex-1 overflow-auto">
-    <div class="px-4 sm:px-8 py-6 sm:py-10 max-w-7xl mx-auto">
-      <app-header [titulo]="'CERTIFICADOS'"
-        [iconoD]="'M7.864 4.243A7.5 7.5 0 0 1 19.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 0 0 4.5 10.5a7.464 7.464 0 0 1-1.15 3.993m1.989 3.559A11.209 11.209 0 0 0 8.25 10.5a3.75 3.75 0 1 1 7.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 0 1-3.6 9.75m6.633-4.596a18.666 18.666 0 0 1-2.485 5.33'">
-      </app-header>
+    <div class="flex-1 overflow-auto">
+        <div class="px-4 sm:px-8 py-6 sm:py-10 max-w-7xl mx-auto">
+            <app-header [titulo]="'CERTIFICADOS'"
+                [iconoD]="'M7.864 4.243A7.5 7.5 0 0 1 19.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 0 0 4.5 10.5a7.464 7.464 0 0 1-1.15 3.993m1.989 3.559A11.209 11.209 0 0 0 8.25 10.5a3.75 3.75 0 1 1 7.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 0 1-3.6 9.75m6.633-4.596a18.666 18.666 0 0 1-2.485 5.33'">
+            </app-header>
 
-      <div class="flex flex-row gap-8">
-        <!-- Descargas multiples -->
-        <div class="order-2 w-32 max-w-xs flex flex-col items-start gap-2">
-          <p class="font-bold mb-2">Lista de descargas</p>
-          <app-label-input 
-            type="checkbox"
-            [label]="'Direccion de producto'"
-            [(model)]="selecionado1"
-            class="mb-1"
-          ></app-label-input>
-          <app-label-input 
-            type="checkbox"
-            [label]="'Direccion de diseño'"
-            [(model)]="selecionado2"
-            class="mb-1"
-          ></app-label-input>
-               <app-label-input 
-            type="checkbox"
-            [label]="'Direccion de desarrollo'"
-            [(model)]="selecionado3"
-            class="mb-1"
-          ></app-label-input>
-          <button
-            class="bg-indigo-600 text-white px-3 py-1 rounded hover:bg-indigo-700 transition mt-2"
-            (click)="descargarSelecionados()">
-            Descargar seleccionados
-          </button>
+            <div class="flex flex-row gap-8">
+                <!-- Descargas multiples con componente label-input del core -->
+                <div class="order-2 w-32 max-w-xs flex flex-col items-start gap-2">
+                    <p class="font-bold mb-2">Lista de descargas</p>
+                    <app-label-input type="checkbox" [label]="'Direccion de producto'" [(model)]="selecionado1"
+                        class="mb-1"></app-label-input>
+                    <app-label-input type="checkbox" [label]="'Direccion de diseño'" [(model)]="selecionado2"
+                        class="mb-1"></app-label-input>
+                    <app-label-input type="checkbox" [label]="'Direccion de desarrollo'" [(model)]="selecionado3"
+                        class="mb-1"></app-label-input>
+                    <button class="bg-indigo-600 text-white px-3 py-1 rounded hover:bg-indigo-700 transition mt-2"
+                        (click)="descargarSelecionados()">
+                        Descargar seleccionados
+                    </button>
+                </div>
+
+                <!-- Grid de certificados -->
+                <div class="flex-1">
+                    <div class="grid grid-cols-3">
+                        <app-card tipo="certificado" (descargar)="descargarCertificado()">
+                            <div class="rounded-xl p-4 text-center font-bold text-indigo-600 py-0">
+                                <img src="assets/certificado1.png" alt="Certificado"
+                                    class="mx-auto mb-2 w-90 h-48 object-contain cursor-pointer"
+                                    onclick="document.getElementById('modal').style.display='block'" />
+                                Diseño de experiencia
+                            </div>
+                            <!-- Modal numero 1 para card numero 1 -->
+                            <div id="modal"
+                                style="display:none; position:fixed; z-index:50; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7);">
+                                <span
+                                    style="position:absolute; top:80px; right:80px; font-size:40px; color:white; cursor:pointer;"
+                                    onclick="document.getElementById('modal').style.display='none'">&times;</span>
+                                <img src="assets/certificado1.png"
+                                    style="display:block; margin:80px auto; max-width:90vw; max-height:80vh; border-radius:16px; box-shadow:0 0 20px #000;" />
+                            </div>
+                            <div class="text-center text-sm text-gray-500 py-0">
+                                <p>Certificado de Diseño de experiencia </p>
+                            </div>
+                        </app-card>
+
+                        <app-card tipo="certificado" (descargar)="descargarCertificado()">
+                            <div class="rounded-xl p-4 text-center font-bold text-indigo-600 py-0">
+                                <img src="assets/certificado2.png" alt="Certificado"
+                                    class="mx-auto mb-2 w-90 h-48 object-contain cursor-pointer"
+                                    onclick="document.getElementById('modal2').style.display='block'" />
+                                Trasnformacion digital
+                            </div>
+                            <!-- Modal numero 2 para card numero 2-->
+                            <div id="modal2"
+                                style="display:none; position:fixed; z-index:50; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7);">
+                                <span
+                                    style="position:absolute; top:80px; right:80px; font-size:40px; color:white; cursor:pointer;"
+                                    onclick="document.getElementById('modal2').style.display='none'">&times;</span>
+                                <img src="assets/certificado2.png"
+                                    style="display:block; margin:80px auto; max-width:90vw; max-height:80vh; border-radius:16px; box-shadow:0 0 20px #000;" />
+                            </div>
+                            <div class="text-center text-sm text-gray-500 py-0">
+                                <p>Certificado de Trasnformacion digital</p>
+                            </div>
+                        </app-card>
+
+
+                        <app-card tipo="certificado" (descargar)="descargarCertificado()">
+                            <div class="rounded-xl p-4 text-center font-bold text-indigo-600 py-0">
+                                <img src="assets/certificado3.png" alt="Certificado"
+                                    class="mx-auto mb-2 w-90 h-48 object-contain cursor-pointer"
+                                    onclick="document.getElementById('modal3').style.display='block'" />
+                                Dirección de Producto
+                            </div>
+                            <!-- Modal numero 3 para card numero 3-->
+                            <div id="modal3"
+                                style="display:none; position:fixed; z-index:50; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7);">
+                                <span
+                                    style="position:absolute; top:80px; right:80px; font-size:40px; color:white; cursor:pointer;"
+                                    onclick="document.getElementById('modal3').style.display='none'">&times;</span>
+                                <img src="assets/certificado3.png"
+                                    style="display:block; margin:80px auto; max-width:90vw; max-height:80vh; border-radius:16px; box-shadow:0 0 20px #000;" />
+                            </div>
+                            <div class="text-center text-sm text-gray-500 py-0">
+                                <p>Certificado de Dirección de Producto</p>
+                            </div>
+                        </app-card>
+
+
+
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <!-- Grid de certificados -->
-        <div class="flex-1">
-          <div class="grid grid-cols-3">
-            <app-card tipo="certificado" (descargar)="descargarCertificado()">
-              <div class="rounded-xl p-4 text-center font-bold text-indigo-600 py-0">
-                <img src="assets/certificado.png" alt="Certificado"
-                  class="mx-auto mb-2 w-90 h-48 object-contain cursor-pointer"
-                  onclick="document.getElementById('modal').style.display='block'" />
-                Dirección de producto
-              </div>
-              <!-- Modal y demás contenido... -->
-              <div id="modal"
-                style="display:none; position:fixed; z-index:50; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7);">
-                <span
-                  style="position:absolute; top:80px; right:80px; font-size:40px; color:white; cursor:pointer;"
-                  onclick="document.getElementById('modal').style.display='none'">&times;</span>
-                <img src="assets/certificado.png"
-                  style="display:block; margin:80px auto; max-width:90vw; max-height:80vh; border-radius:16px; box-shadow:0 0 20px #000;" />
-              </div>
-              <div class="text-center text-sm text-gray-500 py-0">
-                <p>Certificado de Dirección de Producto</p>
-              </div>
-            </app-card>
-
-            <app-card tipo="certificado" (descargar)="descargarCertificado()">
-              <div class="rounded-xl p-4 text-center font-bold text-indigo-600 py-0">
-                <img src="assets/certificado2.png" alt="Certificado"
-                  class="mx-auto mb-2 w-90 h-48 object-contain cursor-pointer"
-                  onclick="document.getElementById('modal2').style.display='block'" />
-                Dirección de diseño
-              </div>
-              <!-- Modal y demás contenido... -->
-              <div id="modal2"
-                style="display:none; position:fixed; z-index:50; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7);">
-                <span
-                  style="position:absolute; top:80px; right:80px; font-size:40px; color:white; cursor:pointer;"
-                  onclick="document.getElementById('modal2').style.display='none'">&times;</span>
-                <img src="assets/certificado2.png"
-                  style="display:block; margin:80px auto; max-width:90vw; max-height:80vh; border-radius:16px; box-shadow:0 0 20px #000;" />
-              </div>
-              <div class="text-center text-sm text-gray-500 py-0">
-                <p>Certificado de Dirección de Diseño</p>
-              </div>
-            </app-card>
-
-        
-            <app-card tipo="certificado" (descargar)="descargarCertificado()">
-              <div class="rounded-xl p-4 text-center font-bold text-indigo-600 py-0">
-                <img src="assets/certificado.png" alt="Certificado"
-                  class="mx-auto mb-2 w-90 h-48 object-contain cursor-pointer"
-                  onclick="document.getElementById('modal').style.display='block'" />
-                Dirección de Desarrollo
-              </div>
-              <!-- Modal y demás contenido... -->
-              <div id="modal"
-                style="display:none; position:fixed; z-index:50; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7);">
-                <span
-                  style="position:absolute; top:80px; right:80px; font-size:40px; color:white; cursor:pointer;"
-                  onclick="document.getElementById('modal').style.display='none'">&times;</span>
-                <img src="assets/certificado.png"
-                  style="display:block; margin:80px auto; max-width:90vw; max-height:80vh; border-radius:16px; box-shadow:0 0 20px #000;" />
-              </div>
-              <div class="text-center text-sm text-gray-500 py-0">
-                <p>Certificado de Dirección de Desarrollo</p>
-              </div>
-            </app-card>
-
-
-
-          </div>
-        </div>
-      </div>
     </div>
-</div>
