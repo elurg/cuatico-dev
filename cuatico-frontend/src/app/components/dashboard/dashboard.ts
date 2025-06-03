@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Card } from '../../core/card/card';
-import { Calendar } from '../../core/calendar/calendar';
 import { Router, RouterModule } from '@angular/router';
+import { MiniCalendar } from '../mini-calendar/mini-calendar';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [Card, Calendar, RouterModule],
+  imports: [Card, RouterModule , MiniCalendar],
   templateUrl: './dashboard.html'
 })
 export class Dashboard {
