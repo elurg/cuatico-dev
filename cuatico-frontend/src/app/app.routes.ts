@@ -14,6 +14,7 @@ import { Timetable } from './components/timetable/timetable';
 import { Grades } from './components/grades/grades';
 import { Calendar } from './core/calendar/calendar';
 import { NotFound } from './components/not-found/not-found';
+import { NewCourses } from './components/new-courses/new-courses';
 
 export const routes: Routes = [
   {path: 'dashboard',component: Dashboard},
@@ -31,6 +32,7 @@ export const routes: Routes = [
   {path: 'calificaciones',component: Grades},
   {path: 'calendario',component: Calendar},
   {path: '404',component: NotFound},
+  {path: 'nuevoscursos',component: NewCourses},
 
   {path: '', redirectTo: 'login', pathMatch: 'full' },
   {path: '**', redirectTo: '404' }
