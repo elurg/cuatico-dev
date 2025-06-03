@@ -32,16 +32,20 @@
     <div class="bg-white rounded-2xl shadow-md overflow-hidden min-h-[410px]">
       <div class="p-6 border-b border-gray-100 bg-gradient-to-r from-primario to-primario/80">
         <div class="flex items-center justify-between">
-          <h2 class="text-lg font-semibold text-white">Mis Cursos</h2>
+          <h2 class="text-lg font-semibold text-white">Mis Cursos</h2> <!-- Enlace aquí a /cursos-->
+          <a [routerLink]="'/cursos'" class="text-sm text-white hover:text-white/80">Ver todos</a>
         </div>
       </div>
       <div class="p-6">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <app-card [id]="1" (navigate)="irADetalle($event)" titulo="UX Research" profesor="Diana"
-            lecciones="14" duracion="6 semanas" [progreso]="70" fecha="19 de Abril" modalidad="presencial" tipo="venta">
+          <app-card [id]="2" (navigate)="irADetalle($event)" titulo="UX Research" profesor="Diana" lecciones="14"
+            duracion="6 semanas" [progreso]="70" fecha="19 de Abril" modalidad="presencial" tipo="venta">
           </app-card>
-          <app-card [id]="1" (navigate)="irADetalle($event)" titulo="Desarrolla tu creatividad" profesor="Carlos"
+          <app-card [id]="1" (navigate)="irADetalle($event)" titulo="Desarrolla tu creatividad" profesor="Diana"
             lecciones="12" duracion="6 semanas" [progreso]="65" fecha="26 de Abril" modalidad="remoto" tipo="venta">
+          </app-card>
+          <app-card [id]="4" (navigate)="irADetalle($event)" titulo="Diseño de producto" profesor="Carlos"
+            lecciones="10" duracion="6 semanas" [progreso]="45" fecha="20 de Mayo" modalidad="remoto" tipo="venta">
           </app-card>
         </div>
       </div>
@@ -82,7 +86,7 @@
   </div>
 
   <!-- Sidebar derecho: 2/7 del ancho -->
-<div class="grid grid-rows-[auto_1fr] gap-2 lg:col-span-2 mr-4 mb-6">
+  <div class="grid grid-rows-[auto_1fr] gap-2 lg:col-span-2 mr-4 mb-6">
     <!-- Calendario sin marco, sin corte inferior y sin scroll horizontal -->
     <div class="flex justify-center">
       <div class="w-full max-w-full sm:max-w-[380px] flex items-center justify-center">
