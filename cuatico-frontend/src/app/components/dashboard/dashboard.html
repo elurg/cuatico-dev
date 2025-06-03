@@ -1,6 +1,5 @@
 <!-- Encabezado de bienvenida (fuera del grid, ancho completo) -->
-<div
-  class="bg-gradient-to-r from-primario to-primario/80 rounded-2xl p-8 text-white shadow-lg relative overflow-hidden mb-6 mx-6 mt-3">
+<div class="bg-gradient-to-r from-primario to-primario/80 rounded-2xl p-8 text-white shadow-lg relative overflow-hidden mb-6 mx-6 mt-3">
   <div class="relative z-10">
     <div class="flex items-center mb-4">
       <h1 class="text-3xl font-bold">¡Hola, {{user.username}}!</h1>
@@ -43,37 +42,24 @@
           <app-card [id]="1" (navigate)="irADetalle($event)" titulo="Diseño de producto" profesor="Carlos"
             lecciones="12" duracion="6 semanas" [progreso]="65" fecha="26 de Abril" modalidad="remoto" tipo="venta">
           </app-card>
-          <!-- Agrega más tarjetas si necesitas -->
         </div>
       </div>
     </div>
-
-
-    <!-- calendario de pruebas -->
-    <div class="aspect-square w-full max-w-[280px]">
-      <div style="transform: scale(0.6); transform-origin: top center;">
-        <div class="w-full h-full bg-blue-200"></div>
-      </div>
-    </div>
-
   </div>
 
   <!-- Sidebar derecho: 2/7 del ancho -->
   <div class="lg:col-span-2 space-y-6">
     <!-- Calendario -->
-    <!-- Calendario -->
     <div class="bg-white rounded-2xl shadow-md p-4">
       <h2 class="text-lg font-semibold mb-4 text-gray-800">Calendario</h2>
       <div class="w-full flex justify-center">
-        <div class="aspect-square w-full max-w-[280px]">
-          <div style="transform: scale(0.6); transform-origin: top center;">
-            <app-calendar class="w-full h-full [&>*]:w-full [&>*]:h-full"></app-calendar>
+        <div class="w-full">
+          <div class="w-full">
+            <app-calendar class="w-[380px] mx-auto [&>*]:w-full [&>*]:h-full"></app-calendar>
           </div>
         </div>
-
       </div>
     </div>
-
 
     <!-- Historial de pagos -->
     <div class="bg-white rounded-2xl shadow-md p-4">
@@ -140,7 +126,7 @@
             </svg>
           </div>
           <div class="ml-4">
-            <h3 class="text-sm font-medium text-gray-8">Diseño de Algoritmos</h3>
+            <h3 class="text-sm font-medium text-gray-800">Diseño de Algoritmos</h3>
             <p class="text-sm text-gray-500">Vence en 2 días</p>
           </div>
           <span class="ml-auto text-xs font-medium text-blue-500 bg-blue-50 px-2 py-1 rounded-full">En Progreso</span>
