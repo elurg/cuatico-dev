@@ -93,44 +93,33 @@
           <h3 class="text-xl font-semibold text-primario mb-4">Entregas</h3>
 
           <div class="space-y-4">
+           @for (entrega of entregas; let i = $index; track i) {
             <div class="bg-gray-50 border border-gray-200 rounded-md p-4">
               <div class="flex justify-between items-start">
                 <div>
-                  <h4 class="font-medium text-gray-800">Tarea de UX</h4>
-                  <p class="text-sm text-gray-500 mt-1">Análisis de usabilidad sobre la app mobile.</p>
+                  <h4 class="font-medium text-gray-800">{{ entrega.titulo }}</h4>
+                  <p class="text-sm text-gray-500 mt-1">{{ entrega.descripcion }}</p>
                 </div>
                 <div class="flex gap-2">
                   <span class="px-2 py-1 rounded-full text-white text-xs font-medium"
-                    style="background: linear-gradient(to right, #6366f1, #00bfae);">Completada</span>
+                    [style.background]="'linear-gradient(to right, ' + entrega.estadoColor + ')'">
+                    {{ entrega.estado }}
+                  </span>
                   <span class="px-2 py-1 rounded-full text-white text-xs font-medium"
-                    style="background: linear-gradient(to right, #ef4444, #f87171);">Alta</span>
+                    [style.background]="'linear-gradient(to right, ' + entrega.prioridadColor + ')'">
+                    {{ entrega.prioridad }}
+                  </span>
                 </div>
               </div>
             </div>
-
-            <div class="bg-gray-50 border border-gray-200 rounded-md p-4">
-              <div class="flex justify-between items-start">
-                <div>
-                  <h4 class="font-medium text-gray-800">Tarea de UI</h4>
-                  <p class="text-sm text-gray-500 mt-1">Validación de contenido con usuarios reales.</p>
-                </div>
-                <div class="flex gap-2">
-                  <span class="px-2 py-1 rounded-full text-white text-xs font-medium"
-                    style="background: linear-gradient(to right, #eab308, #fde047);">Pendiente</span>
-                  <span class="px-2 py-1 rounded-full text-white text-xs font-medium"
-                    style="background: linear-gradient(to right, #8b5cf6, #c084fc);">Media</span>
-                </div>
-              </div>
-            </div>
+            }
 
             <div class="flex items-center gap-5 mt-4">
               <app-input-file (fileSelected)="handleFile($event)"></app-input-file>
-              <span *ngIf="selectedFileName" class="text-sm text-orange-600 font-medium">
-                {{ selectedFileName }}
-              </span>
             </div>
           </div>
         </div>
+
       </div>
 
       <!-- TEST -->
@@ -141,17 +130,20 @@
           Test
         </button>
 
-
-        <div *ngFor="let pregunta of preguntas; let i = index" class="mb-6">
+        @for (pregunta of preguntas; let i = $index; track i) {
+        <div class="mb-6">
           <p class="font-medium text-gray-800">{{ i + 1 }}. {{ pregunta.texto }}</p>
           <div class="mt-2 space-y-2">
-            <label *ngFor="let opcion of pregunta.opciones">
+            @for (opcion of pregunta.opciones; let j = $index; track j) {
+            <label>
               <input type="radio" [name]="'pregunta' + i" [value]="opcion" (change)="responder(i, opcion)"
                 class="mr-2" />
               {{ opcion }}
             </label>
+            }
           </div>
         </div>
+        }
 
         <button (click)="enviarRespuestas()"
           class="mt-4 ml-4 px-4 py-2 rounded-full text-sm font-semibold text-white shadow hover:opacity-90 transition"
@@ -159,11 +151,13 @@
           Enviar respuestas
         </button>
 
-
-        <div *ngIf="resultado !== null" class="mt-4 text-lg font-semibold text-blue-600">
+        @if (resultado !== null) {
+        <div class="mt-4 text-lg font-semibold text-blue-600">
           Resultado: {{ resultado }}/5 correctas
         </div>
+        }
       </div>
+
 
     </div>
 
