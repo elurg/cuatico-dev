@@ -75,5 +75,15 @@ onCheckboxChange(event: Event): void {
   this.onTouched();
 }
 
+showPassword: boolean = false;
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
+
+  get currentInputType(): string {
+    return this.type === 'password' && this.showPassword ? 'text' : this.type;
+  }
+
 
 }

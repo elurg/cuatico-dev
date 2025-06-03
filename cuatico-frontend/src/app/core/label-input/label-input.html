@@ -56,9 +56,42 @@
       </div>
       }
       @default {
-      <input [type]="type" [id]="id" [placeholder]="placeholder" [required]="required" [value]="model"
-        (input)="onInput($event)"
-        class="block w-full rounded-md border border-primario/30 bg-white px-3 py-1.5 text-primario placeholder:text-gray-400 focus:outline-2 focus:outline-offset-2 focus:outline-primario sm:text-sm/6" />
+        <div class="relative">
+          <input [type]="showPassword ? 'text' : type" [id]="id" [placeholder]="placeholder" [required]="required"
+            [value]="model" (input)="onInput($event)"
+            class="block w-full rounded-md border border-primario/30 bg-white px-3 py-1.5 pr-10 text-primario placeholder:text-gray-400 focus:outline-2 focus:outline-offset-2 focus:outline-primario sm:text-sm/6" />
+          
+          @if (type === 'password') {
+            <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+              <button type="button" (click)="togglePasswordVisibility()" class="text-gray-400 hover:text-gray-600 focus:outline-none">
+                @if (showPassword) {
+                  <!-- Ojo abierto -->
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M2.458 12C3.732 7.943 7.523 5 12 5
+                        c4.478 0 8.268 2.943 9.542 7
+                        -1.274 4.057-5.064 7-9.542 7
+                        -4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                } @else {
+                  <!-- Ojo tachado -->
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M13.875 18.825A10.05 10.05 0 0112 19
+                        c-4.477 0-8.268-2.943-9.542-7
+                        a9.994 9.994 0 012.195-3.357
+                        m3.072-2.263A9.956 9.956 0 0112 5
+                        c4.478 0 8.268 2.943 9.542 7
+                        a9.956 9.956 0 01-2.49 3.568" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3l18 18" />
+                  </svg>
+                }
+              </button>
+            </div>
+          }
+        </div>
       }
       }
     </div>
@@ -102,9 +135,43 @@
     </div>
     }
     @default {
-    <input [type]="type" [id]="id" [placeholder]="placeholder" [required]="required" [value]="model"
-      (input)="onInput($event)"
-      class="flex-1 rounded-md border border-primario/30 bg-white px-3 py-1.5 text-primario placeholder:text-gray-400 focus:outline-2 focus:outline-offset-2 focus:outline-primario sm:text-sm/6" />
+      <div class="relative flex-1">
+        <input [type]="showPassword && type === 'password' ? 'text' : type"
+          [id]="id" [placeholder]="placeholder" [required]="required" [value]="model"
+          (input)="onInput($event)"
+          class="w-full rounded-md border border-primario/30 bg-white px-3 py-1.5 pr-10 text-primario placeholder:text-gray-400 focus:outline-2 focus:outline-offset-2 focus:outline-primario sm:text-sm/6" />
+
+        @if (type === 'password') {
+          <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+            <button type="button" (click)="togglePasswordVisibility()" class="text-gray-400 hover:text-gray-600 focus:outline-none">
+              @if (showPassword) {
+                <!-- Icono ojo abierto -->
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5
+                      c4.478 0 8.268 2.943 9.542 7
+                      -1.274 4.057-5.064 7-9.542 7
+                      -4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+              } @else {
+                <!-- Icono ojo tachado -->
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13.875 18.825A10.05 10.05 0 0112 19
+                      c-4.477 0-8.268-2.943-9.542-7
+                      a9.994 9.994 0 012.195-3.357
+                      m3.072-2.263A9.956 9.956 0 0112 5
+                      c4.478 0 8.268 2.943 9.542 7
+                      a9.956 9.956 0 01-2.49 3.568" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3l18 18" />
+                </svg>
+              }
+            </button>
+          </div>
+        }
+      </div>
     }
     }
   </div>
