@@ -10,9 +10,9 @@
       <!-- Cabecera -->
       <div class="bg-primario p-8 text-white text-center">
         <img src="assets/logop.avif" alt="Logo Cuático" class="h-8 w-auto mx-auto mb-4">
-        <h2 class="text-3xl font-bold mb-2">Welcome back!</h2>
+        <h2 class="text-3xl font-bold mb-2">¡Bienvenido a Cuático!</h2>
         <p class="text-sm italic text-indigo-200">
-          We’re glad to see you again. Log in to continue your journey with us.
+          Inicia sesión para continuar tu viaje con nosotros.
         </p>
       </div>
 
@@ -20,21 +20,25 @@
       <div class="p-10">
         <form action="login" method="post" class="space-y-6">
           <app-label-input
-              label="Email Address"
+              label="Correo electrónico"
               id="email"
               type="email"
-              placeholder="you@example.com"
+              placeholder="tucorreo@ejemplo.com"
+              model="juan.perez@email.com"
+              [required]="true"
           ></app-label-input>
 
           <app-label-input
-              label="Password"
+              label="Contraseña"
               id="password"
               type="password"
-              placeholder="password"
+              placeholder="contraseña"
+              model="SuperSegura123"
+              [required]="true"
           ></app-label-input>
 
           <div class="text-right text-sm">
-            <a href="#" class="text-primario hover:underline">Forgot password?</a>
+            <a href="#" class="text-primario hover:underline">¿Olvidaste tu contraseña?</a>
           </div>
 
           <button
@@ -42,20 +46,20 @@
             routerLink="/dashboard"
             class="w-full bg-primario text-white font-semibold py-3 px-4 rounded-xl hover:bg-indigo-700 transition duration-300"
           >
-            Log In
+            Iniciar sesión
           </button>
         </form>
 
         <p class="mt-6 text-sm text-center text-gray-600">
-          Don’t have an account?
-          <a routerLink="/register" class="text-primario hover:underline">Join Us</a>
+          ¿No tienes una cuenta?
+          <a routerLink="/register" class="text-primario hover:underline">Únete a nosotros</a>
         </p>
       </div>
     </div>
 
     <!-- Imagen lateral -->
     <div class="relative hidden md:block w-1/2">
-      <img src="assets/login-image.jpg" alt="Login Side" class="h-full w-full object-cover" />
+      <img src="assets/login-image.jpg" alt="Lateral del login" class="h-full w-full object-cover" />
       <div class="absolute inset-0 bg-primario bg-opacity-60"></div>
     </div>
 
