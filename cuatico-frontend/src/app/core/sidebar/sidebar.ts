@@ -12,7 +12,7 @@ import { NgClass } from '@angular/common';
 export class Sidebar {
   cursosOpen = false;
 
-  constructor(private router: Router) { }
+  constructor(readonly router: Router) { }
 
   isActive(route: string): boolean {
     return this.router.isActive(route, {
@@ -29,11 +29,9 @@ export class Sidebar {
 
   toggleCursos() {
     this.cursosOpen = !this.cursosOpen;
-    // Navega a /cursos si no estamos ya en una ruta de cursos
-    if (!this.isCursosSubrouteActive()) {
-      this.router.navigate(['/cursos']);
-    }
+    this.router.navigate(['/cursos']);
   }
+
 
   closeCursos() {
     this.cursosOpen = false;
