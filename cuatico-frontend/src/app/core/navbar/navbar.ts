@@ -30,4 +30,9 @@ export class Navbar {
   toggleMobileMenu() {
     this.mobileMenuOpen = !this.mobileMenuOpen;
   }
+
+  notify() {
+  alert('¡Seguimos trabajando en ello!');
+}
+
 }
