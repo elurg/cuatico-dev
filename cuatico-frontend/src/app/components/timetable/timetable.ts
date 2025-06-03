@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Calendar } from '../../core/calendar/calendar';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Notes } from '../notes/notes';
 import { TeamTasks } from '../team-tasks/team-tasks';
+import { DiaCalendario } from '../../core/calendar/calendar';
 
 interface EventoHorario {
   id: string;
@@ -15,14 +16,34 @@ interface EventoHorario {
   color: string;
 }
 
+interface NotaCalendario {
+  fecha: string; // formato YYYY-MM-DD
+  contenido: string;
+}
+
 @Component({
   selector: 'app-timetable',
+  standalone: true,
   imports: [Calendar, FormsModule, CommonModule, TeamTasks],
   templateUrl: './timetable.html'
 })
 export class Timetable {
+  // Referencia al componente Calendar
+  @ViewChild(Calendar) calendarioComponente!: Calendar;
+  
   // Control de pestañas
   tabActivo: string = 'calendario';
+  
+  // Información del día seleccionado
+  diaSeleccionadoFecha: string = '';
+  diaSeleccionadoTieneEvento: boolean = false;
+  diaSeleccionadoNotas: string = '';
+  
+  // Notas recientes para mostrar en el panel lateral
+  notasRecientes: NotaCalendario[] = [
+    { fecha: '2025-06-01', contenido: 'Recordar revisar el proyecto de Angular' },
+    { fecha: '2025-06-02', contenido: 'Reunión con el equipo de desarrollo' }
+  ];
   
   // Array de horas para el horario
   horas: string[] = [
@@ -75,6 +96,37 @@ export class Timetable {
       color: 'bg-green-200'
     }
   ];
+
+  // Método para actualizar la información del día seleccionado
+  actualizarDiaSeleccionado(dia: DiaCalendario) {
+    const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    this.diaSeleccionadoFecha = `${dia.fecha.getDate()} de ${meses[dia.fecha.getMonth()]}, ${dia.fecha.getFullYear()}`;
+    this.diaSeleccionadoTieneEvento = dia.tieneEvento;
+    this.diaSeleccionadoNotas = dia.notas || '';
+  }
+  
+  // Método para agregar una nueva nota
+  agregarNota(contenido: string) {
+    if (this.calendarioComponente && this.calendarioComponente.diaSeleccionado) {
+      const fecha = this.calendarioComponente.diaSeleccionado.fecha;
+      this.calendarioComponente.notaActual = contenido;
+      this.calendarioComponente.guardarNota();
+      
+      // Actualizar notas recientes
+      const fechaFormateada = `${fecha.getFullYear()}-${fecha.getMonth() + 1}-${fecha.getDate()}`;
+      const notaExistente = this.notasRecientes.findIndex(n => n.fecha === fechaFormateada);
+      
+      if (notaExistente >= 0) {
+        this.notasRecientes[notaExistente].contenido = contenido;
+      } else {
+        this.notasRecientes.unshift({ fecha: fechaFormateada, contenido });
+        // Mantener solo las 5 notas más recientes
+        if (this.notasRecientes.length > 5) {
+          this.notasRecientes.pop();
+        }
+      }
+    }
+  }
 
   // Método para obtener eventos de una hora y día específicos
   getEventos(hora: string, dia: number): EventoHorario | null {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -128,10 +128,13 @@ export class Calendar implements OnInit {
     this.modoEdicion = false; // Salimos del modo edición al cambiar de mes
   }
 
+  @Output() diaSeleccionadoChange = new EventEmitter<DiaCalendario>();
+
   seleccionarDia(dia: DiaCalendario): void {
     this.diaSeleccionado = dia;
     this.notaActual = dia.notas || ''; // Inicializamos la nota actual con la nota del día o vacío
     this.modoEdicion = false; // Al seleccionar un día, comenzamos en modo visualización
+    this.diaSeleccionadoChange.emit(dia);
   }
 
   // Método para activar el modo edición de notas
