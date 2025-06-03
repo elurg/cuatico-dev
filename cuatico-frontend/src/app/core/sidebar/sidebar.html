@@ -1,41 +1,82 @@
 <div class="h-full bg-white py-6 px-4 w-64 border-r border-primario/20">
-  <!-- Navegación principal -->
   <nav class="space-y-1" aria-label="Sidebar Navigation">
 
+    <!-- Dashboard -->
     <a routerLink="/dashboard" routerLinkActive="bg-primario/10 text-primario shadow"
       [routerLinkActiveOptions]="{ exact: true }"
       class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-primario/5 rounded-lg group"
       aria-label="Dashboard">
       <svg class="h-5 w-5 mr-3"
-        [ngClass]="{ 'text-primario': isActive('/dashboard'), 'text-gray-500': !isActive('/dashboard') }" 
-        fill="none"
+        [ngClass]="{ 'text-primario': isActive('/dashboard'), 'text-gray-500': !isActive('/dashboard') }" fill="none"
         viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
       </svg>
-
       <span [ngClass]="{ 'font-bold': isActive('/dashboard') }">Dashboard</span>
-
     </a>
-    <a routerLink="/cursos" routerLinkActive="bg-primario/10 text-primario shadow"
-      [routerLinkActiveOptions]="{ exact: true }"
-      class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-primario/5 rounded-lg group"
-      aria-label="Mis Cursos">
+
+    <!-- Mis Cursos (solo toggle, no navega) -->
+    <button
+      type="button"
+      (click)="toggleCursos()"
+      [ngClass]="{
+        'bg-primario/10 text-primario shadow font-bold': cursosOpen || isCursosSubrouteActive(),
+        'text-gray-600': !(cursosOpen || isCursosSubrouteActive())
+      }"
+      class="w-full flex items-center px-4 py-3 text-sm font-medium hover:bg-primario/5 rounded-lg group transition"
+      aria-label="Mis Cursos"
+    >
       <svg class="h-5 w-5 mr-3"
-        [ngClass]="{ 'text-primario': isActive('/cursos'), 'text-gray-500': !isActive('/cursos') }" fill="none"
-        viewBox="0 0 24 24" stroke="currentColor">
+        [ngClass]="{ 'text-primario': cursosOpen || isCursosSubrouteActive(), 'text-gray-500': !(cursosOpen || isCursosSubrouteActive()) }"
+        fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
       </svg>
-      <span [ngClass]="{ 'font-bold': isActive('/cursos') }">Mis Cursos</span>
-    </a>
+      <span>Mis Cursos</span>
+      <svg
+        class="ml-auto h-4 w-4 transition-transform duration-200"
+        [ngClass]="{ 'rotate-90': cursosOpen || isCursosSubrouteActive() }"
+        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
 
+    <!-- Submenú de cursos con @if -->
+    @if (cursosOpen || isCursosSubrouteActive()) {
+      <div class="pl-2 transition-all duration-200">
+        <a routerLink="/cursos/1" routerLinkActive="bg-primario/10 text-primario shadow"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="flex items-center px-8 py-2 text-xs font-medium text-gray-600 hover:bg-primario/5 rounded-lg group transition"
+          aria-label="UX Research">
+          <svg class="h-3 w-3 mr-3"
+            [ngClass]="{ 'text-primario': isActive('/cursos/1'), 'text-gray-500': !isActive('/cursos/1') }" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+          <span [ngClass]="{ 'font-bold': isActive('/cursos/1') }">UX Research</span>
+        </a>
+        <a routerLink="/cursos/2" routerLinkActive="bg-primario/10 text-primario shadow"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="flex items-center px-8 py-2 text-xs font-medium text-gray-600 hover:bg-primario/5 rounded-lg group transition"
+          aria-label="Desarrolla tu creatividad">
+          <svg class="h-3 w-3 mr-3"
+            [ngClass]="{ 'text-primario': isActive('/cursos/2'), 'text-gray-500': !isActive('/cursos/2') }" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+          <span [ngClass]="{ 'font-bold': isActive('/cursos/2') }">Desarrolla tu creatividad</span>
+        </a>
+      </div>
+    }
+
+    <!-- Calificaciones -->
     <a routerLink="/calificaciones" routerLinkActive="bg-primario/10 text-primario shadow"
       [routerLinkActiveOptions]="{ exact: true }"
       class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-primario/5 rounded-lg group"
       aria-label="Calificaciones">
-
-      <svg class="h-5 w-5 mr-3 "
+      <svg class="h-5 w-5 mr-3"
         [ngClass]="{ 'text-primario': isActive('/calificaciones'), 'text-gray-500': !isActive('/calificaciones') }"
         fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -44,8 +85,7 @@
       <span [ngClass]="{ 'font-bold': isActive('/calificaciones') }">Calificaciones</span>
     </a>
 
-    
-
+    <!-- Certificado -->
     <a routerLink="/certificado" routerLinkActive="bg-primario/10 text-primario shadow"
       [routerLinkActiveOptions]="{ exact: true }"
       class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-primario/5 rounded-lg group"
@@ -59,6 +99,7 @@
       <span [ngClass]="{ 'font-bold': isActive('/certificado') }">Certificado</span>
     </a>
 
+    <!-- Insignias -->
     <a routerLink="/insignias" routerLinkActive="bg-primario/10 text-primario shadow"
       [routerLinkActiveOptions]="{ exact: true }"
       class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-primario/5 rounded-lg group"
@@ -72,6 +113,7 @@
       <span [ngClass]="{ 'font-bold': isActive('/insignias') }">Insignias</span>
     </a>
 
+    <!-- Feedback -->
     <a routerLink="/feedback" routerLinkActive="bg-primario/10 text-primario shadow"
       [routerLinkActiveOptions]="{ exact: true }"
       class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-primario/5 rounded-lg group"
@@ -85,19 +127,21 @@
       <span [ngClass]="{ 'font-bold': isActive('/feedback') }">Feedback</span>
     </a>
 
+    <!-- Organizacion -->
     <a routerLink="/organizacion" routerLinkActive="bg-primario/10 text-primario shadow"
       [routerLinkActiveOptions]="{ exact: true }"
       class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-primario/5 rounded-lg group"
       aria-label="Organizacion">
       <svg class="h-5 w-5 mr-3"
-        [ngClass]="{ 'text-primario': isActive('/organizacion'), 'text-gray-500': !isActive('/organizacion') }" fill="none"
-        viewBox="0 0 24 24" stroke="currentColor">
+        [ngClass]="{ 'text-primario': isActive('/organizacion'), 'text-gray-500': !isActive('/organizacion') }"
+        fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
       </svg>
       <span [ngClass]="{ 'font-bold': isActive('/organizacion') }">Organizacion</span>
     </a>
 
+    <!-- Perfil -->
     <a routerLink="/perfil" routerLinkActive="bg-primario/10 text-primario shadow"
       [routerLinkActiveOptions]="{ exact: true }"
       class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-primario/5 rounded-lg group"

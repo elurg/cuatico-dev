@@ -43,6 +43,25 @@ preguntas = [
   }
 ];
 
+entregas = [
+    {
+      titulo: 'Tarea de UX',
+      descripcion: 'Análisis de usabilidad sobre la app mobile.',
+      estado: 'Completada',
+      estadoColor: '#6366f1, #00bfae',
+      prioridad: 'Alta',
+      prioridadColor: '#ef4444, #f87171'
+    },
+    {
+      titulo: 'Tarea de UI',
+      descripcion: 'Validación de contenido con usuarios reales.',
+      estado: 'Pendiente',
+      estadoColor: '#eab308, #fde047',
+      prioridad: 'Media',
+      prioridadColor: '#8b5cf6, #c084fc'
+    }
+  ];
+
 respuestas: string[] = [];
 resultado: number | null = null;
 

@@ -20,9 +20,9 @@
         </svg>
         Horario
       </button>
-      <button (click)="tabActivo = 'notas'"
-        [class.bg-primario]="tabActivo === 'notas'"
-        [class.text-white]="tabActivo === 'notas'"
+      <button (click)="tabActivo = 'mis-tareas'"
+        [class.bg-primario]="tabActivo === 'mis-tareas'"
+        [class.text-white]="tabActivo === 'mis-tareas'"
         class="flex items-center justify-center gap-2 flex-1 py-2 px-3 rounded-md text-sm font-medium transition-all duration-200 hover:bg-primario/10">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -32,129 +32,217 @@
     </nav>
   </div>
 
-  <!-- Calendario Tab -->
-  <div *ngIf="tabActivo === 'calendario'">
-    <div class="flex flex-col items-center justify-center">
-      <div class="bg-white rounded-xl shadow-lg overflow-hidden w-full max-w-2xl mx-auto">
-        <div class="p-4 bg-gradient-to-r from-primario to-primario/80">
-          <h2 class="text-xl font-bold text-white">Calendario Académico</h2>
+  <!-- Contenido de la pestaña Calendario -->
+  <div *ngIf="tabActivo === 'calendario'" class="animate-fade-in">
+    <div class="flex flex-col md:flex-row gap-6">
+      <!-- Columna izquierda: Calendario -->
+      <div class="md:w-2/3">
+        <app-calendar (diaSeleccionadoChange)="actualizarDiaSeleccionado($event)"></app-calendar>
+      </div>
+      
+      <!-- Columna derecha: Información del día seleccionado y notas -->
+      <div class="md:w-1/3 mt-6 md:mt-0">
+        <!-- Información del día seleccionado -->
+        <div class="bg-indigo-50 rounded-lg p-4 mb-4">
+          <h3 class="text-lg font-medium text-indigo-700 mb-2">Detalles del día seleccionado</h3>
+          
+          <div *ngIf="diaSeleccionadoFecha" class="mb-4">
+            <p class="text-indigo-800 font-medium">{{ diaSeleccionadoFecha }}</p>
+            
+            <div *ngIf="diaSeleccionadoTieneEvento" class="mt-2">
+              <div class="flex items-center text-indigo-600 mb-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <span>Tienes eventos programados para este día</span>
+              </div>
+              <button class="bg-indigo-500 hover:bg-indigo-600 text-white py-1 px-3 rounded-md text-sm flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+                Ver detalles
+              </button>
+            </div>
+            
+            <!-- Notas del día seleccionado -->
+            <div class="mt-4">
+              <div class="flex justify-between items-center mb-2">
+                <h4 class="font-medium text-indigo-700">Notas</h4>
+                <button (click)="calendarioComponente.activarEdicionNotas()" class="text-indigo-600 hover:text-indigo-800 text-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                  </svg>
+                </button>
+              </div>
+              
+              <div *ngIf="!calendarioComponente?.modoEdicion" class="bg-white rounded p-3 text-gray-700 min-h-[80px] border border-indigo-100">
+                {{ diaSeleccionadoNotas || 'No hay notas para este día.' }}
+              </div>
+              
+              <div *ngIf="calendarioComponente?.modoEdicion" class="mt-2">
+                <textarea 
+                  [(ngModel)]="calendarioComponente.notaActual" 
+                  class="w-full p-2 border border-indigo-300 rounded focus:outline-none focus:ring-1 focus:ring-indigo-500 min-h-[80px]"
+                  placeholder="Escribe una nota para este día..."></textarea>
+                <div class="flex justify-end mt-2 space-x-2">
+                  <button 
+                    (click)="calendarioComponente.cancelarEdicionNota()" 
+                    class="px-3 py-1 border border-gray-300 rounded text-sm hover:bg-gray-100">
+                    Cancelar
+                  </button>
+                  <button 
+                    (click)="agregarNota(calendarioComponente.notaActual)" 
+                    class="px-3 py-1 bg-indigo-500 text-white rounded text-sm hover:bg-indigo-600">
+                    Guardar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div *ngIf="!diaSeleccionadoFecha" class="text-gray-500 italic">
+            Selecciona un día en el calendario para ver sus detalles
+          </div>
         </div>
-        <div class="p-4">
-          <app-calendar></app-calendar>
+        
+        <!-- Notas recientes -->
+        <div class="bg-white border border-gray-200 rounded-lg p-4">
+          <h3 class="text-lg font-medium text-gray-800 mb-3">Notas recientes</h3>
+          
+          <div *ngIf="notasRecientes.length > 0">
+            <div *ngFor="let nota of notasRecientes" class="mb-3 pb-3 border-b border-gray-100 last:border-b-0 last:mb-0 last:pb-0">
+              <p class="text-sm text-gray-500 mb-1">{{ nota.fecha }}</p>
+              <p class="text-gray-700">{{ nota.contenido }}</p>
+            </div>
+          </div>
+          
+          <div *ngIf="notasRecientes.length === 0" class="text-gray-500 italic">
+            No hay notas recientes
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- Horario Tab -->
-  <div *ngIf="tabActivo === 'horario'">
-    <div class="flex flex-col items-center justify-center">
-      <div class="bg-white rounded-xl shadow-lg overflow-hidden w-full max-w-4xl mx-auto">
-        <div class="p-4 bg-gradient-to-r from-primario to-primario/80 flex justify-between items-center">
-          <h2 class="text-xl font-bold text-white">Horario de Clases</h2>
-          <button (click)="abrirFormulario()" class="px-4 py-2 bg-white text-primario rounded-lg hover:bg-primario hover:text-white transition-colors duration-200 flex items-center gap-2 text-sm font-medium">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-            </svg>
-            Agregar Evento
-          </button>
+  
+  <!-- Contenido de la pestaña Horario -->
+  <div *ngIf="tabActivo === 'horario'" class="animate-fade-in">
+    <div class="flex justify-between mb-4">
+      <h3 class="text-lg font-medium text-gray-800">Mi Horario Semanal</h3>
+      <button (click)="abrirFormulario()" class="bg-indigo-500 hover:bg-indigo-600 text-white py-1 px-3 rounded-md text-sm flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+        </svg>
+        Añadir Evento
+      </button>
+    </div>
+    
+    <div class="overflow-x-auto">
+      <table class="min-w-full bg-white border border-gray-200">
+        <thead>
+          <tr>
+            <th class="py-2 px-3 border-b border-r border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Hora</th>
+            <th *ngFor="let dia of diasSemana" class="py-2 px-3 border-b border-r border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ dia }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let hora of horas; let i = index" [ngClass]="{'bg-gray-50': i % 2 === 0}">
+            <td class="py-2 px-3 border-b border-r border-gray-200 text-sm text-gray-500">{{ hora }}</td>
+            <td *ngFor="let dia of [0, 1, 2, 3, 4]" class="py-2 px-3 border-b border-r border-gray-200 text-sm relative min-h-[60px]">
+              <div *ngIf="getEventos(hora, dia)" 
+                   [ngClass]="getEventos(hora, dia)?.color || ''" 
+                   class="p-2 rounded shadow-sm">
+                <div class="flex justify-between items-start">
+                  <span class="font-medium">{{ getEventos(hora, dia)?.titulo }}</span>
+                  <button (click)="eliminarEvento(getEventos(hora, dia)?.id || '')" class="text-gray-400 hover:text-red-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+                <p class="text-xs text-gray-600 mt-1">{{ getEventos(hora, dia)?.descripcion }}</p>
+                <p class="text-xs text-gray-500 mt-1">{{ getEventos(hora, dia)?.horaInicio }} - {{ getEventos(hora, dia)?.horaFin }}</p>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <!-- Contenido de la pestaña Mis Tareas -->
+  <div *ngIf="tabActivo === 'mis-tareas'" class="animate-fade-in">
+    <app-team-tasks></app-team-tasks>
+  </div>
+</div>
+<!-- Modal para añadir evento -->
+<div *ngIf="mostrarFormulario" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white rounded-lg shadow-xl p-6 w-full max-w-md">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-lg font-medium text-gray-900">Añadir Evento al Horario</h3>
+      <button (click)="cerrarFormulario()" class="text-gray-400 hover:text-gray-500">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    
+    <div class="space-y-4">
+      <div>
+        <label for="titulo" class="block text-sm font-medium text-gray-700 mb-1">Título</label>
+        <input type="text" id="titulo" [(ngModel)]="nuevoEvento.titulo" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="Ej: Matemáticas">
+      </div>
+      
+      <div>
+        <label for="descripcion" class="block text-sm font-medium text-gray-700 mb-1">Descripción</label>
+        <textarea id="descripcion" [(ngModel)]="nuevoEvento.descripcion" rows="2" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="Ej: Clase de Cálculo Diferencial"></textarea>
+      </div>
+      
+      <div>
+        <label for="dia" class="block text-sm font-medium text-gray-700 mb-1">Día</label>
+        <select id="dia" [(ngModel)]="nuevoEvento.dia" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+          <option value="-1">Todos los días</option>
+          <option *ngFor="let dia of diasSemana; let i = index" [value]="i">{{ dia }}</option>
+        </select>
+      </div>
+      
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label for="horaInicio" class="block text-sm font-medium text-gray-700 mb-1">Hora de inicio</label>
+          <select id="horaInicio" [(ngModel)]="nuevoEvento.horaInicio" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            <option *ngFor="let hora of horas" [value]="hora">{{ hora }}</option>
+          </select>
         </div>
-        <div class="p-4 overflow-x-auto">
-          <table class="min-w-full">
-            <thead class="bg-secundario/20">
-              <tr>
-                <th class="py-3 px-4 text-left text-sm font-semibold text-gray-700">Hora</th>
-                <th class="py-3 px-4 text-left text-sm font-semibold text-gray-700">Lunes</th>
-                <th class="py-3 px-4 text-left text-sm font-semibold text-gray-700">Martes</th>
-                <th class="py-3 px-4 text-left text-sm font-semibold text-gray-700">Miércoles</th>
-                <th class="py-3 px-4 text-left text-sm font-semibold text-gray-700">Jueves</th>
-                <th class="py-3 px-4 text-left text-sm font-semibold text-gray-700">Viernes</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-200">
-              @for (hora of horas; track $index) {
-                <tr class="hover:bg-gray-50">
-                  <td class="py-3 px-4 text-sm font-medium text-gray-700">{{hora}}</td>
-                  @for (dia of [0,1,2,3,4]; track dia) {
-                    <td class="py-3 px-4 text-sm relative min-h-[4rem]">
-                      @if (getEventos(hora, dia); as evento) {
-                        <div [class]="'p-2 rounded-lg ' + evento.color">
-                          <div class="font-medium text-gray-800">{{evento.titulo}}</div>
-                          <div class="text-xs text-gray-600">{{evento.descripcion}}</div>
-                          <button (click)="eliminarEvento(evento.id)" class="absolute top-1 right-1 text-gray-400 hover:text-red-500 p-1 rounded-full hover:bg-red-50 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                          </button>
-                        </div>
-                      }
-                    </td>
-                  }
-                </tr>
-              }
-            </tbody>
-          </table>
+        
+        <div>
+          <label for="horaFin" class="block text-sm font-medium text-gray-700 mb-1">Hora de fin</label>
+          <select id="horaFin" [(ngModel)]="nuevoEvento.horaFin" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            <option *ngFor="let hora of horas" [value]="hora">{{ hora }}</option>
+          </select>
         </div>
       </div>
-    </div>
-    <!-- Modal para agregar evento -->
-    <div *ngIf="mostrarFormulario" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div class="bg-white rounded-lg shadow-xl p-6 w-full max-w-md">
-        <div class="flex justify-between items-center mb-4">
-          <h3 class="text-lg font-bold text-gray-900">Agregar Evento</h3>
-          <button (click)="cerrarFormulario()" class="text-gray-400 hover:text-gray-600">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-          </button>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Color</label>
+        <div class="flex space-x-2">
+          <div *ngFor="let color of coloresDisponibles" 
+               [ngClass]="color.valor + ' cursor-pointer w-8 h-8 rounded-full border-2'" 
+               [class.border-indigo-600]="nuevoEvento.color === color.valor"
+               [class.border-transparent]="nuevoEvento.color !== color.valor"
+               (click)="nuevoEvento.color = color.valor"
+               [title]="color.nombre">
+          </div>
         </div>
-        <form (ngSubmit)="agregarEventoDesdeFormulario()" #eventoForm="ngForm" class="space-y-4">
-          <div>
-            <label class="block text-sm font-medium text-gray-700">Título</label>
-            <input type="text" [(ngModel)]="nuevoEvento.titulo" name="titulo" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primario focus:ring-primario">
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700">Descripción</label>
-            <textarea [(ngModel)]="nuevoEvento.descripcion" name="descripcion" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primario focus:ring-primario" rows="2"></textarea>
-          </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label class="block text-sm font-medium text-gray-700">Día</label>
-              <select [(ngModel)]="nuevoEvento.dia" name="dia" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primario focus:ring-primario">
-                <option [value]="-1">Todos los días</option>
-                @for (dia of diasSemana; track $index) {
-                  <option [value]="$index">{{dia}}</option>
-                }
-              </select>
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700">Hora</label>
-              <select [(ngModel)]="nuevoEvento.horaInicio" name="horaInicio" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primario focus:ring-primario">
-                @for (hora of horas; track hora) {
-                  <option [value]="hora">{{hora}}</option>
-                }
-              </select>
-            </div>
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700">Color</label>
-            <select [(ngModel)]="nuevoEvento.color" name="color" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primario focus:ring-primario">
-              @for (color of coloresDisponibles; track color) {
-                <option [value]="color.valor" [class]="color.valor">{{color.nombre}}</option>
-              }
-            </select>
-          </div>
-          <div class="flex justify-end space-x-3 mt-6">
-            <button type="button" (click)="cerrarFormulario()" class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">Cancelar</button>
-            <button type="submit" [disabled]="!eventoForm.form.valid" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primario hover:bg-primario/90 disabled:opacity-50 disabled:cursor-not-allowed">Guardar</button>
-          </div>
-        </form>
+      </div>
+      
+      <div class="mt-6 flex justify-end space-x-3">
+        <button (click)="cerrarFormulario()" class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Cancelar
+        </button>
+        <button (click)="agregarEventoDesdeFormulario()" class="px-4 py-2 bg-indigo-600 border border-transparent rounded-md text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Guardar
+        </button>
       </div>
     </div>
   </div>
-
-     <!-- Mis Tareas Tab -->
-    <div *ngIf="tabActivo === 'notas'" class="w-full">
-      <app-team-tasks></app-team-tasks>
-    </div>
 </div>

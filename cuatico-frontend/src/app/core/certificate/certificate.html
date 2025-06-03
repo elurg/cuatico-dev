@@ -24,69 +24,46 @@
                 <!-- Grid de certificados -->
                 <div class="flex-1">
                     <div class="grid grid-cols-3">
-                        <app-card tipo="certificado" (descargar)="descargarCertificado()">
-                            <div class="rounded-xl p-4 text-center font-bold text-indigo-600 py-0">
-                                <img src="assets/certificado1.png" alt="Certificado"
-                                    class="mx-auto mb-2 w-90 h-48 object-contain cursor-pointer"
-                                    onclick="document.getElementById('modal').style.display='block'" />
-                                Diseño de experiencia
-                            </div>
-                            <!-- Modal numero 1 para card numero 1 -->
-                            <div id="modal"
-                                style="display:none; position:fixed; z-index:50; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7);">
-                                <span
-                                    style="position:absolute; top:80px; right:80px; font-size:40px; color:white; cursor:pointer;"
-                                    onclick="document.getElementById('modal').style.display='none'">&times;</span>
-                                <img src="assets/certificado1.png"
-                                    style="display:block; margin:80px auto; max-width:90vw; max-height:80vh; border-radius:16px; box-shadow:0 0 20px #000;" />
-                            </div>
-                            <div class="text-center text-sm text-gray-500 py-0">
-                                <p>Certificado de Diseño de experiencia </p>
-                            </div>
-                        </app-card>
-
-                        <app-card tipo="certificado" (descargar)="descargarCertificado()">
-                            <div class="rounded-xl p-4 text-center font-bold text-indigo-600 py-0">
-                                <img src="assets/certificado2.png" alt="Certificado"
-                                    class="mx-auto mb-2 w-90 h-48 object-contain cursor-pointer"
-                                    onclick="document.getElementById('modal2').style.display='block'" />
-                                Trasnformacion digital
-                            </div>
-                            <!-- Modal numero 2 para card numero 2-->
-                            <div id="modal2"
-                                style="display:none; position:fixed; z-index:50; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7);">
-                                <span
-                                    style="position:absolute; top:80px; right:80px; font-size:40px; color:white; cursor:pointer;"
-                                    onclick="document.getElementById('modal2').style.display='none'">&times;</span>
-                                <img src="assets/certificado2.png"
-                                    style="display:block; margin:80px auto; max-width:90vw; max-height:80vh; border-radius:16px; box-shadow:0 0 20px #000;" />
-                            </div>
-                            <div class="text-center text-sm text-gray-500 py-0">
-                                <p>Certificado de Trasnformacion digital</p>
-                            </div>
-                        </app-card>
-
-
-                        <app-card tipo="certificado" (descargar)="descargarCertificado()">
-                            <div class="rounded-xl p-4 text-center font-bold text-indigo-600 py-0">
-                                <img src="assets/certificado3.png" alt="Certificado"
-                                    class="mx-auto mb-2 w-90 h-48 object-contain cursor-pointer"
-                                    onclick="document.getElementById('modal3').style.display='block'" />
-                                Dirección de Producto
-                            </div>
-                            <!-- Modal numero 3 para card numero 3-->
-                            <div id="modal3"
-                                style="display:none; position:fixed; z-index:50; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7);">
-                                <span
-                                    style="position:absolute; top:80px; right:80px; font-size:40px; color:white; cursor:pointer;"
-                                    onclick="document.getElementById('modal3').style.display='none'">&times;</span>
-                                <img src="assets/certificado3.png"
-                                    style="display:block; margin:80px auto; max-width:90vw; max-height:80vh; border-radius:16px; box-shadow:0 0 20px #000;" />
-                            </div>
-                            <div class="text-center text-sm text-gray-500 py-0">
-                                <p>Certificado de Dirección de Producto</p>
-                            </div>
-                        </app-card>
+                        
+                    <app-card tipo="certificado" descripcion="Certificado generado por Cuático"
+                        titulo2="Diseño de experiencia">
+                        <img src="./assets/certificado1.png" alt="Imagen del certificado UX" class="cursor-pointer mb-4"
+                            onclick="document.getElementById('modal').style.display='block'" />
+                        <div id="modal1"
+                            style="display:none; position:fixed; z-index:50; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7);">
+                            <span
+                                style="position:absolute; top:80px; right:80px; font-size:40px; color:white; cursor:pointer;"
+                                onclick="document.getElementById('modal').style.display='none'">&times;</span>
+                            <img src="assets/certificado1.png"
+                                style="display:block; margin:80px auto; max-width:90vw; max-height:80vh; border-radius:16px; box-shadow:0 0 20px #000;" />
+                        </div>
+                    </app-card>
+                    <app-card tipo="certificado" descripcion="Certificado generado por Cuático"
+                        titulo2="Transformación digital">
+                        <img src="./assets/certificado2.png" alt="Imagen del certificado UX" class="cursor-pointer mb-4"
+                            onclick="document.getElementById('modal2').style.display='block'" />
+                        <div id="modal2"
+                            style="display:none; position:fixed; z-index:50; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7);">
+                            <span
+                                style="position:absolute; top:80px; right:80px; font-size:40px; color:white; cursor:pointer;"
+                                onclick="document.getElementById('modal2').style.display='none'">&times;</span>
+                            <img src="assets/certificado2.png"
+                                style="display:block; margin:80px auto; max-width:90vw; max-height:80vh; border-radius:16px; box-shadow:0 0 20px #000;" />
+                        </div>
+                    </app-card>
+                    <app-card tipo="certificado" descripcion="Certificado generado por Cuático"
+                        titulo2="Dirección de producto">
+                        <img src="./assets/certificado3.png" alt="Imagen del certificado UX" class="cursor-pointer mb-4"
+                            onclick="document.getElementById('modal3').style.display='block'" />
+                        <div id="modal3"
+                            style="display:none; position:fixed; z-index:50; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7);">
+                            <span
+                                style="position:absolute; top:80px; right:80px; font-size:40px; color:white; cursor:pointer;"
+                                onclick="document.getElementById('modal3').style.display='none'">&times;</span>
+                            <img src="assets/certificado3.png"
+                                style="display:block; margin:80px auto; max-width:90vw; max-height:80vh; border-radius:16px; box-shadow:0 0 20px #000;" />
+                        </div>
+                    </app-card>
 
 
 
