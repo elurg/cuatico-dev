@@ -1,5 +1,6 @@
 <!-- Encabezado de bienvenida (fuera del grid, ancho completo) -->
-<div class="bg-gradient-to-r from-primario to-primario/80 rounded-2xl p-8 text-white shadow-lg relative overflow-hidden mb-6 mx-6 mt-3">
+<div
+  class="bg-gradient-to-r from-primario to-primario/80 rounded-2xl p-8 text-white shadow-lg relative overflow-hidden mb-6 mx-6 mt-3">
   <div class="relative z-10">
     <div class="flex items-center mb-4">
       <h1 class="text-3xl font-bold">¡Hola, {{user.username}}!</h1>
@@ -24,12 +25,12 @@
 </div>
 
 <!-- Grid principal (dashboard y sidebar) -->
-<div class="grid grid-cols-1 lg:grid-cols-7 gap-3 p-3">
+<div class="grid grid-cols-1 lg:grid-cols-7 gap-3 pl-7">
   <!-- Dashboard principal: 5/7 del ancho -->
   <div class="lg:col-span-5 space-y-6">
     <!-- Sección de cursos -->
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-      <div class="p-6 border-b border-gray-100 bg-primario">
+    <div class="bg-white rounded-2xl shadow-md overflow-hidden min-h-[430px]">
+      <div class="p-6 border-b border-gray-100 bg-gradient-to-r from-primario to-primario/80">
         <div class="flex items-center justify-between">
           <h2 class="text-lg font-semibold text-white">Mis Cursos</h2>
         </div>
@@ -45,76 +46,8 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Sidebar derecho: 2/7 del ancho -->
-  <div class="lg:col-span-2 space-y-6">
-    <!-- Calendario -->
-    <div class="bg-white rounded-2xl shadow-md p-4">
-      <h2 class="text-lg font-semibold mb-4 text-gray-800">Calendario</h2>
-      <div class="w-full flex justify-center">
-        <div class="w-full">
-          <div class="w-full">
-            <app-calendar class="w-[380px] mx-auto [&>*]:w-full [&>*]:h-full"></app-calendar>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Historial de pagos -->
-    <div class="bg-white rounded-2xl shadow-md p-4">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-lg font-semibold text-gray-800">Historial de Pagos</h2>
-        <button class="text-sm text-emerald-500 hover:text-emerald-600">Ver Todo</button>
-      </div>
-      <div class="space-y-4">
-        <div class="flex justify-between items-center p-4 bg-gray-50 rounded-xl">
-          <div class="flex items-center">
-            <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
-              <svg class="w-6 h-6 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <div class="ml-4">
-              <p class="text-sm font-medium text-gray-800">Diseño UX/UI Avanzado</p>
-              <p class="text-xs text-gray-500">Hace 2 días</p>
-            </div>
-          </div>
-          <span class="text-emerald-600 font-medium">$120</span>
-        </div>
-        <div class="flex justify-between items-center p-4 bg-gray-50 rounded-xl">
-          <div class="flex items-center">
-            <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
-              <svg class="w-6 h-6 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <div class="ml-4">
-              <p class="text-sm font-medium text-gray-800">Desarrollo Web Frontend</p>
-              <p class="text-xs text-gray-500">Hace 5 días</p>
-            </div>
-          </div>
-          <span class="text-emerald-600 font-medium">$150</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tiempo de aprendizaje -->
-    <div class="bg-white rounded-2xl shadow-md p-4">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-lg font-semibold text-gray-800">Tiempo de Aprendizaje</h2>
-        <select class="text-sm border-gray-200 rounded-lg">
-          <option>Esta Semana</option>
-          <option>Este Mes</option>
-          <option>Este Año</option>
-        </select>
-      </div>
-      <div class="h-48 bg-gray-50 rounded-xl"><!-- Aquí irá el gráfico --></div>
-    </div>
-
-    <!-- Próximas tareas -->
+    <!-- Próximas tareas debajo de Mis Cursos -->
     <div class="bg-white rounded-2xl shadow-md p-4">
       <h2 class="text-lg font-semibold mb-4 text-gray-800">Próximas Tareas</h2>
       <div class="space-y-4">
@@ -146,5 +79,39 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Sidebar derecho: 2/7 del ancho -->
+<div class="grid grid-rows-[auto_1fr] gap-2 lg:col-span-2 mr-4 mb-6">
+    <!-- Calendario sin marco, sin corte inferior y sin scroll horizontal -->
+    <div class="flex justify-center">
+      <div class="w-full max-w-full sm:max-w-[380px] flex items-center justify-center">
+        <div class="w-full scale-[0.9] origin-top overflow-visible ">
+          <app-calendar class="w-full [&>*]:w-full"></app-calendar>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPRAR CURSOS -->
+    <div class="flex justify-center">
+      <div class="w-full max-w-full sm:max-w-[380px] flex items-center">
+        <div class="bg-white rounded-2xl shadow-md p-4 w-full">
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-lg font-semibold text-gray-800">Otros cursos</h2>
+            <a [routerLink]="'/nuevoscursos'" class="text-sm text-primario hover:text-primario-600">Ver Todo</a>
+          </div>
+          <div class="space-y-4">
+            <div class="flex justify-between items-center p-4 rounded-xl">
+              <div class="flex items-center">
+                <app-card tipo="venta" titulo="Curso de Figma UX/UI" fecha="5 de julio" precio="200"
+                  profesor="Diana Henao" modalidad="remoto" duracion="4 semanas"></app-card>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

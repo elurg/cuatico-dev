@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 export class Card {
   @Input() id!: number;
   @Input() titulo!: string;
+  @Input() titulo2?: string;
   @Input() descripcion?: string;
   @Input() profesor?: string;
   @Input() fecha?: number | string;
@@ -17,7 +18,7 @@ export class Card {
   @Input() precio?: number | string;
   @Input() tipo!: 'venta' | 'curso' | 'certificado';
   @Input() modalidad?: 'presencial' | 'remoto' | 'ninguno';
-  @Input() progreso: number = 0;
+  @Input() progreso?: number = 0;
 
   @Output() navigate = new EventEmitter<number>();
   @Output() descargar = new EventEmitter<void>();

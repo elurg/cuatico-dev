@@ -17,8 +17,8 @@ export class Certificate {
   selecionado3= false;
     descargarSelecionados(){
     const selecionados = [];
-    if (this.selecionado1) selecionados.push('Direccion de producto');
-    if (this.selecionado2) selecionados.push('Direcion de diseño');
+    if (this.selecionado1) selecionados.push('Diseño de experiencia ');
+    if (this.selecionado2) selecionados.push('Transformación digital');
     if (this.selecionado3) selecionados.push('Direccion de desarrollo');
     if (selecionados.length === 0) { 
       alert('Por favor, selecciona al menos un certificado para descargar.');
@@ -26,7 +26,6 @@ export class Certificate {
     }
     alert(`Descargando certificados: ${selecionados.join(', ')}`);
   }
-
 
   descargarCertificado() {
     console.log('Descargando certificado...');
