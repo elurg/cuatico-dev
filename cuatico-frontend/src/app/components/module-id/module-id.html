@@ -1,235 +1,192 @@
-<div class="flex min-h-screen">
-  <div class="flex-1 space-y-6 p-6 bg-white shadow-md">
-    <div
-      class="bg-secundario bg-opacity-20 border border-secundario rounded-2xl p-4 sm:p-6 mb-6 sm:mb-8 w-full"
-    >
-      <!-- Icono y título -->
-      <div
-        class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-4 sm:mb-6"
-      >
-        <svg
-      class="h-14 sm:h-16 w-14 sm:w-16"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <defs>
-        <linearGradient id="degradado" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="var(--color-primary, #6366f1)" />
-          <stop offset="100%" stop-color="var(--color-secundario, #00bfae)" />
-        </linearGradient>
-      </defs>
-      <path
-        stroke="url(#degradado)"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="1.5"
-        d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
-      />
-    </svg>
+<div class="min-h-screen">
+  <!-- HEADER SUPERIOR -->
+  <div class="mt-6 mx-8">
+    <app-header [titulo]="'Módulo: Diseño de experiencia, interfaz de usuario y estrategia de contenido'"
+      [iconoD]="'M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25'">
+    </app-header>
+  </div>
 
-        <div>
-          <h2
-            class="text-2xl md:text-3xl font-semibold text-gray-800 text-center sm:text-left"
-          >
-            MÓDULO 1:
-          </h2>
-          <p
-            class="text-gray-600 text-center sm:text-left mt-2 text-base md:text-lg max-w-xl"
-          >
-            Diseño de experiencia, interfaz de usuario y estrategia de contenido
-          </p>
-        </div>
-      </div>
-    </div>
+  <!-- CONTENIDO + ÍNDICE -->
+  <div class="flex mb-4">
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="flex-1 space-y-6 mx-4">
 
-    <!-- VIDEO EXPLICATIVO -->
-    <div class="bg-white border border-gray-200 rounded-md">
-      <button
-        class="mt-4 ml-4 px-4 py-1.5 rounded-full text-sm font-semibold text-white bg-gradient-to-br from-pink-500 to-fuchsia-500 shadow hover:opacity-90 transition"
-      >
-        Vídeo Explicativo
-      </button>
-
-      <div class="aspect-w-16 aspect-h-9 w-full my-4 mx-4 flex justify-center">
-        <iframe
-          class="rounded-lg"
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/82gL4zLXarA?si=cfm5w8qWtgYhZXI8"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        ></iframe>
-      </div>
-    </div>
-
-    <!-- RECURSOS -->
-    <div class="bg-white border border-gray-200 rounded-md mt-4 mb-6">
-      <button
-        class="mt-4 ml-4 px-4 py-1.5 rounded-full text-sm font-semibold text-white shadow hover:opacity-90 transition"
-        style="background: linear-gradient(135deg, #3b82f6, #60a5fa)"
-      >
-        Recursos
-      </button>
-
-      <div
-        class="w-72 mt-4 ml-4 mb-4 flex items-center bg-white border rounded-lg overflow-hidden shadow-sm"
-      >
-        <div class="w-24 h-24 bg-gray-100 flex items-center justify-center">
-          <img src="/assets/curso.avif" alt="PDF" class="w-full h-full" />
-        </div>
-        <div class="flex-1 px-4 py-3">
-          <h3 class="text-sm font-semibold text-gray-800">Introducción a UX</h3>
-          <p class="text-xs text-gray-500">Duración: 2.5h</p>
-          <a
-            href="#"
-            class="text-blue-600 text-sm font-medium hover:underline mt-1 inline-block"
-          >
-            Descargar PDF
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="flex gap-6 mb-4">
-      <!-- TAREAS -->
-      <div
-        class="flex-1 bg-white border border-gray-200 rounded-md p-6 shadow-sm"
-      >
+      <!-- VIDEO EXPLICATIVO -->
+      <div id="video" class="bg-white border border-gray-200 rounded-md">
         <button
-          class="px-5 py-2 rounded-full text-sm font-semibold text-white shadow-md hover:opacity-90 transition bg-gradient-to-br from-orange-500 to-yellow-400"
-        >
-          Tareas
+          class="mt-4 ml-4 px-4 py-1.5 rounded-full text-sm font-semibold text-white bg-gradient-to-br from-pink-500 to-fuchsia-500 shadow hover:opacity-90 transition">
+          Vídeo Explicativo
+        </button>
+        <div class="aspect-w-16 aspect-h-9 w-full my-4 flex justify-center">
+          <iframe class="rounded-lg" width="560" height="315"
+            src="https://www.youtube.com/embed/82gL4zLXarA?si=cfm5w8qWtgYhZXI8" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <!-- RECURSOS -->
+      <div id="recursos" class="bg-white border border-gray-200 rounded-md mt-4 mb-6">
+        <button
+          class="mt-4 ml-4 px-4 py-1.5 rounded-full text-sm font-semibold text-white shadow hover:opacity-90 transition"
+          style="background: linear-gradient(135deg, #3b82f6, #60a5fa)">
+          Recursos
         </button>
 
-        <!-- Tarea 1 -->
-        <div
-          class="w-72 mt-6 flex items-center bg-gray-50 border border-gray-200 rounded-lg overflow-hidden shadow-sm"
-        >
+        <div class="w-72 mt-4 ml-4 mb-4 flex items-center bg-white border rounded-lg overflow-hidden shadow-sm">
           <div class="w-24 h-24 bg-gray-100 flex items-center justify-center">
-            <img
-              src="/assets/curso.avif"
-              alt="PDF"
-              class="w-full h-full object-cover"
-            />
+            <img src="/assets/curso.avif" alt="PDF" class="w-full h-full" />
           </div>
-          <div class="flex-1 px-5 py-4">
-            <h3 class="text-base font-semibold text-gray-900">Tarea de UX</h3>
-            <p class="text-xs text-gray-500 mt-1">Duración: 2h</p>
-            <a
-              href="#"
-              class="text-blue-600 text-sm font-medium hover:underline mt-2 inline-block"
-            >
-              Descargar PDF
-            </a>
-          </div>
-        </div>
-
-        <!-- Tarea 2 -->
-        <div
-          class="w-72 mt-6 flex items-center bg-gray-50 border border-gray-200 rounded-lg overflow-hidden shadow-sm"
-        >
-          <div class="w-24 h-24 bg-gray-100 flex items-center justify-center">
-            <img
-              src="/assets/curso.avif"
-              alt="PDF"
-              class="w-full h-full object-cover"
-            />
-          </div>
-          <div class="flex-1 px-5 py-4">
-            <h3 class="text-base font-semibold text-gray-900">Tarea de UI</h3>
-            <p class="text-xs text-gray-500 mt-1">Duración: 1.5h</p>
-            <a
-              href="#"
-              class="text-blue-600 text-sm font-medium hover:underline mt-2 inline-block"
-            >
+          <div class="flex-1 px-4 py-3">
+            <h3 class="text-sm font-semibold text-gray-800">Introducción a UX</h3>
+            <p class="text-xs text-gray-500">Duración: 2.5h</p>
+            <a href="#" class="text-blue-600 text-sm font-medium hover:underline mt-1 inline-block">
               Descargar PDF
             </a>
           </div>
         </div>
       </div>
 
-      <!-- ENTREGAS -->
-      <div
-        class="flex-1 bg-white border border-gray-200 rounded-md p-6 shadow-sm"
-      >
-        <h3 class="text-xl font-semibold text-primario mb-4">Entregas</h3>
+      <div class="flex gap-6 mb-4">
+        <!-- TAREAS -->
+        <div id="tareas" class="flex-1 bg-white border border-gray-200 rounded-md p-6 shadow-sm">
+          <button
+            class="px-5 py-2 rounded-full text-sm font-semibold text-white shadow-md hover:opacity-90 transition bg-gradient-to-br from-orange-500 to-yellow-400">
+            Tareas
+          </button>
 
-        <div class="space-y-4">
-          <div class="bg-gray-50 border border-gray-200 rounded-md p-4">
-            <div class="flex justify-between items-start">
-              <div>
-                <h4 class="font-medium text-gray-800">Tarea de UX</h4>
-                <p class="text-sm text-gray-500 mt-1">
-                  Análisis de usabilidad sobre la app mobile.
-                </p>
-              </div>
-              <div class="flex gap-2">
-                <span
-                  class="px-2 py-1 rounded-full text-white text-xs font-medium"
-                  style="
-                    background: linear-gradient(to right, #6366f1, #00bfae);
-                  "
-                >
-                  Completada
-                </span>
-                <span
-                  class="px-2 py-1 rounded-full text-white text-xs font-medium"
-                  style="
-                    background: linear-gradient(to right, #ef4444, #f87171);
-                  "
-                >
-                  Alta
-                </span>
-              </div>
+          <!-- Tarea 1 -->
+          <div
+            class="w-72 mt-6 flex items-center bg-gray-50 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+            <div class="w-24 h-24 bg-gray-100 flex items-center justify-center">
+              <img src="/assets/curso.avif" alt="PDF" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1 px-5 py-4">
+              <h3 class="text-base font-semibold text-gray-900">Tarea de UX</h3>
+              <p class="text-xs text-gray-500 mt-1">Duración: 2h</p>
+              <a href="#" class="text-blue-600 text-sm font-medium hover:underline mt-2 inline-block">
+                Descargar PDF
+              </a>
             </div>
           </div>
 
-          <div class="bg-gray-50 border border-gray-200 rounded-md p-4">
-            <div class="flex justify-between items-start">
-              <div>
-                <h4 class="font-medium text-gray-800">Tarea de UI</h4>
-                <p class="text-sm text-gray-500 mt-1">
-                  Validación de contenido con usuarios reales.
-                </p>
-              </div>
-              <div class="flex gap-2">
-                <span
-                  class="px-2 py-1 rounded-full text-white text-xs font-medium"
-                  style="
-                    background: linear-gradient(to right, #eab308, #fde047);
-                  "
-                >
-                  Pendiente
-                </span>
-                <span
-                  class="px-2 py-1 rounded-full text-white text-xs font-medium"
-                  style="
-                    background: linear-gradient(to right, #8b5cf6, #c084fc);
-                  "
-                >
-                  Media
-                </span>
-              </div>
+          <!-- Tarea 2 -->
+          <div
+            class="w-72 mt-6 flex items-center bg-gray-50 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+            <div class="w-24 h-24 bg-gray-100 flex items-center justify-center">
+              <img src="/assets/curso.avif" alt="PDF" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1 px-5 py-4">
+              <h3 class="text-base font-semibold text-gray-900">Tarea de UI</h3>
+              <p class="text-xs text-gray-500 mt-1">Duración: 1.5h</p>
+              <a href="#" class="text-blue-600 text-sm font-medium hover:underline mt-2 inline-block">
+                Descargar PDF
+              </a>
             </div>
           </div>
+        </div>
 
-          <div class="flex items-center gap-5 mt-4">
-            <app-input-file
-              (fileSelected)="handleFile($event)"
-            ></app-input-file>
-            <span
-              *ngIf="selectedFileName"
-              class="text-sm text-orange-600 font-medium"
-            >
-              {{ selectedFileName }}
-            </span>
+        <!-- ENTREGAS -->
+        <div id="entregas" class="flex-1 bg-white border border-gray-200 rounded-md p-6 shadow-sm">
+          <h3 class="text-xl font-semibold text-primario mb-4">Entregas</h3>
+
+          <div class="space-y-4">
+            <div class="bg-gray-50 border border-gray-200 rounded-md p-4">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h4 class="font-medium text-gray-800">Tarea de UX</h4>
+                  <p class="text-sm text-gray-500 mt-1">Análisis de usabilidad sobre la app mobile.</p>
+                </div>
+                <div class="flex gap-2">
+                  <span class="px-2 py-1 rounded-full text-white text-xs font-medium"
+                    style="background: linear-gradient(to right, #6366f1, #00bfae);">Completada</span>
+                  <span class="px-2 py-1 rounded-full text-white text-xs font-medium"
+                    style="background: linear-gradient(to right, #ef4444, #f87171);">Alta</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-gray-50 border border-gray-200 rounded-md p-4">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h4 class="font-medium text-gray-800">Tarea de UI</h4>
+                  <p class="text-sm text-gray-500 mt-1">Validación de contenido con usuarios reales.</p>
+                </div>
+                <div class="flex gap-2">
+                  <span class="px-2 py-1 rounded-full text-white text-xs font-medium"
+                    style="background: linear-gradient(to right, #eab308, #fde047);">Pendiente</span>
+                  <span class="px-2 py-1 rounded-full text-white text-xs font-medium"
+                    style="background: linear-gradient(to right, #8b5cf6, #c084fc);">Media</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-5 mt-4">
+              <app-input-file (fileSelected)="handleFile($event)"></app-input-file>
+              <span *ngIf="selectedFileName" class="text-sm text-orange-600 font-medium">
+                {{ selectedFileName }}
+              </span>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- TEST -->
+      <div id="test" class="bg-white border border-gray-200 rounded-md p-6 shadow-md">
+        <button
+          class="mb-4 ml-4 px-4 py-2 rounded-full text-sm font-semibold text-white shadow hover:opacity-90 transition"
+          style="background: linear-gradient(135deg, #8b5cf6, #c084fc);">
+          Test
+        </button>
+
+
+        <div *ngFor="let pregunta of preguntas; let i = index" class="mb-6">
+          <p class="font-medium text-gray-800">{{ i + 1 }}. {{ pregunta.texto }}</p>
+          <div class="mt-2 space-y-2">
+            <label *ngFor="let opcion of pregunta.opciones">
+              <input type="radio" [name]="'pregunta' + i" [value]="opcion" (change)="responder(i, opcion)"
+                class="mr-2" />
+              {{ opcion }}
+            </label>
+          </div>
+        </div>
+
+        <button (click)="enviarRespuestas()"
+          class="mt-4 ml-4 px-4 py-2 rounded-full text-sm font-semibold text-white shadow hover:opacity-90 transition"
+          style="background: linear-gradient(135deg, #14b8a6, #2dd4bf);">
+          Enviar respuestas
+        </button>
+
+
+        <div *ngIf="resultado !== null" class="mt-4 text-lg font-semibold text-blue-600">
+          Resultado: {{ resultado }}/5 correctas
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ÍNDICE LATERAL -->
+    <div class="w-52 border border-secundario p-4 rounded-lg mx-2">
+      <h3 class="text-xl font-semibold text-primario mb-4">Índice</h3>
+      <ul class="space-y-2 text-sm text-gray-700">
+        <li><a href="#video"
+            class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-primario/5 rounded-lg group">🎥
+            Vídeo Explicativo</a></li>
+        <li><a href="#recursos"
+            class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-primario/5 rounded-lg group">📚
+            Recursos</a></li>
+        <li><a href="#tareas"
+            class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-primario/5 rounded-lg group">📝
+            Tareas</a></li>
+        <li><a href="#entregas"
+            class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-primario/5 rounded-lg group">📦
+            Entregas</a></li>
+        <li><a href="#test"
+            class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-primario/5 rounded-lg group">🧠
+            Test</a></li>
+      </ul>
     </div>
   </div>
 </div>
