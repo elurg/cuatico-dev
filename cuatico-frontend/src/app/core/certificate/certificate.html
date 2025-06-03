@@ -26,10 +26,11 @@
                     <div class="grid grid-cols-3">
                         
                     <app-card tipo="certificado" descripcion="Certificado generado por Cuático"
-                        titulo2="Diseño de experiencia">
+                        titulo2="Diseño de experiencia"
+                        (descargar)="descargarCertificado()">
                         <img src="./assets/certificado1.png" alt="Imagen del certificado UX" class="cursor-pointer mb-4"
                             onclick="document.getElementById('modal').style.display='block'" />
-                        <div id="modal1"
+                        <div id="modal"
                             style="display:none; position:fixed; z-index:50; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7);">
                             <span
                                 style="position:absolute; top:80px; right:80px; font-size:40px; color:white; cursor:pointer;"
@@ -39,7 +40,8 @@
                         </div>
                     </app-card>
                     <app-card tipo="certificado" descripcion="Certificado generado por Cuático"
-                        titulo2="Transformación digital">
+                        titulo2="Transformación digital"
+                        (descargar)="descargarCertificado()">
                         <img src="./assets/certificado2.png" alt="Imagen del certificado UX" class="cursor-pointer mb-4"
                             onclick="document.getElementById('modal2').style.display='block'" />
                         <div id="modal2"
@@ -52,7 +54,8 @@
                         </div>
                     </app-card>
                     <app-card tipo="certificado" descripcion="Certificado generado por Cuático"
-                        titulo2="Dirección de producto">
+                        titulo2="Dirección de producto"
+                        (descargar)="descargarCertificado()">
                         <img src="./assets/certificado3.png" alt="Imagen del certificado UX" class="cursor-pointer mb-4"
                             onclick="document.getElementById('modal3').style.display='block'" />
                         <div id="modal3"
