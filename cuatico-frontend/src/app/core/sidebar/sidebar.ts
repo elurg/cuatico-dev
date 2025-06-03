@@ -10,9 +10,28 @@ import { NgClass } from '@angular/common';
   standalone: true,
 })
 export class Sidebar {
+  cursosOpen = false;
+
   constructor(private router: Router) {}
 
   isActive(route: string): boolean {
-    return this.router.isActive(route, { paths: 'exact', queryParams: 'ignored', fragment: 'ignored', matrixParams: 'ignored' });
+    return this.router.isActive(route, {
+      paths: 'exact',
+      queryParams: 'ignored',
+      fragment: 'ignored',
+      matrixParams: 'ignored',
+    });
+  }
+
+  isCursosSubrouteActive(): boolean {
+    return this.router.url.startsWith('/cursos');
+  }
+
+  toggleCursos() {
+    this.cursosOpen = !this.cursosOpen;
+  }
+
+  closeCursos() {
+    this.cursosOpen = false;
   }
 }
