@@ -29,7 +29,7 @@
   <!-- Dashboard principal: 5/7 del ancho -->
   <div class="lg:col-span-5 space-y-6">
     <!-- Sección de cursos -->
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden min-h-[430px]">
+    <div class="bg-white rounded-2xl shadow-md overflow-hidden min-h-[410px]">
       <div class="p-6 border-b border-gray-100 bg-gradient-to-r from-primario to-primario/80">
         <div class="flex items-center justify-between">
           <h2 class="text-lg font-semibold text-white">Mis Cursos</h2>
@@ -37,10 +37,10 @@
       </div>
       <div class="p-6">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <app-card [id]="1" (navigate)="irADetalle($event)" titulo="Diseño de Interfaces" profesor="Diana"
+          <app-card [id]="1" (navigate)="irADetalle($event)" titulo="UX Research" profesor="Diana"
             lecciones="14" duracion="6 semanas" [progreso]="70" fecha="19 de Abril" modalidad="presencial" tipo="venta">
           </app-card>
-          <app-card [id]="1" (navigate)="irADetalle($event)" titulo="Diseño de producto" profesor="Carlos"
+          <app-card [id]="1" (navigate)="irADetalle($event)" titulo="Desarrolla tu creatividad" profesor="Carlos"
             lecciones="12" duracion="6 semanas" [progreso]="65" fecha="26 de Abril" modalidad="remoto" tipo="venta">
           </app-card>
         </div>
