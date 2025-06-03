@@ -22,7 +22,11 @@ export const routes: Routes = [
   {path: 'login',component: Login},
   {path: 'register',component: Register},
   {path: 'perfil',component: Profile},
-  {path: 'cursos/:id',component: CourseId},
+  {
+    path: 'cursos/:id',
+    component: CourseId,
+    runGuardsAndResolvers: 'always'
+  },
   {path: 'modulo/:id',component: ModuleId},
   {path: 'certificado',component: Certificate},
   {path: 'editar-perfil',component: EditProfile},

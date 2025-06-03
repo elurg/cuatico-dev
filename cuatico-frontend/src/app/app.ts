@@ -14,14 +14,16 @@ import { Footer } from './core/footer/footer';
   styleUrl: './app.css'
 })
 export class App {
-  usuario = { nombre: '' , email: '', telefono: ''};
+  usuario = { nombre: '', email: '', telefono: '' };
   protected title = 'cuatico-frontend';
   currentRoute: string = '';
 
   constructor(public router: Router) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
-    ).subscribe((event: NavigationEnd) => {
+    ).subscribe((event: any) => {
       this.currentRoute = event.urlAfterRedirects;
     });
   }

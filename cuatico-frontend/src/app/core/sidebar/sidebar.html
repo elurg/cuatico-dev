@@ -43,30 +43,61 @@
 
     <!-- Submenú de cursos -->
     @if (cursosOpen) {
-      <div class="pl-2 transition-all duration-200">
+      <div class="pl-2 space-y-1 transition-all duration-200">
+        <!-- Curso: Desarrolla tu creatividad -->
         <a routerLink="/cursos/1" routerLinkActive="bg-primario/10 text-primario shadow"
-          [routerLinkActiveOptions]="{ exact: true }"
-          class="flex items-center px-8 py-2 text-xs font-medium text-gray-600 hover:bg-primario/5 rounded-lg group transition"
-          aria-label="UX Research">
-          <svg class="h-3 w-3 mr-3"
-            [ngClass]="{ 'text-primario': isActive('/cursos/1'), 'text-gray-500': !isActive('/cursos/1') }"
-            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-          </svg>
-          <span [ngClass]="{ 'font-bold': isActive('/cursos/1') }">UX Research</span>
-        </a>
-        <a routerLink="/cursos/2" routerLinkActive="bg-primario/10 text-primario shadow"
           [routerLinkActiveOptions]="{ exact: true }"
           class="flex items-center px-8 py-2 text-xs font-medium text-gray-600 hover:bg-primario/5 rounded-lg group transition"
           aria-label="Desarrolla tu creatividad">
           <svg class="h-3 w-3 mr-3"
+            [ngClass]="{ 'text-primario': isActive('/cursos/1'), 'text-gray-500': !isActive('/cursos/1') }"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+          </svg>
+          <span [ngClass]="{ 'font-bold': isActive('/cursos/1') }">Desarrolla tu creatividad</span>
+        </a>
+
+        <!-- Curso: UX Research -->
+        <a routerLink="/cursos/2" routerLinkActive="bg-primario/10 text-primario shadow"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="flex items-center px-8 py-2 text-xs font-medium text-gray-600 hover:bg-primario/5 rounded-lg group transition"
+          aria-label="UX Research">
+          <svg class="h-3 w-3 mr-3"
             [ngClass]="{ 'text-primario': isActive('/cursos/2'), 'text-gray-500': !isActive('/cursos/2') }"
             fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
           </svg>
-          <span [ngClass]="{ 'font-bold': isActive('/cursos/2') }">Desarrolla tu creatividad</span>
+          <span [ngClass]="{ 'font-bold': isActive('/cursos/2') }">UX Research</span>
+        </a>
+
+        <!-- Curso: Diseño de Interfaces -->
+        <a routerLink="/cursos/3" routerLinkActive="bg-primario/10 text-primario shadow"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="flex items-center px-8 py-2 text-xs font-medium text-gray-600 hover:bg-primario/5 rounded-lg group transition"
+          aria-label="Diseño de Interfaces">
+          <svg class="h-3 w-3 mr-3"
+            [ngClass]="{ 'text-primario': isActive('/cursos/3'), 'text-gray-500': !isActive('/cursos/3') }"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+          </svg>
+          <span [ngClass]="{ 'font-bold': isActive('/cursos/3') }">Diseño de Interfaces</span>
+        </a>
+
+        <!-- Curso: Diseño de producto -->
+        <a routerLink="/cursos/4" routerLinkActive="bg-primario/10 text-primario shadow"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="flex items-center px-8 py-2 text-xs font-medium text-gray-600 hover:bg-primario/5 rounded-lg group transition"
+          aria-label="Diseño de producto">
+          <svg class="h-3 w-3 mr-3"
+            [ngClass]="{ 'text-primario': isActive('/cursos/4'), 'text-gray-500': !isActive('/cursos/4') }"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+          </svg>
+          <span [ngClass]="{ 'font-bold': isActive('/cursos/4') }">Diseño de producto</span>
         </a>
       </div>
     }

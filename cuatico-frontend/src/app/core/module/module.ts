@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-module',
   imports: [CommonModule],
-  templateUrl: './module.html'
+  templateUrl: './module.html',
+  standalone: true
 })
 export class Module {
   @Input() titulo!: string;
