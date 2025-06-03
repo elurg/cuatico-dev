@@ -10,6 +10,10 @@ import { Card } from '../card/card';
 })
 export class Certificate {
 
+  descargarCertificado() {
+    console.log('Descargando certificado...');
+    alert('Descargando certificado...');
 
-
+  }
 }
+

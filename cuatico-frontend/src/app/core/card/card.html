@@ -1,7 +1,10 @@
 <div
   class="w-full max-w-[17rem] min-h-[12rem] bg-gradient-to-b from-secundario/20 to-secundario/10 rounded-xl p-4 md:p-6 shadow-md border border-secundario/40 hover:shadow-lg transition-all flex flex-col group">
   <!-- Imagen solo para certificados -->
-    <ng-content></ng-content>
+    <ng-content>
+
+
+    </ng-content>
 
 
   <!-- Título -->
@@ -93,11 +96,20 @@
     </div>
 
     <!-- Botón de acción -->
-    <div class="mt-auto flex-shrink-0">
-      <button (click)="onClick()"
-        class="w-full py-1 rounded-lg bg-primario text-white font-semibold hover:bg-primario/80 transition">
-        {{ tipo === 'curso' ? 'Entra' : tipo === 'venta' ? 'Accede' : 'Descarga' }}
-      </button>
-    </div>
+   <div class="mt-auto flex-shrink-0">
+  <button
+    *ngIf="tipo === 'certificado'; else normalButton"
+    (click)="descargarCertificado()"
+    class="w-full py-1 rounded-lg bg-primario text-white font-semibold hover:bg-primario/80 transition">
+    Descarga
+  </button>
+  <ng-template #normalButton>
+    <button
+      (click)="onClick()"
+      class="w-full py-1 rounded-lg bg-primario text-white font-semibold hover:bg-primario/80 transition">
+      {{ tipo === 'curso' ? 'Entra' : tipo === 'venta' ? 'Accede' : 'Descarga' }}
+    </button>
+  </ng-template>
+</div>
   </div>
 </div>

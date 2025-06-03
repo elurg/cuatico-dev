@@ -20,6 +20,11 @@ export class Card {
   @Input() progreso: number = 0;
 
   @Output() navigate = new EventEmitter<number>();
+  @Output() descargar = new EventEmitter<void>();
+
+  descargarCertificado() {
+    this.descargar.emit();
+  }
 
   onClick() {
     this.navigate.emit(this.id);
