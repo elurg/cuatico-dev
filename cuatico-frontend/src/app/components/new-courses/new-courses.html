@@ -1,16 +1,35 @@
-<div class="mx-8 my-6">
+<div class="container mx-auto px-4 py-8">
     <app-header [titulo]="'Cursos Nuevos'"
         [iconoD]="'M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25'">
         
     </app-header>
+
+    <!-- Grid de cursos -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+        <!-- Curso 1 -->
+        <div class="col-span-1">
+            <app-card2
+                tipo="venta"
+                titulo="Curso de Figma UX/UI"
+                profesor="Diana"
+                lecciones="14"
+                duracion="6 semanas"
+                fecha="5 de julio"
+                modalidad="remoto">
+            </app-card2>
+        </div>
+
+        <!-- Curso 2 -->
+        <div class="col-span-1">
+            <app-card2
+                tipo="venta"
+                titulo="Masterclass de Marketing Digital"
+                profesor="Diana"
+                lecciones="10"
+                duracion="4 semanas"
+                fecha="12 de julio"
+                modalidad="presencial">
+            </app-card2>
+        </div>
+    </div>
 </div>
-
-<div class=" flex flex-row gap-x-4 ml-8">
-                    <app-card tipo="venta" titulo="Curso de Figma UX/UI" fecha="5 de julio" precio="200"
-                        profesor="Diana Henao" modalidad="remoto" duracion="4 semanas"></app-card>
-
-                    <app-card tipo="venta" titulo="Masterclass de Marketing Digital" fecha="22 de junio" precio="150"
-                        profesor="Laura Gómez" modalidad="presencial" duracion="3 semanas"></app-card>
-
-
-            </div>
