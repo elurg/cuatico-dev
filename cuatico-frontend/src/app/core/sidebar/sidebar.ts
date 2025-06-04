@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { RouterModule } from '@angular/router';
-import { NgClass } from '@angular/common';
+import { Router, NavigationEnd, RouterModule } from '@angular/router';
+import { NgClass, CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
 
 interface CourseModule {
@@ -31,25 +30,21 @@ interface CourseData {
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.html',
-  imports: [RouterModule, NgClass],
   standalone: true,
+  imports: [CommonModule, RouterModule, NgClass],
 })
 export class Sidebar implements OnInit {
   cursosOpen = false;
+  sidebarOpenMobile = false;
 
-  constructor(readonly router: Router) { }
+  constructor(public router: Router) {}
 
   ngOnInit() {
-    // Inicializar el estado del menú basado en la ruta actual
     this.cursosOpen = this.router.url.startsWith('/cursos');
-
-    // Escuchar cambios de ruta para actualizar el estado del menú
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
-      if (this.router.url.startsWith('/cursos')) {
-        this.cursosOpen = true;
-      }
+      this.cursosOpen = this.router.url.startsWith('/cursos');
     });
   }
 
@@ -62,16 +57,16 @@ export class Sidebar implements OnInit {
     });
   }
 
-  isCursosSubrouteActive(): boolean {
-    return this.router.url.startsWith('/cursos');
-  }
-
   toggleCursos() {
     this.cursosOpen = !this.cursosOpen;
     this.router.navigate(['/cursos']);
   }
 
-  closeCursos() {
-    this.cursosOpen = false;
+  toggleSidebarMobile() {
+    this.sidebarOpenMobile = !this.sidebarOpenMobile;
+  }
+
+  closeSidebarMobile() {
+    this.sidebarOpenMobile = false;
   }
 }
