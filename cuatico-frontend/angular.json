@@ -13,8 +13,10 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/cuatico-frontend",
-            "browser": "src/main.ts",
+            "outputPath": {
+              "base": "dist/cuatico-frontend",
+              "browser": ""
+            },
             "polyfills": [
               "zone.js"
             ],
@@ -24,7 +26,8 @@
             ],
             "styles": [
               "src/styles.css"
-            ]
+            ],
+            "index": "src/index.html"
           },
           "configurations": {
             "production": {
@@ -51,7 +54,10 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular/build:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "buildTarget": "cuatico-frontend:build"
+          },
           "configurations": {
             "production": {
               "buildTarget": "cuatico-frontend:build:production"
@@ -63,10 +69,10 @@
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular/build:extract-i18n"
+          "builder": "@angular-devkit/build-angular:extract-i18n"
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": [
               "zone.js",
