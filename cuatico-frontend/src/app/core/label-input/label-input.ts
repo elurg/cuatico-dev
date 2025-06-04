@@ -1,9 +1,13 @@
 import { Component, Input, Output, EventEmitter, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-label-input',
   templateUrl: './label-input.html',
+  imports: [
+    CommonModule
+  ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
