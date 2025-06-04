@@ -1,196 +1,130 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
-
-interface DiaCalendario {
-  fecha: Date;
-  esDelMesActual: boolean;
-  tieneEvento: boolean;
-  eventos?: string[];
-  notas?: string; // Añadido campo para notas
-}
-
 
 @Component({
   selector: 'app-mini-calendar',
-  imports: [CommonModule, FormsModule],
-  templateUrl: './mini-calendar.html',
- 
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+    <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+      <div class="flex items-center justify-between p-6 bg-gradient-to-r from-primario to-primario/80">
+        <h2 class="text-lg font-semibold text-white">{{getCurrentMonthName()}} {{currentDate.getFullYear()}}</h2>
+        <div class="flex space-x-2">
+          <button class="p-1 hover:bg-white/10 rounded-full transition-colors" (click)="previousMonth()">
+            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button class="p-1 hover:bg-white/10 rounded-full transition-colors" (click)="nextMonth()">
+            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="p-6">
+        <div class="grid grid-cols-7 gap-1 text-center mb-2">
+          <div *ngFor="let day of ['D', 'L', 'M', 'M', 'J', 'V', 'S']" 
+               class="text-xs font-medium text-gray-500 p-2">
+            {{day}}
+          </div>
+        </div>
+        <div class="grid grid-cols-7 gap-1">
+          <button *ngFor="let date of getDaysInMonth()" 
+                  [class]="getDateClass(date)"
+                  [disabled]="!date"
+                  type="button"
+                  (click)="selectDate(date)">
+            {{date || ''}}
+          </button>
+        </div>
+      </div>
+    </div>
+  `
 })
-export class MiniCalendar implements OnInit {
-  @Input() size: 'small' | 'large' = 'large';
-  diasSemana: string[] = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
-  meses: string[] = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-  dias: DiaCalendario[] = [];
-  fechaActual: Date = new Date();
-  mesActual: number = this.fechaActual.getMonth();
-  anioActual: number = this.fechaActual.getFullYear();
-  diaSeleccionado: DiaCalendario | null = null;
-  notaActual: string = ''; // Para almacenar la nota que se está editando
-  modoEdicion: boolean = false; // Para controlar si estamos en modo edición de notas
- 
-  // Simulación de almacenamiento de notas luego a base de datos
-  notasAlmacenadas: Map<string, string> = new Map<string, string>();
+export class MiniCalendar {
+  currentDate = new Date();
+  selectedDate: Date | null = null;
+  monthNames = [
+    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+  ];
 
-
-  ngOnInit(): void {
-    this.generarDiasCalendario();
-    // Simulamos algunas notas
-    this.inicializarNotasEjemplo();
+  getCurrentMonthName(): string {
+    return this.monthNames[this.currentDate.getMonth()];
   }
 
-
-  inicializarNotasEjemplo(): void {
-    const hoy = new Date();
-    const fechaHoy = this.formatearFechaParaLlave(hoy);
-    this.notasAlmacenadas.set(fechaHoy, 'Recordar revisar el proyecto de Angular');
-   
-    const manana = new Date();
-    manana.setDate(manana.getDate() + 1);
-    const fechaManana = this.formatearFechaParaLlave(manana);
-    this.notasAlmacenadas.set(fechaManana, 'Reunión con el equipo de desarrollo');
-  }
-
-
-  // Formatea una fecha como string para usar como llave en el Map
-  formatearFechaParaLlave(fecha: Date): string {
-    return `${fecha.getFullYear()}-${fecha.getMonth()}-${fecha.getDate()}`;
-  }
-
-
-  generarDiasCalendario(): void {
-    this.dias = [];
-   
-    // Primer día del mes actual
-    const primerDiaMes = new Date(this.anioActual, this.mesActual, 1);
-    // Último día del mes actual
-    const ultimoDiaMes = new Date(this.anioActual, this.mesActual + 1, 0);
-   
-    // Ajustamos el día de la semana para que el lunes sea 0 y el domingo sea 6
-    const primerDiaSemana = (primerDiaMes.getDay() + 6) % 7;
-   
-    // Días del mes anterior para completar la primera semana
-    if (primerDiaSemana > 0) {
-      const ultimoDiaMesAnterior = new Date(this.anioActual, this.mesActual, 0);
-      const diasMesAnterior = ultimoDiaMesAnterior.getDate();
-     
-      for (let i = primerDiaSemana - 1; i >= 0; i--) {
-        const dia = diasMesAnterior - i;
-        const fecha = new Date(this.anioActual, this.mesActual - 1, dia);
-        const fechaLlave = this.formatearFechaParaLlave(fecha);
-        this.dias.push({
-          fecha,
-          esDelMesActual: false,
-          tieneEvento: Math.random() > 0.8, // Simulación de eventos aleatorios
-          notas: this.notasAlmacenadas.get(fechaLlave) // Recuperamos notas si existen
-        });
-      }
+  getDaysInMonth(): (number | null)[] {
+    const year = this.currentDate.getFullYear();
+    const month = this.currentDate.getMonth();
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    
+    const days: (number | null)[] = Array(42).fill(null); // 6 semanas x 7 días
+    
+    for (let i = 0; i < daysInMonth; i++) {
+      days[i + firstDay] = i + 1;
     }
-   
-    // Días del mes actual
-    for (let dia = 1; dia <= ultimoDiaMes.getDate(); dia++) {
-      const fecha = new Date(this.anioActual, this.mesActual, dia);
-      const fechaLlave = this.formatearFechaParaLlave(fecha);
-      this.dias.push({
-        fecha,
-        esDelMesActual: true,
-        tieneEvento: Math.random() > 0.8, // Simulación de eventos aleatorios
-        notas: this.notasAlmacenadas.get(fechaLlave) // Recuperamos notas si existen
-      });
+    
+    return days;
+  }
+
+  getDateClass(date: number | null): string {
+    if (!date) return 'text-transparent p-2';
+    
+    const baseClass = 'w-8 h-8 rounded-full text-sm hover:bg-gray-100 transition-colors duration-200 flex items-center justify-center';
+    
+    const isToday = this.isToday(date);
+    const isSelected = this.isSelected(date);
+    
+    if (isSelected) {
+      return `${baseClass} bg-primario text-white hover:bg-primario-600`;
     }
-   
-    // Ajustamos el día de la semana para que el lunes sea 0 y el domingo sea 6
-    const ultimoDiaSemana = (ultimoDiaMes.getDay() + 6) % 7;
-   
-    // Días del mes siguiente para completar la última semana
-    if (ultimoDiaSemana < 6) {
-      for (let i = 1; i <= 6 - ultimoDiaSemana; i++) {
-        const fecha = new Date(this.anioActual, this.mesActual + 1, i);
-        const fechaLlave = this.formatearFechaParaLlave(fecha);
-        this.dias.push({
-          fecha,
-          esDelMesActual: false,
-          tieneEvento: Math.random() > 0.8, // Simulación de eventos aleatorios
-          notas: this.notasAlmacenadas.get(fechaLlave) // Recuperamos notas si existen
-        });
-      }
+    
+    if (isToday) {
+      return `${baseClass} border-2 border-primario text-primario hover:bg-primario hover:text-white`;
     }
+    
+    return `${baseClass} text-gray-700`;
   }
 
-
-  cambiarMes(incremento: number): void {
-    this.mesActual += incremento;
-   
-    if (this.mesActual > 11) {
-      this.mesActual = 0;
-      this.anioActual++;
-    } else if (this.mesActual < 0) {
-      this.mesActual = 11;
-      this.anioActual--;
-    }
-   
-    this.generarDiasCalendario();
-    this.diaSeleccionado = null; // Reseteamos el día seleccionado al cambiar de mes
-    this.modoEdicion = false; // Salimos del modo edición al cambiar de mes
+  isToday(date: number): boolean {
+    const today = new Date();
+    return date === today.getDate() && 
+           this.currentDate.getMonth() === today.getMonth() && 
+           this.currentDate.getFullYear() === today.getFullYear();
   }
 
-
-  seleccionarDia(dia: DiaCalendario): void {
-    this.diaSeleccionado = dia;
-    this.notaActual = dia.notas || ''; // Inicializamos la nota actual con la nota del día o vacío
-    this.modoEdicion = false; // Al seleccionar un día, comenzamos en modo visualización
+  isSelected(date: number): boolean {
+    if (!this.selectedDate) return false;
+    return date === this.selectedDate.getDate() && 
+           this.currentDate.getMonth() === this.selectedDate.getMonth() && 
+           this.currentDate.getFullYear() === this.selectedDate.getFullYear();
   }
 
-
-  // Método para activar el modo edición de notas
-  activarEdicionNotas(): void {
-    this.modoEdicion = true;
+  selectDate(date: number | null): void {
+    if (!date) return;
+    this.selectedDate = new Date(
+      this.currentDate.getFullYear(),
+      this.currentDate.getMonth(),
+      date
+    );
   }
 
-
-  // Método para guardar la nota del día seleccionado
-  guardarNota(): void {
-    if (this.diaSeleccionado) {
-      const fechaLlave = this.formatearFechaParaLlave(this.diaSeleccionado.fecha);
-     
-      // Actualizamos el mapa de notas
-      if (this.notaActual.trim()) {
-        this.notasAlmacenadas.set(fechaLlave, this.notaActual);
-      } else {
-        // Si la nota está vacía, la eliminamos del mapa
-        this.notasAlmacenadas.delete(fechaLlave);
-      }
-     
-      // Actualizamos la nota en el objeto del día seleccionado
-      this.diaSeleccionado.notas = this.notaActual.trim() || undefined;
-     
-      // Salimos del modo edición
-      this.modoEdicion = false;
-    }
+  nextMonth(): void {
+    this.currentDate = new Date(
+      this.currentDate.getFullYear(),
+      this.currentDate.getMonth() + 1,
+      1
+    );
   }
 
-
-  // Método para cancelar la edición de notas
-  cancelarEdicionNota(): void {
-    if (this.diaSeleccionado) {
-      this.notaActual = this.diaSeleccionado.notas || '';
-      this.modoEdicion = false;
-    }
-  }
-
-
-  // Verificar si un día tiene notas
-  tieneNotas(dia: DiaCalendario): boolean {
-    return !!dia.notas && dia.notas.trim().length > 0;
-  }
-
-
-  esDiaActual(dia: DiaCalendario): boolean {
-    const hoy = new Date();
-    return dia.fecha.getDate() === hoy.getDate() &&
-           dia.fecha.getMonth() === hoy.getMonth() &&
-           dia.fecha.getFullYear() === hoy.getFullYear();
+  previousMonth(): void {
+    this.currentDate = new Date(
+      this.currentDate.getFullYear(),
+      this.currentDate.getMonth() - 1,
+      1
+    );
   }
 }
 
