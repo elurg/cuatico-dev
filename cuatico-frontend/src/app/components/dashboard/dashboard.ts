@@ -12,15 +12,6 @@ interface User {
   username: string;
   role: string;
 }
-import { UserStatsComponent } from '../user-stats/user-stats.component';
-import { TaskList } from '../task-list/task-list';
-import { Task } from '../task-list/task.interface';
-import { RecommendedCourses } from '../recommended-courses/recommended-courses';
-
-interface User {
-  username: string;
-  role: string;
-}
 
 @Component({
   selector: 'dashboard',
@@ -37,7 +28,6 @@ interface User {
   templateUrl: './dashboard.html'
 })
 export class Dashboard {
-  user: User = {
   user: User = {
     username: 'Juan',
     role: 'Pro'
@@ -113,13 +103,6 @@ export class Dashboard {
 
   irADetalle(id: number) {
     this.router.navigate(['/cursos', id]);
-  }
-
-  onTaskStatusChanged(task: Task) {
-    const taskIndex = this.tasks.findIndex(t => t.id === task.id);
-    if (taskIndex !== -1) {
-      this.tasks[taskIndex] = task;
-    }
   }
 
   onTaskStatusChanged(task: Task) {

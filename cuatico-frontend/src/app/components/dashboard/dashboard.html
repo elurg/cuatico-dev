@@ -1,15 +1,6 @@
 <!-- Encabezado de bienvenida con estadísticas -->
 <div class="bg-gradient-to-r from-primario to-primario/80 rounded-2xl p-8 text-white shadow-lg relative overflow-hidden mb-6 mx-6 mt-3">
-<!-- Encabezado de bienvenida con estadísticas -->
-<div class="bg-gradient-to-r from-primario to-primario/80 rounded-2xl p-8 text-white shadow-lg relative overflow-hidden mb-6 mx-6 mt-3">
   <div class="relative z-10">
-    <div class="flex items-center justify-between mb-6">
-      <div class="flex items-center">
-        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto de perfil" class="w-16 h-16 rounded-full border-2 border-white/50 mr-5">
-        <div>
-          <h1 class="text-3xl font-bold">¡Hola, {{user.username}}!</h1>
-          <p class="text-white/90 text-sm mt-1">Bienvenido de nuevo a tu panel de aprendizaje</p>
-        </div>
     <div class="flex items-center justify-between mb-6">
       <div class="flex items-center">
         <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto de perfil" class="w-16 h-16 rounded-full border-2 border-white/50 mr-5">
@@ -24,18 +15,7 @@
         </svg>
         Pro
       </span>
-      <span class="px-3 py-1 bg-primario/80 rounded-full text-sm font-medium flex items-center">
-        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-        </svg>
-        Pro
-      </span>
     </div>
-    <app-user-stats [stats]="{
-      completedLessons: '5/7',
-      studyTime: '2.5h',
-      overallProgress: '85%'
-    }"></app-user-stats>
     <app-user-stats [stats]="{
       completedLessons: '5/7',
       studyTime: '2.5h',
@@ -50,20 +30,8 @@
   <div class="lg:col-span-5 space-y-6">
     <!-- Cursos en progreso -->
     <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-    <!-- Cursos en progreso -->
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden">
       <div class="p-6 border-b border-gray-100 bg-gradient-to-r from-primario to-primario/80">
         <div class="flex items-center justify-between">
-          <div>
-            <h2 class="text-lg font-semibold text-white">Mis Cursos en Progreso</h2>
-            <p class="text-white/80 text-sm mt-1">Continúa donde lo dejaste</p>
-          </div>
-          <a [routerLink]="'/cursos'" class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-sm font-medium text-white transition-colors duration-200 flex items-center">
-            <span>Ver todos</span>
-            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </a>
           <div>
             <h2 class="text-lg font-semibold text-white">Mis Cursos en Progreso</h2>
             <p class="text-white/80 text-sm mt-1">Continúa donde lo dejaste</p>
@@ -98,15 +66,7 @@
           <div>
             <h2 class="text-lg font-semibold text-gray-800">Tareas Pendientes</h2>
             <p class="text-gray-500 text-sm mt-1">Mantén el ritmo con tus actividades</p>
-    <!-- Lista de tareas -->
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-      <div class="p-6 border-b border-gray-100">
-        <div class="flex items-center justify-between">
-          <div>
-            <h2 class="text-lg font-semibold text-gray-800">Tareas Pendientes</h2>
-            <p class="text-gray-500 text-sm mt-1">Mantén el ritmo con tus actividades</p>
           </div>
-          <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">3 pendientes</span>
           <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">3 pendientes</span>
         </div>
       </div>
@@ -121,11 +81,6 @@
     <!-- Calendario -->
     <div class="w-full">
       <app-mini-calendar></app-mini-calendar>
-  <!-- Sidebar derecho -->
-  <div class="lg:col-span-2 space-y-6 mr-4">
-    <!-- Calendario -->
-    <div class="w-full">
-      <app-mini-calendar></app-mini-calendar>
     </div>
 
     <!-- Cursos Recomendados -->
@@ -135,18 +90,8 @@
           <div>
             <h2 class="text-lg font-semibold text-gray-800">Cursos Recomendados</h2>
             <p class="text-gray-500 text-sm mt-1">Basado en tu perfil</p>
-    <!-- Cursos Recomendados -->
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-      <div class="p-6 border-b border-gray-100">
-        <div class="flex items-center justify-between">
-          <div>
-            <h2 class="text-lg font-semibold text-gray-800">Cursos Recomendados</h2>
-            <p class="text-gray-500 text-sm mt-1">Basado en tu perfil</p>
           </div>
         </div>
-      </div>
-      <div class="p-4">
-        <recommended-courses [courses]="recommendedCourses"></recommended-courses>
       </div>
       <div class="p-4">
         <recommended-courses [courses]="recommendedCourses"></recommended-courses>

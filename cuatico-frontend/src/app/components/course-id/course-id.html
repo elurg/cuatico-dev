@@ -1,143 +1,173 @@
 @if (courseData) {
-<div class="flex min-h-screen">
-  <div class="flex-1 space-y-6 p-6 bg-white rounded-lg shadow-md">
-    <!-- IMAGEN + TIULO CURSO -->
-    <div class="relative w-full rounded-lg overflow-hidden mb-6">
-      <img [src]="courseData.image" [alt]="'Imagen de ' + courseData.title"
-        class="hidden md:block w-full h-40 lg:h-64 xl:h-80 object-cover transition-all duration-300" />
-
-      <div class="p-4 md:absolute md:bottom-4 md:left-4 md:pl-8 flex justify-center md:justify-start">
-  <h2 class="text-primario md:text-white text-2xl md:text-3xl font-bold drop-shadow-lg
-             bg-secundario md:bg-transparent px-2 py-1 rounded-md">
-    {{ courseData.title }}
-  </h2>
-</div>
-
-    </div>
-
-
-
-    <!-- COMPONENTE PROGRESO -->
-    <div
-      class="mb-8 bg-gradient-to-r from-primario to-primario/80 rounded-2xl p-8 text-white shadow-lg relative overflow-hidden grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-      <div class="bg-white/10 backdrop-blur-lg rounded-xl p-4">
-        <p class="text-emerald-50 text-sm">Lecciones Completadas</p>
-        <p class="text-2xl font-bold mt-1">{{ courseData.progress.completedLessons }}</p>
+  <div class="flex min-h-screen">
+    <div class="flex-1 space-y-6 p-6 bg-white rounded-lg shadow-md">
+      <div class="relative w-full h-64 rounded-lg overflow-hidden mb-6">
+        <img
+          [src]="courseData.image"
+          [alt]="'Imagen de ' + courseData.title"
+          class="w-full h-full object-cover"
+        />
+        <h2
+          class="absolute bottom-4 left-4 text-white text-3xl font-bold drop-shadow-lg"
+        >
+          {{ courseData.title }}
+        </h2>
       </div>
-      <div class="bg-white/10 backdrop-blur-lg rounded-xl p-4">
-        <p class="text-emerald-50 text-sm">Tiempo de Estudio</p>
-        <p class="text-2xl font-bold mt-1">{{ courseData.progress.studyTime }}</p>
-      </div>
-      <div class="bg-white/10 backdrop-blur-lg rounded-xl p-4">
-        <p class="text-emerald-50 text-sm">Progreso General</p>
-        <p class="text-2xl font-bold mt-1">{{ courseData.progress.overallProgress }}</p>
-      </div>
-    </div>
 
-    <!-- PARTE DE CONTENIDOS DEL CURSO -->
-    <div class="flex flex-col lg:flex-row gap-6 items-start">
-      <div class="w-full lg:flex-1 bg-white border border-gray-200 rounded-md p-4">
-        <div class="flex justify-between items-center mb-2">
-          <p class="text-gray-700 text-base font-semibold">
-            CONTENIDO DEL CURSO
-          </p>
+      <div
+        class="mb-8 bg-gradient-to-r from-primario to-primario/80 rounded-2xl p-8 text-white shadow-lg relative overflow-hidden grid grid-cols-1 md:grid-cols-3 gap-6 mt-6"
+      >
+        <div class="bg-white/10 backdrop-blur-lg rounded-xl p-4">
+          <p class="text-emerald-50 text-sm">Lecciones Completadas</p>
+          <p class="text-2xl font-bold mt-1">{{ courseData.progress.completedLessons }}</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-lg rounded-xl p-4">
+          <p class="text-emerald-50 text-sm">Tiempo de Estudio</p>
+          <p class="text-2xl font-bold mt-1">{{ courseData.progress.studyTime }}</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-lg rounded-xl p-4">
+          <p class="text-emerald-50 text-sm">Progreso General</p>
+          <p class="text-2xl font-bold mt-1">{{ courseData.progress.overallProgress }}</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-start">
+        <div class="bg-white border border-gray-200 rounded-md p-4 flex-1">
+          <div class="flex justify-between items-center mb-2">
+            <p class="text-gray-700 text-base font-semibold">
+              CONTENIDO DEL CURSO
+            </p>
+          </div>
+
+          @for (module of courseData.modules; track module.number) {
+            <app-module
+              class="m-2"
+              [titulo]="module.title"
+              [numero]="module.number"
+              [estado]="module.status"
+              [nota]="module.grade"
+            ></app-module>
+          }
         </div>
 
-        <!-- MODULOS DEL CURSO -->
-        @for (module of courseData.modules; track module.number) {
-        <app-module class="m-2" [titulo]="module.title" [numero]="module.number" [estado]="module.status"
-          [nota]="module.grade"></app-module>
-        }
-      </div>
-
-      <!-- PARTE DE INFORMACION -->
-
-      <div class="max-w-xs w-full mx-auto lg:max-w-80 lg:w-80 space-y-4">
-        <div class="w-full border border-gray-200 rounded-md lg:w-80 space-y-4 p-4 sm:p-6">
-          <p class="text-gray-700 text-base sm:text-lg font-semibold mb-4">PROFESOR</p>
-
-          <!-- INFORMACION PROFESOR -->
-          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 ">
-            <img [src]="courseData.professor.image" [alt]="'Foto de ' + courseData.professor.name"
-              class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-secundario" />
-
-            <div>
-              <p class="text-base font-medium text-gray-900">{{ courseData.professor.name }}</p>
-              <p class="text-sm text-gray-500">{{ courseData.professor.role }}</p>
-              <p class="text-sm text-gray-500 break-all">{{ courseData.professor.email }}</p>
+        <div class="w-80 space-y-4">
+          <!-- Bloque de información del profesor -->
+          <div class="bg-white border border-gray-200 rounded-md p-4">
+            <p class="text-gray-700 text-base font-semibold mb-2">PROFESOR</p>
+            <div class="flex items-center gap-4">
+              <img
+                [src]="courseData.professor.image"
+                [alt]="'Foto de ' + courseData.professor.name"
+                class="w-12 sm:w-16 h-12 sm:h-16 rounded-full border-2 border-secundario mb-4 sm:mb-0"
+              />
+              <div>
+                <p class="text-sm font-medium text-gray-900">{{ courseData.professor.name }}</p>
+                <p class="text-xs text-gray-500">{{ courseData.professor.role }}</p>
+                <p class="text-xs text-gray-500">{{ courseData.professor.email }}</p>
+              </div>
+            </div>
+            <div class="flex gap-6 mt-6">
+              <a
+                href="#"
+                class="flex items-center gap-2 text-sm text-blue-600 font-medium hover:underline hover:text-blue-800 transition"
+              >
+                <img
+                  src="./assets/teams.png"
+                  alt="Icono de Teams"
+                  class="w-6 h-6 object-cover"
+                />
+                Enlace a Teams
+              </a>
+              <a
+                href="#"
+                class="flex items-center gap-2 text-sm text-blue-600 font-medium hover:underline hover:text-blue-800 transition"
+              >
+                <img
+                  src="./assets/slack.svg"
+                  alt="Icono de Slack"
+                  class="w-6 h-6 object-cover"
+                />
+                Enlace a Slack
+              </a>
             </div>
           </div>
 
-          <!-- ENLACES -->
-          <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-6">
-            <a href="#"
-              class="flex items-center gap-2 text-sm text-blue-600 font-medium hover:underline hover:text-blue-800 transition">
-              <img src="./assets/teams.png" alt="Icono de Teams" class="w-5 h-5 object-contain" />
-              Enlace a Teams
-            </a>
-            <a href="#"
-              class="flex items-center gap-2 text-sm text-blue-600 font-medium hover:underline hover:text-blue-800 transition">
-              <img src="./assets/slack.svg" alt="Icono de Slack" class="w-5 h-5 object-contain" />
-              Enlace a Slack
-            </a>
+          <!-- Bloque de tareas -->
+          <div class="bg-white border border-gray-200 rounded-md p-4">
+            <p class="text-gray-700 text-base font-semibold mb-2">PRÓXIMAS TAREAS</p>
+            <div class="space-y-3">
+              @for (task of courseData.tasks; track task.title) {
+                <div class="flex items-center pl-2 pr-3 py-2 bg-gray-50 rounded-xl">
+                  <div
+                    class="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center"
+                    [class]="task.status === 'En Progreso' ? 'bg-blue-100' : 'bg-purple-100'"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      [class]="task.status === 'En Progreso' ? 'text-blue-500' : 'text-purple-500'"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                      />
+                    </svg>
+                  </div>
+                  <div class="ml-3">
+                    <h3 class="text-sm font-medium text-gray-800">
+                      {{ task.title }}
+                    </h3>
+                    <p class="text-xs text-gray-500">Vence en {{ task.dueIn }}</p>
+                  </div>
+                  <span
+                    class="ml-auto text-xs font-medium px-3 py-1 rounded-full whitespace-nowrap"
+                    [class]="task.status === 'En Progreso' ? 'text-blue-500 bg-blue-50' : 'text-purple-500 bg-purple-50'"
+                  >
+                    {{ task.status }}
+                  </span>
+                </div>
+              }
+            </div>
           </div>
-        </div>
 
-        <!-- TAREAS -->
-        <div class="bg-white border border-gray-200 rounded-md p-4 sm:p-6">
-          <p class="text-gray-700 text-base sm:text-lg font-semibold mb-4">PRÓXIMAS TAREAS</p>
-
-          <div class="space-y-3">
-            @for (task of courseData.tasks; track task.title) {
-            <div
-              class="flex flex-col sm:flex-row items-start sm:items-center pl-2 pr-3 py-2 bg-gray-50 rounded-xl gap-2 sm:gap-4">
-              <div class="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center"
-                [class]="task.status === 'En Progreso' ? 'bg-blue-100' : 'bg-purple-100'">
-                <svg class="w-4 h-4" [class]="task.status === 'En Progreso' ? 'text-blue-500' : 'text-purple-500'"
-                  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+          <!-- Botón para solicitar tutoría -->
+          <div class="flex justify-center">
+            <button
+              (click)="solicitarTutoria()"
+              class="bg-primario bg-opacity-50 text-white px-3 py-1.5 rounded-md shadow-md hover:bg-opacity-70 transition text-sm w-full"
+            >
+              <span class="flex items-center gap-1.5 justify-center">
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
                 </svg>
-              </div>
-
-              <div class="flex-1 min-w-0">
-                <h3 class="text-sm font-medium text-gray-800 truncate">{{ task.title }}</h3>
-                <p class="text-xs text-gray-500">Vence en {{ task.dueIn }}</p>
-              </div>
-
-              <span class="text-xs font-medium px-3 py-1 rounded-full whitespace-nowrap mt-1 sm:mt-0"
-                [class]="task.status === 'En Progreso' ? 'text-blue-500 bg-blue-50' : 'text-purple-500 bg-purple-50'">
-                {{ task.status }}
+                <span>Solicita una tutoría</span>
               </span>
-            </div>
-            }
+            </button>
           </div>
-        </div>
-
-
-        <!-- BOTON TUTORIA -->
-        <div class="flex justify-center">
-          <button (click)="solicitarTutoria()"
-            class="bg-primario bg-opacity-50 text-white px-3 py-1.5 rounded-md shadow-md hover:bg-opacity-70 transition text-sm w-full">
-            <span class="flex items-center gap-1.5 justify-center">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>Solicita una tutoría</span>
-            </span>
-          </button>
         </div>
       </div>
     </div>
   </div>
-</div>
 } @else {
-<div class="flex min-h-screen items-center justify-center">
-  <div class="text-center">
-    <h2 class="text-2xl font-bold text-gray-800">Curso no encontrado</h2>
-    <p class="mt-2 text-gray-600">El curso que buscas no existe o no está disponible.</p>
+  <div class="flex min-h-screen items-center justify-center">
+    <div class="text-center">
+      <h2 class="text-2xl font-bold text-gray-800">Curso no encontrado</h2>
+      <p class="mt-2 text-gray-600">El curso que buscas no existe o no está disponible.</p>
+    </div>
   </div>
-</div>
 }

@@ -35,13 +35,6 @@ interface CourseData {
   standalone: true,
 })
 export class Sidebar implements OnInit {
-   sidebarAbierto = false;
-
-  toggleSidebar(): void {
-    this.sidebarAbierto = !this.sidebarAbierto;
-  }
-
-
   cursosOpen = false;
 
   constructor(readonly router: Router) { }
