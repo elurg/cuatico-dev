@@ -1,18 +1,14 @@
 <div class="min-h-[90vh] flex flex-col bg-gray-50">
   <div class="flex-1 overflow-auto">
     <div class="px-4 sm:px-8 py-6 sm:py-10 max-w-7xl mx-auto">
-      <!-- Cabecera con el componente app-header -->
+      <!-- HEADER -->
       <app-header
         [titulo]="'Mis cursos'"
         [iconoD]="'M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25'">
-        <!-- Aquí puedes proyectar contenido (por ejemplo, filtros) -->
-        <div class="filtros">
-          <!-- Tus filtros aquí -->
-        </div>
       </app-header>
 
-      <!-- Grid de tarjetas -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto py-8 px-8">
+      <!-- TARJETAS -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 max-w-7xl mx-auto py-8 px-8">
         <app-card
           [id]="1"
           (navigate)="irADetalle($event)"
