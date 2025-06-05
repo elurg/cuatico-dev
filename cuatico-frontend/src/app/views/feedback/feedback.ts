@@ -27,8 +27,7 @@ interface FeedbackItem {
   selector: 'app-feedback',
   standalone: true,
   imports: [DatePipe, FormsModule],
-  templateUrl: './feedback.html',
-  styleUrls: ['./feedback.css']
+  templateUrl: './feedback.html'
 })
 export class Feedback {
   allFeedbacks: FeedbackItem[] = [
