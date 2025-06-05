@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
-import { Card2 } from '../../core/card2/card2';
-import { MiniCalendar } from '../mini-calendar/mini-calendar';
+import { Card2 } from '../../components/card2/card2';
 import { UserStatsComponent } from '../user-stats/user-stats.component';
 import { TaskList } from '../task-list/task-list';
 import { Task } from '../task-list/task.interface';
-import { RecommendedCourses } from '../recommended-courses/recommended-courses';
+import { RecommendedCourses } from '../../components/recommended-courses/recommended-courses';
+import { MiniCalendar } from 'src/app/components/mini-calendar/mini-calendar';
 
 interface User {
   username: string;
