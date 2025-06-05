@@ -3,9 +3,9 @@ import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Navbar } from './core/navbar/navbar';
-import { Sidebar } from './core/sidebar/sidebar';
-import { Footer } from './core/footer/footer';
+import { Navbar } from './components/navbar/navbar';
+import { Sidebar } from './components/sidebar/sidebar';
+import { Footer } from './components/footer/footer';
 
 @Component({
   selector: 'app-root',

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Card2 } from '../../core/card2/card2';
-import { Header } from '../header/header';
+import { Card2 } from '../../components/card2/card2';
+import { Header } from 'src/app/components/header/header';
 
 @Component({
   selector: 'app-new-courses',

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Card2 } from '../../core/card2/card2';
+import { Card2 } from '../../components/card2/card2';
 import { Router } from '@angular/router';
-import { Header } from '../header/header';
+import { Header } from 'src/app/components/header/header';
 
 @Component({
   selector: 'app-courses',

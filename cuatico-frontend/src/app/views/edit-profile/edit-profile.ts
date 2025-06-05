@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { LabelInput } from '../../core/label-input/label-input';
+import { LabelInput } from '../../components/label-input/label-input';
 
 @Component({
   selector: 'app-edit-profile',

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { InputFile } from '../../core/input-file/input-file';
+import { InputFile } from '../../components/input-file/input-file';
 import { CommonModule } from '@angular/common';
-import { Header } from '../header/header';
+import { Header } from 'src/app/components/header/header';
 
 @Component({
   selector: 'app-module-id',

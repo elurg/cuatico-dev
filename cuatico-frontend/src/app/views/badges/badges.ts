@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Header } from '../header/header';
+import { Header } from 'src/app/components/header/header';
 
 @Component({
   selector: 'app-badges',

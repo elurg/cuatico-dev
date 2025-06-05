@@ -1,10 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { Calendar } from '../../core/calendar/calendar';
+import { Calendar } from '../../components/calendar/calendar';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Notes } from '../notes/notes';
 import { TeamTasks } from '../team-tasks/team-tasks';
-import { DiaCalendario } from '../../core/calendar/calendar';
+import { DiaCalendario } from '../../components/calendar/calendar';
 
 interface EventoHorario {
   id: string;
