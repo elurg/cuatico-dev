@@ -5,11 +5,10 @@
   (click)="closeSidebarMobile()"
 ></div>
 
-<!-- Icon-only sidebar for small screens when sidebar is hidden -->
-<div *ngIf="!sidebarOpenMobile" class="lg:hidden fixed inset-y-0 left-0 z-50 w-16 bg-white border-r border-primario/20 flex flex-col items-center space-y-4">
-  <!-- Logo arriba de la casita, dentro del cuadrado morado -->
-  <a routerLink="/dashboard" class="bg-primario flex items-center justify-center w-16 h-14">
-    <img src="assets/logop.avif" alt="Logo Cuático" class="h-8 w-auto object-contain" />
+<!-- Sidebar SOLO iconos -->
+<div *ngIf="!sidebarOpenMobile" class="fixed inset-y-0 left-0 z-50 w-16 bg-transparent flex flex-col items-center space-y-4 lg:hidden"> 
+  <a routerLink="/dashboard" class="bg-transparent flex items-center justify-center w-16 h-16">
+    <img class="h-8 w-auto object-contain" />
   </a>
   <!-- Iconos del menú -->
   <a routerLink="/dashboard" class="relative group" aria-label="Dashboard">
@@ -80,10 +79,11 @@
 
 <!-- Full Sidebar -->
 <div [ngClass]="{
-      'fixed inset-y-0 left-0 z-50 w-64 bg-white transform transition-transform duration-200 ease-in-out lg:translate-x-0 lg:relative': true,
-      '-translate-x-full': !sidebarOpenMobile,
-      'translate-x-0': sidebarOpenMobile
-    }">
+  'fixed inset-y-0 left-0 z-50 w-64 bg-white lg:relative lg:block border-r border-primario/20': true,
+  'hidden': !sidebarOpenMobile,
+  'block': sidebarOpenMobile
+}">
+
   <div class="h-full bg-white py-6 px-4 w-64 border-r border-primario/20">
     <nav class="space-y-1" aria-label="Sidebar Navigation">
       <!-- Dashboard -->
