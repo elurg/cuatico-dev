@@ -1,10 +1,14 @@
 <div class="flex flex-col min-h-screen">
-  <app-navbar *ngIf="currentRoute !== '/login' && currentRoute !== '/register' && currentRoute !== '/'&& currentRoute !== '/404'"></app-navbar>
+  <app-navbar *ngIf="currentRoute !== '/login' && currentRoute !== '/register' && currentRoute !== '/' && currentRoute !== '/404'"></app-navbar>
+  
   <div class="flex flex-1">
-    <app-sidebar class="sm:mr-12 md:mr-12" *ngIf="currentRoute !== '/login' && currentRoute !== '/register' && currentRoute !== '/' && currentRoute !== '/perfil' && currentRoute !== '/404' "></app-sidebar>
-    <div class="flex-1">
+    <app-sidebar *ngIf="currentRoute !== '/login' && currentRoute !== '/register' && currentRoute !== '/' && currentRoute !== '/perfil' && currentRoute !== '/404'"></app-sidebar>
+    
+    <!-- Aquí añadimos padding-left para no solapar el sidebar de iconos -->
+    <div class="flex-1 pl-16 lg:pl-64">
       <router-outlet></router-outlet>
     </div>
   </div>
-  <app-footer *ngIf="currentRoute !== '/login' && currentRoute !== '/register' && currentRoute !== '/' && currentRoute !== '/404' "></app-footer>
+
+  <app-footer *ngIf="currentRoute !== '/login' && currentRoute !== '/register' && currentRoute !== '/' && currentRoute !== '/404'"></app-footer>
 </div>
