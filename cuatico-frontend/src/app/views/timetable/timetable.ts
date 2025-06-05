@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { Notes } from '../notes/notes';
 import { TeamTasks } from '../team-tasks/team-tasks';
 import { DiaCalendario } from '../../components/calendar/calendar';
+import { TaskList } from '../task-list/task-list';
+import { Task } from '../task-list/task.interface';
 
 interface EventoHorario {
   id: string;
@@ -24,7 +26,7 @@ interface NotaCalendario {
 @Component({
   selector: 'app-timetable',
   standalone: true,
-  imports: [Calendar, FormsModule, CommonModule, TeamTasks],
+  imports: [Calendar, FormsModule, CommonModule, TaskList],
   templateUrl: './timetable.html'
 })
 export class Timetable {
@@ -94,6 +96,39 @@ export class Timetable {
       horaInicio: '2:00 PM',
       horaFin: '4:00 PM',
       color: 'bg-green-200'
+    }
+  ];
+
+  tasks: Task[] = [
+    {
+      id: 1,
+      title: 'Completar ejercicio de algoritmos',
+      description: 'Resolver los problemas de programación dinámica',
+      type: 'algorithm',
+      status: 'Pendiente',
+      priority: 'alta',
+      dueIn: '2 días',
+      course: 'Algoritmos Avanzados'
+    },
+    {
+      id: 2,
+      title: 'Diseñar wireframes',
+      description: 'Crear los wireframes para la nueva funcionalidad',
+      type: 'design',
+      status: 'En Progreso',
+      priority: 'media',
+      dueIn: '3 días',
+      course: 'Diseño UX'
+    },
+    {
+      id: 3,
+      title: 'Investigación de mercado',
+      description: 'Analizar la competencia y tendencias actuales',
+      type: 'research',
+      status: 'Pendiente',
+      priority: 'baja',
+      dueIn: '5 días',
+      course: 'Marketing Digital'
     }
   ];
 
@@ -188,5 +223,16 @@ export class Timetable {
       // Forzar detección de cambios
       this.eventos = [...this.eventos];
     }
+  }
+
+  onTaskStatusChanged(updatedTask: Task) {
+    const index = this.tasks.findIndex(task => task.id === updatedTask.id);
+    if (index !== -1) {
+      this.tasks[index] = updatedTask;
+    }
+  }
+
+  onTaskAdded(newTask: Task) {
+    this.tasks = [...this.tasks, newTask];
   }
 }

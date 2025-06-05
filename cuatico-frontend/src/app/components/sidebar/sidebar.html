@@ -64,14 +64,14 @@
     <span
       class="absolute left-14 bg-gray-800 text-white text-xs rounded py-1 px-2 hidden group-hover:block">Feedback</span>
   </a>
-  <a routerLink="/organizacion" class="relative group" aria-label="Organizacion">
-    <svg class="h-5 w-5 text-gray-500 group-hover:text-primario"
-      [ngClass]="{ 'text-primario': isActive('/organizacion') }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <a routerLink="/organizacion" class="relative group" aria-label="Mi Agenda">
+    <svg class="h-5 w-5 text-gray-500 group-hover:text-primario" [ngClass]="{ 'text-primario': isActive('/organizacion') }"
+      fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
         d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
     </svg>
     <span
-      class="absolute left-14 bg-gray-800 text-white text-xs rounded py-1 px-2 hidden group-hover:block">Organizacion</span>
+      class="absolute left-14 bg-gray-800 text-white text-xs rounded py-1 px-2 hidden group-hover:block">Mi Agenda</span>
   </a>
   <a routerLink="/perfil" class="relative group" aria-label="Perfil">
     <svg class="h-5 w-5 text-gray-500 group-hover:text-primario" [ngClass]="{ 'text-primario': isActive('/perfil') }"
@@ -171,18 +171,18 @@
         </svg>
         <span [ngClass]="{ 'font-bold': isActive('/feedback') }">Feedback</span>
       </a>
-      <!-- Organizacion -->
+      <!-- Mi Agenda -->
       <a routerLink="/organizacion" routerLinkActive="bg-primario/10 text-primario shadow"
         [routerLinkActiveOptions]="{ exact: true }"
         class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-primario/5 rounded-lg group"
-        aria-label="Organizacion">
+        aria-label="Mi Agenda">
         <svg class="h-5 w-5 mr-3"
           [ngClass]="{ 'text-primario': isActive('/organizacion'), 'text-gray-500': !isActive('/organizacion') }"
           fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
         </svg>
-        <span [ngClass]="{ 'font-bold': isActive('/organizacion') }">Organizacion</span>
+        <span [ngClass]="{ 'font-bold': isActive('/organizacion') }">Mi Agenda</span>
       </a>
       <!-- Perfil -->
       <a routerLink="/perfil" routerLinkActive="bg-primario/10 text-primario shadow"

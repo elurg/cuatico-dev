@@ -172,7 +172,9 @@
   
   <!-- Contenido de la pestaña Mis Tareas -->
   <div *ngIf="tabActivo === 'mis-tareas'" class="animate-fade-in">
-    <app-team-tasks></app-team-tasks>
+    <div class="p-4">
+      <task-list [tasks]="tasks" (taskStatusChanged)="onTaskStatusChanged($event)" (taskAdded)="onTaskAdded($event)"></task-list>
+    </div>
   </div>
 </div>
 <!-- Modal para añadir evento -->

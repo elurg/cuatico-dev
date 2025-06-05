@@ -46,17 +46,17 @@
       </div>
       <div class="p-6">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md hover:-translate-y-1 hover:scale-[1.01] transition-all duration-200 cursor-grab active:cursor-grabbing border-2 border-transparent hover:border-primario/20 hover:bg-primario/5">
+          <div class="bg-white rounded-xl shadow-sm p-6 hover:shadow-sm hover:-translate-y-0.5 hover:scale-[1.005] transition-all duration-150 cursor-grab active:cursor-grabbing border-2 border-transparent hover:border-primario/10 hover:bg-primario/5">
             <app-card2 [id]="2" (navigate)="irADetalle($event)" titulo="UX Research" profesor="Diana" lecciones="14"
               duracion="6 semanas" [progreso]="70" fecha="19 de Abril" modalidad="presencial">
             </app-card2>
           </div>
-          <div class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md hover:-translate-y-1 hover:scale-[1.01] transition-all duration-200 cursor-grab active:cursor-grabbing border-2 border-transparent hover:border-primario/20 hover:bg-primario/5">
+          <div class="bg-white rounded-xl shadow-sm p-6 hover:shadow-sm hover:-translate-y-0.5 hover:scale-[1.005] transition-all duration-150 cursor-grab active:cursor-grabbing border-2 border-transparent hover:border-primario/10 hover:bg-primario/5">
             <app-card2 [id]="1" (navigate)="irADetalle($event)" titulo="Desarrolla tu creatividad" profesor="Diana"
               lecciones="12" duracion="6 semanas" [progreso]="65" fecha="26 de Abril" modalidad="remoto">
             </app-card2>
           </div>
-          <div class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md hover:-translate-y-1 hover:scale-[1.01] transition-all duration-200 cursor-grab active:cursor-grabbing border-2 border-transparent hover:border-primario/20 hover:bg-primario/5">
+          <div class="bg-white rounded-xl shadow-sm p-6 hover:shadow-sm hover:-translate-y-0.5 hover:scale-[1.005] transition-all duration-150 cursor-grab active:cursor-grabbing border-2 border-transparent hover:border-primario/10 hover:bg-primario/5">
             <app-card2 [id]="4" (navigate)="irADetalle($event)" titulo="Diseño de producto" profesor="Diana"
               lecciones="10" duracion="6 semanas" [progreso]="45" fecha="20 de Mayo" modalidad="remoto">
             </app-card2>
@@ -77,8 +77,8 @@
         </div>
       </div>
       <div class="p-4">
-        <div class="bg-white rounded-xl shadow-sm p-6 hover:shadow-2xl hover:-translate-y-3 hover:scale-[1.03] transition-all duration-300 cursor-grab active:cursor-grabbing border-2 border-transparent hover:border-primario/30 hover:bg-primario/5">
-          <task-list [tasks]="tasks"></task-list>
+        <div class="bg-white rounded-xl shadow-sm p-6 border-2 border-transparent">
+          <task-list [tasks]="tasks" (taskStatusChanged)="onTaskStatusChanged($event)" (taskAdded)="onTaskAdded($event)"></task-list>
         </div>
       </div>
     </div>

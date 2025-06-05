@@ -13,102 +13,99 @@ interface User {
   role: string;
 }
 
+interface RecommendedCourse {
+  id: number;
+  title: string;
+  instructor: string;
+  price: number;
+  startDate: string;
+  thumbnail: string;
+  duration: string;
+  modality: 'presencial' | 'remoto';
+}
+
 @Component({
-  selector: 'dashboard',
+  selector: 'app-dashboard',
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    Card2,
-    MiniCalendar,
-    UserStatsComponent,
-    TaskList,
-    RecommendedCourses
-  ],
+  imports: [CommonModule, RouterModule, Card2, UserStatsComponent, TaskList, RecommendedCourses, MiniCalendar],
   templateUrl: './dashboard.html'
 })
 export class Dashboard {
   user: User = {
     username: 'Juan',
-    role: 'Pro'
+    role: 'Estudiante'
   };
 
   tasks: Task[] = [
     {
       id: 1,
-      title: 'Diseñar interfaz de usuario',
-      description: 'Crear wireframes y mockups para la nueva interfaz',
-      type: 'design',
-      status: 'En Progreso',
+      title: 'Completar ejercicio de algoritmos',
+      description: 'Resolver los problemas de programación dinámica',
+      type: 'algorithm',
+      status: 'Pendiente',
       priority: 'alta',
       dueIn: '2 días',
-      course: 'UX/UI Design'
+      course: 'Algoritmos Avanzados'
     },
     {
       id: 2,
-      title: 'Implementar autenticación',
-      description: 'Integrar sistema de login con OAuth',
-      type: 'algorithm',
+      title: 'Diseñar wireframes',
+      description: 'Crear los wireframes para la nueva funcionalidad',
+      type: 'design',
       status: 'En Progreso',
-      priority: 'alta',
+      priority: 'media',
       dueIn: '3 días',
-      course: 'Backend Development'
+      course: 'Diseño UX'
     },
     {
       id: 3,
-      title: 'Investigar APIs',
-      description: 'Analizar APIs disponibles para integración',
+      title: 'Investigación de mercado',
+      description: 'Analizar la competencia y tendencias actuales',
       type: 'research',
-      status: 'En Progreso',
-      priority: 'media',
-      dueIn: '5 días',
-      course: 'API Integration'
-    },
-    {
-      id: 4,
-      title: 'Completar quiz de React',
-      description: 'Resolver cuestionario sobre hooks',
-      type: 'quiz',
-      status: 'En Progreso',
+      status: 'Pendiente',
       priority: 'baja',
-      dueIn: '1 semana',
-      course: 'React Advanced'
+      dueIn: '5 días',
+      course: 'Marketing Digital'
     }
   ];
 
-  recommendedCourses = [
+  recommendedCourses: RecommendedCourse[] = [
     {
-      id: 5,
-      title: 'Curso de Figma UX/UI',
-      instructor: 'Diana Henao',
-      price: 200,
-      startDate: '5 de julio',
+      id: 1,
+      title: 'Machine Learning',
+      instructor: 'Ana García',
+      price: 299,
+      startDate: '15 de Mayo',
       thumbnail: 'assets/curso.avif',
-      duration: '4 semanas',
+      duration: '8 semanas',
       modality: 'remoto'
     },
     {
-      id: 6,
-      title: 'Diseño de Interfaces Avanzado',
-      instructor: 'Diana Henao',
-      price: 250,
-      startDate: '12 de julio',
+      id: 2,
+      title: 'Diseño UX/UI',
+      instructor: 'Carlos Ruiz',
+      price: 249,
+      startDate: '22 de Mayo',
       thumbnail: 'assets/curso.avif',
       duration: '6 semanas',
       modality: 'presencial'
     }
   ];
 
-  constructor(private router: Router) {}
-
-  irADetalle(id: number) {
-    this.router.navigate(['/cursos', id]);
-  }
-
-  onTaskStatusChanged(task: Task) {
-    const taskIndex = this.tasks.findIndex(t => t.id === task.id);
-    if (taskIndex !== -1) {
-      this.tasks[taskIndex] = task;
+  onTaskStatusChanged(updatedTask: Task) {
+    const index = this.tasks.findIndex(task => task.id === updatedTask.id);
+    if (index !== -1) {
+      this.tasks[index] = updatedTask;
     }
   }
+
+  onTaskAdded(newTask: Task) {
+    this.tasks = [...this.tasks, newTask];
+  }
+
+  irADetalle(id: number) {
+    this.router.navigate(['/curso', id]);
+  }
+
+  constructor(private router: Router) {}
 }
