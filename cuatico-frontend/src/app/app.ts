@@ -1,26 +1,24 @@
-import { Component } from '@angular/core';
-import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
-import { filter } from 'rxjs/operators';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { Footer } from './components/footer/footer';
 import { Navbar } from './components/navbar/navbar';
 import { Sidebar } from './components/sidebar/sidebar';
-import { Footer } from './components/footer/footer';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, Sidebar, FormsModule, CommonModule, Navbar, Footer],
   templateUrl: './app.html',
-  styleUrl: './app.css'
-})
+ })
 export class App {
   usuario = { nombre: '', email: '', telefono: '' };
   protected title = 'cuatico-frontend';
   currentRoute: string = '';
 
   constructor(public router: Router) {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    
+       
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: any) => {
