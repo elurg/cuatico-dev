@@ -7,6 +7,11 @@
 
 <!-- Icon-only sidebar for small screens when sidebar is hidden -->
 <div *ngIf="!sidebarOpenMobile" class="lg:hidden fixed inset-y-0 left-0 z-50 w-12 bg-white border-r border-primario/20 flex flex-col items-center py-6 space-y-4">
+  <!-- Logo arriba de la casita, dentro del cuadrado morado -->
+  <a routerLink="/dashboard" class="bg-primario rounded-xl flex items-center justify-center w-10 h-10 mb-2">
+    <img src="assets/logo2.png" alt="Logo Cuático" class="h-6 w-6 object-contain" />
+  </a>
+  <!-- Iconos del menú -->
   <a routerLink="/dashboard" class="relative group" aria-label="Dashboard">
     <svg class="h-5 w-5 text-gray-500 group-hover:text-primario"
          [ngClass]="{ 'text-primario': isActive('/dashboard') }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -15,7 +20,6 @@
     </svg>
     <span class="absolute left-14 bg-gray-800 text-white text-xs rounded py-1 px-2 hidden group-hover:block">Dashboard</span>
   </a>
-
   <button (click)="toggleSidebarMobile()" class="relative group" aria-label="Mis Cursos">
     <svg class="h-5 w-5 text-gray-500 group-hover:text-primario"
          [ngClass]="{ 'text-primario': cursosOpen }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -24,7 +28,6 @@
     </svg>
     <span class="absolute left-14 bg-gray-800 text-white text-xs rounded py-1 px-2 hidden group-hover:block">Mis Cursos</span>
   </button>
-
   <a routerLink="/calificaciones" class="relative group" aria-label="Calificaciones">
     <svg class="h-5 w-5 text-gray-500 group-hover:text-primario"
          [ngClass]="{ 'text-primario': isActive('/calificaciones') }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -33,7 +36,6 @@
     </svg>
     <span class="absolute left-14 bg-gray-800 text-white text-xs rounded py-1 px-2 hidden group-hover:block">Calificaciones</span>
   </a>
-
   <a routerLink="/certificado" class="relative group" aria-label="Certificado">
     <svg class="h-5 w-5 text-gray-500 group-hover:text-primario"
          [ngClass]="{ 'text-primario': isActive('/certificado') }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -42,7 +44,6 @@
     </svg>
     <span class="absolute left-14 bg-gray-800 text-white text-xs rounded py-1 px-2 hidden group-hover:block">Certificado</span>
   </a>
-
   <a routerLink="/insignias" class="relative group" aria-label="Insignias">
     <svg class="h-5 w-5 text-gray-500 group-hover:text-primario"
          [ngClass]="{ 'text-primario': isActive('/insignias') }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -51,7 +52,6 @@
     </svg>
     <span class="absolute left-14 bg-gray-800 text-white text-xs rounded py-1 px-2 hidden group-hover:block">Insignias</span>
   </a>
-
   <a routerLink="/feedback" class="relative group" aria-label="Feedback">
     <svg class="h-5 w-5 text-gray-500 group-hover:text-primario"
          [ngClass]="{ 'text-primario': isActive('/feedback') }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -60,7 +60,6 @@
     </svg>
     <span class="absolute left-14 bg-gray-800 text-white text-xs rounded py-1 px-2 hidden group-hover:block">Feedback</span>
   </a>
-
   <a routerLink="/organizacion" class="relative group" aria-label="Organizacion">
     <svg class="h-5 w-5 text-gray-500 group-hover:text-primario"
          [ngClass]="{ 'text-primario': isActive('/organizacion') }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -69,7 +68,6 @@
     </svg>
     <span class="absolute left-14 bg-gray-800 text-white text-xs rounded py-1 px-2 hidden group-hover:block">Organizacion</span>
   </a>
-
   <a routerLink="/perfil" class="relative group" aria-label="Perfil">
     <svg class="h-5 w-5 text-gray-500 group-hover:text-primario"
          [ngClass]="{ 'text-primario': isActive('/perfil') }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -101,7 +99,6 @@
         </svg>
         <span [ngClass]="{ 'font-bold': isActive('/dashboard') }">Dashboard</span>
       </a>
-
       <!-- Mis Cursos -->
       <button
         type="button"
@@ -126,7 +123,6 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
       </button>
-
       <!-- Submenú de cursos -->
       @if (cursosOpen) {
         <div class="pl-2 space-y-1 transition-all duration-200">
@@ -180,7 +176,6 @@
           </a>
         </div>
       }
-
       <!-- Calificaciones -->
       <a routerLink="/calificaciones" routerLinkActive="bg-primario/10 text-primario shadow"
          [routerLinkActiveOptions]="{ exact: true }"
@@ -194,7 +189,6 @@
         </svg>
         <span [ngClass]="{ 'font-bold': isActive('/calificaciones') }">Calificaciones</span>
       </a>
-
       <!-- Certificado -->
       <a routerLink="/certificado" routerLinkActive="bg-primario/10 text-primario shadow"
          [routerLinkActiveOptions]="{ exact: true }"
@@ -208,7 +202,6 @@
         </svg>
         <span [ngClass]="{ 'font-bold': isActive('/certificado') }">Certificado</span>
       </a>
-
       <!-- Insignias -->
       <a routerLink="/insignias" routerLinkActive="bg-primario/10 text-primario shadow"
          [routerLinkActiveOptions]="{ exact: true }"
@@ -222,7 +215,6 @@
         </svg>
         <span [ngClass]="{ 'font-bold': isActive('/insignias') }">Insignias</span>
       </a>
-
       <!-- Feedback -->
       <a routerLink="/feedback" routerLinkActive="bg-primario/10 text-primario shadow"
          [routerLinkActiveOptions]="{ exact: true }"
@@ -236,7 +228,6 @@
         </svg>
         <span [ngClass]="{ 'font-bold': isActive('/feedback') }">Feedback</span>
       </a>
-
       <!-- Organizacion -->
       <a routerLink="/organizacion" routerLinkActive="bg-primario/10 text-primario shadow"
          [routerLinkActiveOptions]="{ exact: true }"
@@ -250,7 +241,6 @@
         </svg>
         <span [ngClass]="{ 'font-bold': isActive('/organizacion') }">Organizacion</span>
       </a>
-
       <!-- Perfil -->
       <a routerLink="/perfil" routerLinkActive="bg-primario/10 text-primario shadow"
          [routerLinkActiveOptions]="{ exact: true }"

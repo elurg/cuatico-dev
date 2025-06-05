@@ -1,20 +1,20 @@
 <nav class="bg-primario border-b border-gray-200 px-0 py-1">
   <div class="flex items-center justify-between px-6">
-    <!-- Logo -->
-    <div class="flex items-center">
+    <!-- Logo  -->
+    <div class="hidden md:flex items-center">
       <a routerLink="/dashboard">
         <img src="assets/logop.avif" alt="Logo Cuático" class="h-8 w-auto">
       </a>
     </div>
 
-    <!-- Búsqueda (solo en desktop) -->
+
     <div class="hidden md:flex flex-1 max-w-xl ml-6 mx-2">
       <div class="relative w-full">
         <app-searchbar />
       </div>
     </div>
 
-    <!-- Botones y perfil (desktop) -->
+
     <div class="hidden md:flex items-center space-x-6 text-white">
       <!-- Notificaciones -->
       <button (click)="notify()" class="p-2 hover:text-white/80 transition-colors duration-150 relative">
@@ -24,7 +24,6 @@
         </svg>
         <span class="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full ring-2 ring-white"></span>
       </button>
-
 
       <!-- Perfil: foto como enlace -->
       <div class="flex items-center space-x-3">
