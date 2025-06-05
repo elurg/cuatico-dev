@@ -10,11 +10,11 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Certificado 1 -->
                     <div class="bg-white rounded-xl shadow-sm overflow-hidden group">
-                        <div class="relative">
-                            <img src="./assets/certificado1.png" alt="Certificado de Diseño de experiencia" 
-                                class="w-full h-auto cursor-pointer transition-transform duration-300 group-hover:scale-105"
-                                (click)="abrirModal('assets/certificado1.png')" />
-                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div class="relative cursor-pointer" (click)="abrirModal('assets/certificado1.png')">
+                            <img src="./assets/certificado1.png" alt="Certificado de Diseño de experiencia"
+                                class="w-full h-auto transition-transform duration-300 group-hover:scale-105" />
+                            <div
+                                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                                 <span class="text-white text-sm font-medium">Haz clic para ampliar</span>
                             </div>
                         </div>
@@ -23,13 +23,16 @@
                             <p class="text-sm text-gray-600 mb-4">Certificado generado por Cuático</p>
                             <div class="flex items-center justify-between">
                                 <label class="flex items-center space-x-2 cursor-pointer">
-                                    <input type="checkbox" [(ngModel)]="selecionado1" class="form-checkbox h-5 w-5 text-primario rounded">
+                                    <input type="checkbox" [(ngModel)]="selecionado1"
+                                        class="form-checkbox h-5 w-5 text-primario rounded">
                                     <span class="text-sm text-gray-700">Seleccionar</span>
                                 </label>
-                                <button (click)="descargarCertificado()" 
+                                <button (click)="descargarCertificado()"
                                     class="px-4 py-2 bg-primario text-white rounded-lg hover:bg-primario/90 transition-colors duration-200 flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
                                     </svg>
                                     Descargar
                                 </button>
@@ -38,27 +41,30 @@
                     </div>
 
                     <!-- Certificado 2 -->
-                    <div class="bg-white rounded-xl shadow-sm overflow-hidden group">
-                        <div class="relative">
-                            <img src="./assets/certificado2.png" alt="Certificado de Transformación digital" 
-                                class="w-full h-auto cursor-pointer transition-transform duration-300 group-hover:scale-105"
-                                (click)="abrirModal('assets/certificado2.png')" />
-                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                     <div class="bg-white rounded-xl shadow-sm overflow-hidden group">
+                        <div class="relative cursor-pointer" (click)="abrirModal('assets/certificado2.png')">
+                            <img src="./assets/certificado2.png" alt="Certificado de Diseño de experiencia"
+                                class="w-full h-auto transition-transform duration-300 group-hover:scale-105" />
+                            <div
+                                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                                 <span class="text-white text-sm font-medium">Haz clic para ampliar</span>
                             </div>
                         </div>
                         <div class="p-4">
-                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Transformación digital</h3>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Diseño de experiencia</h3>
                             <p class="text-sm text-gray-600 mb-4">Certificado generado por Cuático</p>
                             <div class="flex items-center justify-between">
                                 <label class="flex items-center space-x-2 cursor-pointer">
-                                    <input type="checkbox" [(ngModel)]="selecionado2" class="form-checkbox h-5 w-5 text-primario rounded">
+                                    <input type="checkbox" [(ngModel)]="selecionado2"
+                                        class="form-checkbox h-5 w-5 text-primario rounded">
                                     <span class="text-sm text-gray-700">Seleccionar</span>
                                 </label>
-                                <button (click)="descargarCertificado()" 
+                                <button (click)="descargarCertificado()"
                                     class="px-4 py-2 bg-primario text-white rounded-lg hover:bg-primario/90 transition-colors duration-200 flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
                                     </svg>
                                     Descargar
                                 </button>
@@ -68,26 +74,29 @@
 
                     <!-- Certificado 3 -->
                     <div class="bg-white rounded-xl shadow-sm overflow-hidden group">
-                        <div class="relative">
-                            <img src="./assets/certificado3.png" alt="Certificado de Dirección de desarrollo" 
-                                class="w-full h-auto cursor-pointer transition-transform duration-300 group-hover:scale-105"
-                                (click)="abrirModal('assets/certificado3.png')" />
-                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div class="relative cursor-pointer" (click)="abrirModal('assets/certificado3.png')">
+                            <img src="./assets/certificado3.png" alt="Certificado de Diseño de experiencia"
+                                class="w-full h-auto transition-transform duration-300 group-hover:scale-105" />
+                            <div
+                                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                                 <span class="text-white text-sm font-medium">Haz clic para ampliar</span>
                             </div>
                         </div>
                         <div class="p-4">
-                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Dirección de desarrollo</h3>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Diseño de experiencia</h3> 
                             <p class="text-sm text-gray-600 mb-4">Certificado generado por Cuático</p>
                             <div class="flex items-center justify-between">
                                 <label class="flex items-center space-x-2 cursor-pointer">
-                                    <input type="checkbox" [(ngModel)]="selecionado3" class="form-checkbox h-5 w-5 text-primario rounded">
+                                    <input type="checkbox" [(ngModel)]="selecionado3"
+                                        class="form-checkbox h-5 w-5 text-primario rounded">
                                     <span class="text-sm text-gray-700">Seleccionar</span>
                                 </label>
-                                <button (click)="descargarCertificado()" 
+                                <button (click)="descargarCertificado()"
                                     class="px-4 py-2 bg-primario text-white rounded-lg hover:bg-primario/90 transition-colors duration-200 flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
                                     </svg>
                                     Descargar
                                 </button>
@@ -100,8 +109,10 @@
                 <div class="mt-8 flex justify-center">
                     <button (click)="descargarSelecionados()"
                         class="px-6 py-3 bg-primario text-white rounded-lg hover:bg-primario/90 transition-colors duration-200 flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
                         </svg>
                         Descargar certificados seleccionados
                     </button>
@@ -111,14 +122,18 @@
     </div>
 
     <!-- Modal único para todas las imágenes -->
-    <div *ngIf="modalService.modalVisible$ | async" class="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4" (click)="cerrarModal()">
+    <div *ngIf="modalService.modalVisible$ | async"
+        class="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4" (click)="cerrarModal()">
         <div class="relative max-w-4xl w-full" (click)="$event.stopPropagation()">
-            <button class="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors" (click)="cerrarModal()">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+            <button class="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors"
+                (click)="cerrarModal()">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-8 h-8">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
-            <img [src]="modalService.modalImage$ | async" alt="Certificado ampliado" class="w-full h-auto rounded-lg shadow-2xl" />
+            <img [src]="modalService.modalImage$ | async" alt="Certificado ampliado"
+                class="w-full h-auto rounded-lg shadow-2xl" />
         </div>
     </div>
 </div>
