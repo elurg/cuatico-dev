@@ -1,20 +1,20 @@
-<nav class="bg-primario border-b border-gray-200 px-0 py-1">
-  <div class="flex items-center justify-between px-6">
-    <!-- Logo  -->
-    <div class="hidden md:flex items-center">
+<nav class="bg-primario border-b border-gray-200 px-0 py-1 h-14">
+  <div class="h-full flex items-center justify-between px-4">
+    <!-- Logo -->
+    <div class="flex items-center">
       <a routerLink="/dashboard">
         <img src="assets/logop.avif" alt="Logo Cuático" class="h-8 w-auto">
       </a>
     </div>
 
-
+    <!-- Búsqueda (solo en desktop) -->
     <div class="hidden md:flex flex-1 max-w-xl ml-6 mx-2">
       <div class="relative w-full">
         <app-searchbar />
       </div>
     </div>
 
-
+    <!-- Botones y perfil (desktop) -->
     <div class="hidden md:flex items-center space-x-6 text-white">
       <!-- Notificaciones -->
       <button (click)="notify()" class="p-2 hover:text-white/80 transition-colors duration-150 relative">
@@ -24,6 +24,7 @@
         </svg>
         <span class="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full ring-2 ring-white"></span>
       </button>
+
 
       <!-- Perfil: foto como enlace -->
       <div class="flex items-center space-x-3">
@@ -36,20 +37,27 @@
       </div>
     </div>
 
-    <!-- Botón hamburguesa móvil -->
+    <!-- Imagen de perfil (solo móvil) -->
+    <div class="block md:hidden">
+      <a routerLink="/perfil" class="focus:outline-none">
+        <img [src]="user.avatar" alt="Perfil" class="h-8 w-8 rounded-full object-cover ring-2 ring-white">
+      </a>
+    </div>
+
+    <!-- Botón hamburguesa móvil
     <div class="md:hidden">
       <button (click)="toggleMobileMenu()" class="text-white focus:outline-none">
         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
-    </div>
+    </div> -->
   </div>
 
   <!-- Menú móvil -->
-  <div class="md:hidden mt-4 space-y-2 text-white px-6" [class.hidden]="!mobileMenuOpen">
+  <!-- <div class="md:hidden mt-4 space-y-2 text-white px-6 max-w-screen-xl mx-auto" [class.hidden]="!mobileMenuOpen">
     <a routerLink="/perfil" class="block">Mi Perfil</a>
     <a routerLink="/editar-perfil" class="block">Configuración</a>
     <a href="#" class="block text-red-400">Cerrar Sesión</a>
-  </div>
+  </div> -->
 </nav>
