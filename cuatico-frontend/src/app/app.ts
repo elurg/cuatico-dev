@@ -25,4 +25,10 @@ export class App {
       this.currentRoute = event.urlAfterRedirects;
     });
   }
+
+
+  get showSidebar(): boolean {
+  const rutasSinSidebar = ['/login', '/register', '/', '/perfil', '/404'];
+  return !rutasSinSidebar.includes(this.currentRoute);
+}
 }

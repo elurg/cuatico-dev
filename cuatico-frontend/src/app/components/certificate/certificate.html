@@ -10,12 +10,15 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Certificado 1 -->
                     <div class="bg-white rounded-xl shadow-sm overflow-hidden group">
-                        <div class="relative cursor-pointer" (click)="abrirModal('assets/certificado1.png')">
-                            <img src="./assets/certificado1.png" alt="Certificado de Diseño de experiencia"
-                                class="w-full h-auto transition-transform duration-300 group-hover:scale-105" />
-                            <div
-                                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                <span class="text-white text-sm font-medium">Haz clic para ampliar</span>
+                        <div class="bg-white rounded-xl shadow-sm overflow-hidden group">
+                            <div class="relative cursor-pointer transition-transform duration-300 group-hover:scale-105"
+                                (click)="abrirModal('assets/certificado1.png')">
+                                <img src="./assets/certificado1.png" alt="Certificado de Diseño de experiencia"
+                                    class="mx-auto max-h-80 w-auto object-contain" />
+                                <div
+                                    class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span class="text-white text-sm font-medium">Haz clic para ampliar</span>
+                                </div>
                             </div>
                         </div>
                         <div class="p-4">
@@ -41,10 +44,11 @@
                     </div>
 
                     <!-- Certificado 2 -->
-                     <div class="bg-white rounded-xl shadow-sm overflow-hidden group">
-                        <div class="relative cursor-pointer" (click)="abrirModal('assets/certificado2.png')">
+                    <div class="bg-white rounded-xl shadow-sm overflow-hidden group">
+                        <div class="relative cursor-pointer transition-transform duration-300 group-hover:scale-105" 
+                        (click)="abrirModal('assets/certificado2.png')">
                             <img src="./assets/certificado2.png" alt="Certificado de Diseño de experiencia"
-                                class="w-full h-auto transition-transform duration-300 group-hover:scale-105" />
+                                class="mx-auto max-h-80 w-auto object-contain" />
                             <div
                                 class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                                 <span class="text-white text-sm font-medium">Haz clic para ampliar</span>
@@ -74,16 +78,17 @@
 
                     <!-- Certificado 3 -->
                     <div class="bg-white rounded-xl shadow-sm overflow-hidden group">
-                        <div class="relative cursor-pointer" (click)="abrirModal('assets/certificado3.png')">
+                        <div class="relative cursor-pointer transition-transform duration-300 group-hover:scale-105"
+                         (click)="abrirModal('assets/certificado3.png')">
                             <img src="./assets/certificado3.png" alt="Certificado de Diseño de experiencia"
-                                class="w-full h-auto transition-transform duration-300 group-hover:scale-105" />
+                                 class="mx-auto max-h-80 w-auto object-contain" />
                             <div
                                 class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                                 <span class="text-white text-sm font-medium">Haz clic para ampliar</span>
                             </div>
                         </div>
                         <div class="p-4">
-                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Diseño de experiencia</h3> 
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Diseño de experiencia</h3>
                             <p class="text-sm text-gray-600 mb-4">Certificado generado por Cuático</p>
                             <div class="flex items-center justify-between">
                                 <label class="flex items-center space-x-2 cursor-pointer">
