@@ -1,0 +1,20 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer utilities {
+  .scrollbar, * {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.primario') theme('colors.secundario');
+  }
+  .scrollbar::-webkit-scrollbar, *::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+  .scrollbar::-webkit-scrollbar-thumb, *::-webkit-scrollbar-thumb {
+    @apply rounded;
+    background: theme('colors.primario');
+  }
+  .scrollbar::-webkit-scrollbar-thumb:hover, *::-webkit-scrollbar-thumb:hover {
+    background: theme('colors.primario' / 0.9);
+  }
+}

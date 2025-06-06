@@ -1,0 +1,67 @@
+<div class="min-h-screen flex items-center justify-center gradient-bg relative overflow-hidden">
+  <!-- Canvas para las estrellas -->
+  <canvas #aestheticCanvas class="absolute inset-0 pointer-events-none z-0"></canvas>
+
+  <!-- Contenedor principal del login -->
+  <div class="flex w-full max-w-4xl rounded-2xl overflow-hidden shadow-lg bg-white relative z-10 m-4">
+
+    <!-- Columna del formulario -->
+    <div class="w-full md:w-1/2">
+      <!-- Cabecera -->
+      <div class="bg-primario p-8 text-white text-center">
+        <img src="assets/logop.avif" alt="Logo Cuático" class="h-8 w-auto mx-auto mb-4">
+        <h2 class="text-3xl font-bold mb-2">¡Bienvenido a Cuático!</h2>
+        <p class="text-sm italic text-indigo-200">
+          Inicia sesión para continuar tu viaje con nosotros.
+        </p>
+      </div>
+
+      <!-- Formulario -->
+      <div class="p-10">
+        <form action="login" method="post" class="space-y-6">
+          <app-label-input
+              label="Correo electrónico"
+              id="email"
+              type="email"
+              placeholder="tucorreo@ejemplo.com"
+              model="juan.perez@email.com"
+              [required]="true"
+          ></app-label-input>
+
+          <app-label-input
+              label="Contraseña"
+              id="password"
+              type="password"
+              placeholder="contraseña"
+              model="SuperSegura123"
+              [required]="true"
+          ></app-label-input>
+
+          <div class="text-right text-sm">
+            <a href="#" class="text-primario hover:underline">¿Olvidaste tu contraseña?</a>
+          </div>
+
+          <button
+            type="button"
+            routerLink="/dashboard"
+            class="w-full bg-primario text-white font-semibold py-3 px-4 rounded-xl hover:bg-indigo-700 transition duration-300"
+          >
+            Iniciar sesión
+          </button>
+        </form>
+
+        <p class="mt-6 text-sm text-center text-gray-600">
+          ¿No tienes una cuenta?
+          <a routerLink="/register" class="text-primario hover:underline">Únete a nosotros</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Imagen lateral -->
+    <div class="relative hidden md:block w-1/2">
+      <img src="assets/login-image.jpg" alt="Lateral del login" class="h-full w-full object-cover" />
+      <div class="absolute inset-0 bg-primario bg-opacity-60"></div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="flex flex-col min-h-screen">
+  <!-- Navbar -->
+  <app-navbar
+    *ngIf="currentRoute !== '/login' && currentRoute !== '/register' && currentRoute !== '/' && currentRoute !== '/404'">
+  </app-navbar>
+
+  <div class="flex flex-1">
+
+    <app-sidebar
+      class="fixed lg:static z-40 w-16 lg:w-64"
+      *ngIf="currentRoute !== '/login' && currentRoute !== '/register' && currentRoute !== '/' && currentRoute !== '/perfil' && currentRoute !== '/404'">
+    </app-sidebar>
+
+    <div class="flex-1 pl-16 lg:pl-0">
+
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <app-footer
+    *ngIf="currentRoute !== '/login' && currentRoute !== '/register' && currentRoute !== '/' && currentRoute !== '/404'">
+  </app-footer>
+</div>

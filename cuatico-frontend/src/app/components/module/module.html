@@ -1,0 +1,54 @@
+<!-- Si el módulo está habilitado -->
+<button
+  (click)="onClick()"
+  *ngIf="estado === 'habilitado'"
+  class="w-full shadow rounded-lg p-4 border bg-secundario/30 border-secundario/50 hover:shadow-lg transition-all flex flex-col gap-2 items-start"
+>
+  <div class="flex items-start gap-2 w-full">
+    <p class="text-lg font-bold text-primario whitespace-nowrap">
+      Módulo {{ numero }}:
+    </p>
+    <p class="text-lg text-left font-semibold text-primario flex-1">{{ titulo }}</p>
+
+    <!-- Nota -->
+    <ng-container *ngIf="nota !== undefined; else sinNota">
+      <span
+        class="text-xs font-medium px-2.5 py-0.5 rounded-sm"
+        [ngClass]="nota >= 50 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'"
+      >
+        {{ nota }}%
+      </span>
+    </ng-container>
+    <ng-template #sinNota>
+      <span class="text-xs font-medium px-2.5 py-0.5 rounded-sm bg-gray-100 text-gray-800">
+        Sin nota
+      </span>
+    </ng-template>
+  </div>
+</button>
+
+<!-- Si el módulo está deshabilitado -->
+<div
+  *ngIf="estado === 'deshabilitado'"
+  class="shadow rounded-lg p-4 border bg-gray-100 border-gray-300 transition-all"
+>
+  <p class="text-lg font-semibold flex items-center gap-2 text-gray-400">
+    Módulo {{ numero }}: {{ titulo }}
+    <span class="ml-2">
+      <svg
+        class="h-5 w-5 text-gray-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M16 10V7a4 4 0 10-8 0v3m-2 0a2 2 0 00-2 2v6a2 
+             2 0 002 2h12a2 2 0 002-2v-6a2 2 0 00-2-2H6z"
+        />
+      </svg>
+    </span>
+  </p>
+</div>

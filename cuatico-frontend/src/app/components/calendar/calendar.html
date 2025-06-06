@@ -1,0 +1,54 @@
+<div class="bg-white rounded-lg shadow-lg overflow-hidden">
+  <!-- Cabecera del calendario -->
+  <div class="bg-primario text-white p-4">
+    <div class="flex justify-between items-center">
+      <button 
+        (click)="cambiarMes(-1)" 
+        class="text-white hover:text-gray-200 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <h2 class="text-xl font-bold">{{ meses[mesActual] }} {{ anioActual }}</h2>
+      <button 
+        (click)="cambiarMes(1)" 
+        class="text-white hover:text-gray-200 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Días de la semana -->
+  <div class="grid grid-cols-7 gap-px bg-gray-200">
+    @for (dia of diasSemana; track $index) {
+      <div class="text-center text-xs font-medium text-gray-700 py-2 bg-white">{{ dia }}</div>
+    }
+  </div>
+  
+  <!-- Días del mes -->
+  <div class="grid grid-cols-7 gap-px bg-gray-200">
+    @for (dia of dias; track $index) {
+      <div 
+        (click)="seleccionarDia(dia)"
+        [class]="'bg-white p-2 h-24 cursor-pointer hover:bg-gray-50 ' + 
+                (dia.esDelMesActual ? '' : 'text-gray-400') + 
+                (esDiaActual(dia) ? ' font-bold' : '') + 
+                (diaSeleccionado === dia ? ' ring-2 ring-primario' : '')"
+      >
+        <div class="flex justify-between items-start">
+          <span class="text-sm">{{ dia.fecha.getDate() }}</span>
+          <div class="flex space-x-1">
+            @if (dia.tieneEvento) {
+              <span class="w-2 h-2 bg-primario rounded-full" title="Evento"></span>
+            }
+            @if (tieneNotas(dia)) {
+              <span class="w-2 h-2 bg-yellow-400 rounded-full" title="Nota"></span>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

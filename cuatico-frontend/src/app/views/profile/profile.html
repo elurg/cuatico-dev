@@ -1,0 +1,118 @@
+<div class="flex min-h-screen">
+    <!-- Sidebar: ancho fijo -->
+    <app-sidebar />
+
+    <!-- Contenido principal: ocupa el espacio completo restante -->
+    <main class="flex-1 overflow-y-auto bg-gray-50 p-8">
+        <!-- Botón editar en esquina superior derecha -->
+        <div class="relative">
+            <button title="Modificar perfil"
+            routerLink="/editar-perfil"
+            aria-label="Modificar perfil"
+                class="absolute top-0 right-0 px-4 py-2 bg-primario text-white font-medium rounded-lg hover:bg-primario/90 transition-colors">
+                Modificar perfil
+            </button>
+
+            <!-- Contenedor centrado para la foto y el texto -->
+            <div class="flex justify-center mb-8">
+                <div class="flex flex-col md:flex-row gap-10 items-center md:items-start w-11/12 md:w-4/5 lg:w-3/4">
+                    <!-- Foto en su propio div -->
+                    <!-- Foto en su propio div, con margen izquierdo opcional en pantallas grandes -->
+                    <div class="md:-ms-8"> <!-- Ajusta el valor según lo que necesites -->
+                        <img [src]="user.avatar" alt="Foto de perfil"
+                            class="w-40 h-40 rounded-full object-cover border-4 border-secundario" />
+                    </div>
+                    <!-- Textos en su propio div -->
+                    <div class="flex-1 flex flex-col gap-1 mt-4 md:mt-0">
+                        <div style="margin-top: 2rem;">
+                            <!-- Nombre e iconos de redes sociales -->
+                            <div class="flex items-center gap-2">
+                                <h2 class="m-0 text-3xl font-bold text-gray-900">{{ user.name }}</h2>
+                                <div class="flex gap-2">
+                                    <a [href]="user.linkedin" target="_blank"
+                                        class="text-gray-400 hover:text-gray-600 transition-colors">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                        </svg>
+                                    </a>
+                                    <a [href]="user.github" target="_blank"
+                                        class="text-gray-400 hover:text-gray-600 transition-colors">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Rol: otra fuente y más pequeño -->
+                            <p class="text-gray-500 font-sans text-sm">{{ user.role }}</p>
+                            <!-- Barra de progreso -->
+                            <div class="w-full mt-6">
+                                <div class="text-sm font-medium text-gray-600 mb-3">Progreso en tu aprendizaje</div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="h-2.5 rounded-full" [style.width.%]="user.profileProgress"
+                                        style="background: linear-gradient(to right, #d2ccff, #4B31FD);"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estadísticas en horizontal, debajo de la zona de foto y nombre -->
+            <div class="flex justify-center mb-12">
+                <div class="flex flex-row gap-4 w-11/12 md:w-4/5 lg:w-3/4">
+                    <!-- Tarjeta 1 -->
+                    <div class="flex-1 rounded-xl p-4 text-center border border-primario border-opacity-50"
+                        style="background: linear-gradient(to right, #f5f6fb, #e8e6fb);">
+                        <h3 class="text-2xl font-bold text-primario">{{ user.projects }}</h3>
+                        <p class="text-gray-500">Proyectos</p>
+                    </div>
+                    <!-- Tarjeta 2 -->
+                    <div class="flex-1 rounded-xl p-4 text-center border border-primario border-opacity-50"
+                        style="background: linear-gradient(to right, #f5f6fb, #e8e6fb);">
+                        <h3 class="text-2xl font-bold text-primario">{{ user.followers }}</h3>
+                        <p class="text-gray-500">Seguidores</p>
+                    </div>
+                    <!-- Tarjeta 3 -->
+                    <div class="flex-1 rounded-xl p-4 text-center border border-primario border-opacity-50"
+                        style="background: linear-gradient(to right, #f5f6fb, #e8e6fb);">
+                        <h3 class="text-2xl font-bold text-primario">{{ user.following }}</h3>
+                        <p class="text-gray-500">Siguiendo</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Tarjeta de información -->
+            <div class="flex flex-col md:flex-row gap-8">
+                <!-- Datos del usuario -->
+                <div
+                    class="md:flex-1 bg-secundario/30 rounded-lg p-6 shadow-md border border-secundario/50 hover:shadow-lg transition-all">
+                    <h2 class="text-2xl font-bold text-primario mb-6">Datos personales</h2>
+                    <div class="flex flex-col gap-4">
+                        <div class="flex flex-row items-center gap-4 md:items-baseline md:flex-row md:gap-2">
+                            <span class="text-gray-500 flex-shrink-0">Email:</span>
+                            <span class="text-gray-800">{{ user.email }}</span>
+                        </div>
+                        <div class="div flex-row items-center gap-4 md:items-baseline md:flex-row md:gap-2">
+                            <span class="text-gray-500 flex-shrink-0">Teléfono:</span>
+                            <span class="text-gray-800">{{ user.phone }}</span>
+                        </div>
+                        <div class="flex flex-row items-center gap-4 md:items-baseline md:flex-row md:gap-2">
+                            <span class="text-gray-500 flex-shrink-0">Dirección:</span>
+                            <span class="text-gray-800">{{ user.address }}</span>
+                        </div>
+                        <div class="flex flex-row items-center gap-4 md:items-baseline md:flex-row md:gap-2">
+                            <span class="text-gray-500 flex-shrink-0">Miembro desde:</span>
+                            <span class="text-gray-800">{{ user.memberSince }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

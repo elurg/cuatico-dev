@@ -1,0 +1,37 @@
+<div class="bg-white rounded-2xl shadow-md p-6">
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="text-lg font-semibold text-gray-800">Cursos Recomendados</h2>
+    <a [routerLink]="'/nuevoscursos'" class="text-sm text-primario hover:text-primario-600">Ver Todo</a>
+  </div>
+  <div class="space-y-8">
+    <a *ngFor="let course of courses"
+       class="group block bg-white rounded-3xl shadow-md hover:shadow-2xl border border-gray-100 transition-all duration-300 overflow-hidden cursor-pointer max-w-xs mx-auto md:mx-0 no-underline"
+       [routerLink]="'/nuevoscursos'">
+      <div class="relative">
+        <img [src]="course.thumbnail"
+             [alt]="course.title"
+             class="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-300">
+        <span class="absolute top-3 left-3 bg-primario text-white text-xs font-semibold px-4 py-1 rounded-full shadow-md border-2 border-white capitalize z-10">
+          {{course.modality}}
+        </span>
+      </div>
+      <div class="p-5 flex flex-col gap-2">
+        <h3 class="text-base font-semibold text-gray-900 leading-tight mb-1">{{course.title}}</h3>
+        <p class="text-sm text-gray-500 mb-2">Por {{course.instructor}}</p>
+        <div class="flex items-center gap-2 mb-1">
+          <span class="text-lg font-medium text-primario">{{course.price | currency:'EUR':'symbol-narrow':'1.0-0'}}</span>
+          <span class="text-xs text-gray-400 flex items-center gap-1">
+            <svg class="w-4 h-4 inline-block text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            {{course.duration}}
+          </span>
+        </div>
+        <div class="flex items-center justify-between mt-2">
+          <span class="text-xs text-gray-500 flex items-center gap-1">
+            <svg class="w-4 h-4 inline-block text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            Inicia: {{course.startDate}}
+          </span>
+        </div>
+      </div>
+    </a>
+  </div>
+</div> 

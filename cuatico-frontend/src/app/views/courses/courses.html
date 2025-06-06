@@ -1,0 +1,78 @@
+<div class="min-h-[90vh] flex flex-col bg-gray-50">
+  <div class="flex-1 overflow-auto">
+    <div class="px-4 sm:px-8 py-6 sm:py-10 max-w-7xl mx-auto">
+      <!-- Cabecera con el componente app-header -->
+      <app-header
+        [titulo]="'Mis cursos'"
+        [iconoD]="'M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25'">
+        <!-- Aquí puedes proyectar contenido (por ejemplo, filtros) -->
+        <div class="filtros">
+          <!-- Tus filtros aquí -->
+        </div>
+      </app-header>
+
+      <!-- Grid de cursos -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+        <!-- Curso 1 -->
+        <div class="col-span-1">
+          <app-card2
+            [id]="1"
+            (navigate)="irADetalle(1)"
+            titulo="UX Research"
+            profesor="Diana"
+            lecciones="14"
+            duracion="6 semanas"
+            [progreso]="95"
+            fecha="19 de Abril"
+            modalidad="presencial">
+          </app-card2>
+        </div>
+
+        <!-- Curso 2 -->
+        <div class="col-span-1">
+          <app-card2
+            [id]="2"
+            (navigate)="irADetalle(2)"
+            titulo="Diseño Web"
+            profesor="Diana"
+            lecciones="10"
+            duracion="4 semanas"
+            [progreso]="30"
+            fecha="26 de Abril"
+            modalidad="remoto">
+          </app-card2>
+        </div>
+
+        <!-- Curso 3 -->
+        <div class="col-span-1">
+          <app-card2
+            [id]="3"
+            (navigate)="irADetalle(3)"
+            titulo="UI Design"
+            profesor="Diana"
+            lecciones="12"
+            duracion="8 semanas"
+            [progreso]="80"
+            fecha="3 de Mayo"
+            modalidad="presencial">
+          </app-card2>
+        </div>
+
+        <!-- Curso 4 -->
+        <div class="col-span-1">
+          <app-card2
+            [id]="4"
+            (navigate)="irADetalle(4)"
+            titulo="Design System"
+            profesor="Diana"
+            lecciones="8"
+            duracion="4 semanas"
+            [progreso]="65"
+            fecha="10 de Mayo"
+            modalidad="remoto">
+          </app-card2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

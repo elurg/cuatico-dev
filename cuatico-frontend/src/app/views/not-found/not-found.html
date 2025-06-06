@@ -1,0 +1,30 @@
+<div class="min-h-screen flex items-center justify-center gradient-bg relative overflow-hidden">
+  <!-- Canvas para las estrellas -->
+  <canvas #aestheticCanvas class="absolute inset-0 pointer-events-none z-0"></canvas>
+
+  <!-- Contenedor blanco con imagen y texto -->
+  <div class="relative bg-white rounded-3xl shadow-xl flex flex-col md:flex-row items-center p-8 md:p-16"
+       style="min-width: 380px; min-height: 480px; max-width: 1100px; width: 90%; margin: 2rem; z-index: 10;">
+    <!-- Texto a la izquierda -->
+    <div class="md:w-2/3 w-full text-center md:pr-12">
+      <h1 class="text-6xl font-extrabold text-primario/90 mb-4 tracking-tight">404</h1>
+      <h2 class="text-2xl md:text-3xl font-bold text-primario/60 mb-4">
+        ¡Houston,<br> tenemos un problema!
+      </h2>
+      <p class="text-lg text-gray-700 mb-8">
+        Parece que te has perdido en el espacio Cuático.<br>
+        Pero no te preocupes, <span class="text-primario/60 font-semibold">siempre hay camino de vuelta a casa</span>.
+      </p>
+      <a href="/dashboard"
+        class="px-8 py-3 bg-primario hover:bg-primario/90 text-white rounded-lg font-bold shadow-lg transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-secundario focus:ring-offset-2 inline-block"
+        style="letter-spacing: 0.03em;">
+        Vuelve al inicio
+      </a>
+    </div>
+    <!-- Imagen del astronauta animada -->
+    <div class="flex-shrink-0 md:w-1/2 relative flex items-center justify-center h-full">
+      <img src="assets/astronaut.png" alt="Astronauta animado"
+           class="max-w-[580px] w-auto h-auto max-h-[580px] object-contain astronaut-float" />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<!-- Fondo y canvas -->
+<div class="min-h-screen flex items-center justify-center gradient-bg relative overflow-hidden">
+  <canvas #aestheticCanvas class="absolute inset-0 pointer-events-none z-0"></canvas>
+
+  <!-- Contenedor blanco con formulario e imagen -->
+  <div class="flex w-full max-w-4xl rounded-2xl overflow-hidden shadow-lg bg-white relative z-10 m-4">
+
+    <!-- Formulario (izquierda) -->
+    <div class="w-full md:w-1/2">
+      <!-- Título y texto bonito -->
+      <div class="bg-primario p-8 text-white text-center">
+        <img src="assets/logop.avif" alt="Logo Cuático" class="h-8 w-auto mx-auto mb-4">
+        <h2 class="text-3xl font-bold mb-2">Crea tu cuenta</h2>
+        <p class="text-sm italic text-indigo-200">
+          Únete a nosotros y comienza tu viaje hoy. ¡Solo toma un minuto!
+        </p>
+      </div>
+
+      <!-- Formulario -->
+      <div class="p-10">
+        <form action="register" method="post" class="space-y-6">
+          <app-label-input 
+            label="Nombre completo" 
+            id="name" 
+            type="text" 
+            placeholder="Nombre"
+            model="Juan Pérez"
+          ></app-label-input>
+          <app-label-input 
+            label="Correo electrónico" 
+            id="email" 
+            type="email" 
+            placeholder="tucorreo@ejemplo.com"
+            model="juan.perez@email.com"
+          ></app-label-input>
+          <app-label-input 
+            label="Contraseña" 
+            id="password" 
+            type="password" 
+            placeholder="••••••••"
+            model="SuperSegura123"
+          ></app-label-input>
+          <app-label-input 
+            label="Confirmar contraseña" 
+            id="confirm-password" 
+            type="password" 
+            placeholder="••••••••"
+            model="SuperSegura123"
+          ></app-label-input>
+
+          <button type="button" routerLink="/dashboard"
+            class="w-full bg-primario text-white font-semibold py-3 px-4 rounded-xl hover:bg-indigo-700 transition duration-300">
+            Crear cuenta
+          </button>
+        </form>
+
+        <p class="mt-6 text-sm text-center text-gray-600">
+          ¿Ya tienes una cuenta?
+          <a routerLink="/login" class="text-primario hover:underline">Inicia sesión</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Imagen lateral (derecha) con overlay azul -->
+    <div class="relative hidden md:block w-1/2">
+      <img src="assets/register-image.jpg" alt="Lateral de registro" class="h-full w-full object-cover" />
+      <div class="absolute inset-0 bg-primario bg-opacity-60"></div>
+    </div>
+
+  </div>
+</div>

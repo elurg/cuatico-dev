@@ -1,0 +1,63 @@
+<nav class="bg-primario border-b border-gray-200 px-0 py-1 h-16">
+  <div class="h-full flex items-center justify-between px-4">
+    <!-- Logo -->
+    <div class="flex items-center">
+      <a routerLink="/dashboard">
+        <img src="assets/logop.avif" alt="Logo Cuático" class="h-8 w-auto">
+      </a>
+    </div>
+
+    <!-- Búsqueda (solo en desktop) -->
+    <div class="hidden md:flex flex-1 max-w-xl ml-6 mx-2">
+      <div class="relative w-full">
+        <app-searchbar />
+      </div>
+    </div>
+
+    <!-- Botones y perfil (desktop) -->
+    <div class="hidden md:flex items-center space-x-6 text-white">
+      <!-- Notificaciones -->
+      <button (click)="notify()" class="p-2 hover:text-white/80 transition-colors duration-150 relative">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+        </svg>
+        <span class="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full ring-2 ring-white"></span>
+      </button>
+
+
+      <!-- Perfil: foto como enlace -->
+      <div class="flex items-center space-x-3">
+        <div class="flex flex-col items-end text-white">
+          <span class="text-sm font-medium"> Hola, {{ user.username }}!</span>
+        </div>
+        <a routerLink="/perfil" class="focus:outline-none">
+          <img [src]="user.avatar" alt="Perfil" class="h-8 w-8 rounded-full object-cover ring-2 ring-white">
+        </a>
+      </div>
+    </div>
+
+    <!-- Imagen de perfil (solo móvil) -->
+    <div class="block md:hidden">
+      <a routerLink="/perfil" class="focus:outline-none">
+        <img [src]="user.avatar" alt="Perfil" class="h-8 w-8 rounded-full object-cover ring-2 ring-white">
+      </a>
+    </div>
+
+    <!-- Botón hamburguesa móvil
+    <div class="md:hidden">
+      <button (click)="toggleMobileMenu()" class="text-white focus:outline-none">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div> -->
+  </div>
+
+  <!-- Menú móvil -->
+  <!-- <div class="md:hidden mt-4 space-y-2 text-white px-6 max-w-screen-xl mx-auto" [class.hidden]="!mobileMenuOpen">
+    <a routerLink="/perfil" class="block">Mi Perfil</a>
+    <a routerLink="/editar-perfil" class="block">Configuración</a>
+    <a href="#" class="block text-red-400">Cerrar Sesión</a>
+  </div> -->
+</nav>

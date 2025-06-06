@@ -1,0 +1,208 @@
+<div class="w-full h-full bg-white shadow p-8">
+    <h1 class="text-2xl font-bold text-primario mb-6">Editar cuenta</h1>
+    <div class="flex flex-col md:flex-row gap-8">
+        <!-- Sidebar interno -->
+        <aside class="h-full bg-white py-6 px-4 w-64 border-r border-primario/20">
+            <nav class="space-y-1">
+                <!-- Perfil -->
+                @if (activeTab === 'profile') {
+                <button (click)="setActiveTab('profile')"
+                    class="flex items-center px-4 py-3 text-sm font-medium group w-full text-left rounded-lg bg-primario/10 text-primario shadow">
+                    <svg class="h-5 w-5 mr-3 text-primario" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                    <span class="font-bold">Perfil</span>
+                </button>
+                } @else {
+                <button (click)="setActiveTab('profile')"
+                    class="flex items-center px-4 py-3 text-sm font-medium group w-full text-left rounded600-lg text-gray-600 hover:bg-primario/5">
+                    <svg class="h-5 w-5 mr-3 text-gray-500 group-hover:text-primario" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                    <span>Perfil</span>
+                </button>
+                }
+
+                <!-- Contraseña -->
+                @if (activeTab === 'password') {
+                <button (click)="setActiveTab('password')"
+                    class="flex items-center px-4 py-3 text-sm font-medium group w-full text-left rounded-lg bg-primario/10 text-primario shadow">
+                    <svg class="h-5 w-5 mr-3 text-primario" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                    <span class="font-bold">Contraseña</span>
+                </button>
+                } @else {
+                <button (click)="setActiveTab('password')"
+                    class="flex items-center px-4 py-3 text-sm font-medium group w-full text-left rounded-lg text-gray-600 hover:bg-primario/5">
+                    <svg class="h-5 w-5 mr-3 text-gray-500 group-hover:text-primario" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                    <span>Contraseña</span>
+                </button>
+                }
+
+                <!-- Notificaciones -->
+                @if (activeTab === 'notifications') {
+                <button (click)="setActiveTab('notifications')"
+                    class="flex items-center px-4 py-3 text-sm font-medium group w-full text-left rounded-lg bg-primario/10 text-primario shadow">
+                    <svg class="h-5 w-5 mr-3 text-primario" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 0.538-0.214 1.055-0.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                    </svg>
+                    <span class="font-bold">Notificaciones</span>
+                </button>
+                } @else {
+                <button (click)="setActiveTab('notifications')"
+                    class="flex items-center px-4 py-3 text-sm font-medium group w-full text-left rounded-lg text-gray-600 hover:bg-primario/5">
+                    <svg class="h-5 w-5 mr-3 text-gray-500 group-hover:text-primario" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 0.538-0.214 1.055-0.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                    </svg>
+                    <span>Notificaciones</span>
+                </button>
+                }
+
+                <!-- Configuración de la cuenta -->
+                @if (activeTab === 'account-settings') {
+                <button (click)="setActiveTab('account-settings')"
+                    class="flex items-center px-4 py-3 text-sm font-medium group w-full text-left rounded-lg bg-primario/10 text-primario shadow">
+                    <svg class="h-5 w-5 mr-3 text-primario" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <span class="font-bold">Configuración de la cuenta</span>
+                </button>
+                } @else {
+                <button (click)="setActiveTab('account-settings')"
+                    class="flex items-center px-4 py-3 text-sm font-medium group w-full text-left rounded-lg text-gray-600 hover:bg-primario/5">
+                    <svg class="h-5 w-5 mr-3 text-gray-500 group-hover:text-primario" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <span>Configuración de la cuenta</span>
+                </button>
+                }
+            </nav>
+        </aside>
+
+        <!-- Área de edición -->
+        <div class="flex-1 relative">
+            <!-- PERFIL -->
+            @if (activeTab === 'profile') {
+            <div class="bg-white rounded-lg p-6">
+                <!-- Foto arriba a la derecha fuera del formulario -->
+                <div class="absolute right-12 top-0 flex flex-col items-center gap-2">
+                    <img [src]="user.avatar" alt="Avatar"
+                        class="w-48 h-48 rounded-full object-cover border-2 border-gray-300">
+                    <button class="px-4 py-2 bg-primario text-white rounded-lg hover:bg-primario/80 text-sm font-medium">
+                        Cambiar foto
+                    </button>
+                </div>
+                <!-- Título y campos del formulario -->
+                <h2 class="text-xl text-primario font-bold mb-6">Editar perfil</h2>
+                <div class="flex flex-col gap-4 py-2">
+                    <app-label-input label="Nombre" id="name" placeholder="Nombre" [required]="true"
+                        [(model)]="user.name" [horizontal]="false"></app-label-input>
+                    <app-label-input label="Email" id="email" placeholder="Email" [required]="true"
+                        [(model)]="user.email" [horizontal]="false"></app-label-input>
+                    <app-label-input label="Teléfono" id="phone" placeholder="Teléfono" [required]="false"
+                        [(model)]="user.phone" [horizontal]="false" type="tel"></app-label-input>
+                    <app-label-input label="Dirección" id="address" placeholder="Dirección" [required]="false"
+                        [(model)]="user.address" [horizontal]="false"></app-label-input>
+                    <app-label-input label="Rol" id="role" placeholder="Rol" [required]="false" [(model)]="user.role"
+                        type="select" [options]="['Product Designer', 'Estudiante', 'Profesor']"
+                        [horizontal]="false"></app-label-input>
+                    <app-label-input label="Miembro desde" id="memberSince" placeholder="Miembro desde"
+                        [required]="false" [(model)]="user.memberSince" [horizontal]="false"></app-label-input>
+                    <app-label-input label="Biografía" id="bio" placeholder="Cuéntanos sobre ti" [required]="false"
+                        [(model)]="user.bio" type="textarea" [horizontal]="false"></app-label-input>
+                    <app-label-input label="LinkedIn" id="linkedin" placeholder="LinkedIn" [required]="false"
+                        [(model)]="user.linkedin" [horizontal]="false" type="url"></app-label-input>
+                    <app-label-input label="GitHub" id="github" placeholder="GitHub" [required]="false"
+                        [(model)]="user.github" [horizontal]="false" type="url"></app-label-input>
+                </div>
+                <div class="mt-8 flex gap-4">
+                    <button class="px-4 py-2 bg-primario text-white rounded-lg hover:bg-primario/80">Guardar
+                        cambios</button>
+                    <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300">Cancelar</button>
+                </div>
+            </div>
+            }
+
+            <!-- CONTRASEÑA -->
+            @if (activeTab === 'password') {
+            <div class="bg-white rounded-lg p-6">
+                <h2 class="text-xl text-primario font-bold mb-6">Cambiar contraseña</h2>
+                <div class="grid grid-cols-1 gap-4">
+                    <app-label-input label="Contraseña actual" id="current-password" placeholder="Contraseña actual"
+                        [required]="true" [(model)]="currentPassword" [horizontal]="false"
+                        type="password"></app-label-input>
+                    <app-label-input label="Nueva contraseña" id="new-password" placeholder="Nueva contraseña"
+                        [required]="true" [(model)]="newPassword" [horizontal]="false"
+                        type="password"></app-label-input>
+                    <app-label-input label="Confirmar nueva contraseña" id="confirm-password"
+                        placeholder="Confirmar nueva contraseña" [required]="true" [(model)]="confirmNewPassword"
+                        [horizontal]="false" type="password"></app-label-input>
+                </div>
+                <div class="mt-6 flex gap-4">
+                    <button class="px-4 py-2 bg-primario text-white rounded-lg hover:bg-primario/80">Guardar
+                        cambios</button>
+                    <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300">Cancelar</button>
+                </div>
+            </div>
+            }
+
+            <!-- NOTIFICACIONES -->
+            @if (activeTab === 'notifications') {
+            <div class="bg-white rounded-lg p-6">
+                <h2 class="text-xl text-primario font-bold mb-6">Notificaciones</h2>
+                <div class="flex flex-col gap-4">
+                    <app-label-input type="checkbox" id="email-notifications" label="Recibir notificaciones por email"
+                        [(model)]="emailNotifications"></app-label-input>
+                    <app-label-input type="checkbox" id="push-notifications" label="Recibir notificaciones push"
+                        [(model)]="pushNotifications"></app-label-input>
+                    <app-label-input type="checkbox" id="sms-notifications" label="Recibir notificaciones por SMS"
+                        [(model)]="smsNotifications"></app-label-input>
+                </div>
+                <div class="mt-6 flex gap-4">
+                    <button class="px-4 py-2 bg-primario text-white rounded-lg hover:bg-primario/80">Guardar
+                        cambios</button>
+                    <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300">Cancelar</button>
+                </div>
+            </div>
+            }
+
+
+            <!-- CONFIGURACIÓN DE LA CUENTA -->
+            @if (activeTab === 'account-settings') {
+            <div class="bg-white rounded-lg p-6">
+                <h2 class="text-xl text-primario font-bold mb-6">Configuración de la cuenta</h2>
+                <div class="grid grid-cols-1 gap-4">
+                    <app-label-input label="Idioma" id="language" [required]="true" [(model)]="language" type="select"
+                        [options]="['Español', 'English']" [horizontal]="false"></app-label-input>
+                    <app-label-input label="Tema" id="theme" [required]="true" [(model)]="theme" type="select"
+                        [options]="['Claro', 'Oscuro']" [horizontal]="false"></app-label-input>
+                </div>
+                <div class="mt-6 flex gap-4">
+                    <button class="px-4 py-2 bg-primario text-white rounded-lg hover:bg-primario/90">Guardar
+                        cambios</button>
+                    <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300">Cancelar</button>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>
