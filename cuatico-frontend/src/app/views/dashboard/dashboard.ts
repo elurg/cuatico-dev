@@ -104,7 +104,7 @@ export class Dashboard {
   }
 
   irADetalle(id: number) {
-    this.router.navigate(['/curso', id]);
+    this.router.navigate(['/cursos', id]);
   }
 
   constructor(private router: Router) {}
