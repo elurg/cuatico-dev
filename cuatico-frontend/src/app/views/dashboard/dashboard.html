@@ -46,17 +46,17 @@
       </div>
       <div class="p-6">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div class="bg-white rounded-xl shadow-sm p-6 hover:shadow-sm hover:-translate-y-0.5 hover:scale-[1.005] transition-all duration-150 cursor-grab active:cursor-grabbing border-2 border-transparent hover:border-primario/10 hover:bg-primario/5">
+          <div class="bg-white rounded-xl p-2 shadow-sm hover:shadow-sm hover:-translate-y-0.5 hover:scale-[1.005] transition-all duration-150 cursor-grab active:cursor-grabbing border-transparent hover:border-primario/10 hover:bg-primario/5">
             <app-card2 [id]="2" (navigate)="irADetalle($event)" titulo="UX Research" profesor="Diana" lecciones="14"
               duracion="6 semanas" [progreso]="70" fecha="19 de Abril" modalidad="presencial">
             </app-card2>
           </div>
-          <div class="bg-white rounded-xl shadow-sm p-6 hover:shadow-sm hover:-translate-y-0.5 hover:scale-[1.005] transition-all duration-150 cursor-grab active:cursor-grabbing border-2 border-transparent hover:border-primario/10 hover:bg-primario/5">
+          <div class="bg-white rounded-xl shadow-sm p-2 hover:shadow-sm hover:-translate-y-0.5 hover:scale-[1.005] transition-all duration-150 cursor-grab active:cursor-grabbing border-transparent hover:border-primario/10 hover:bg-primario/5">
             <app-card2 [id]="1" (navigate)="irADetalle($event)" titulo="Desarrolla tu creatividad" profesor="Diana"
               lecciones="12" duracion="6 semanas" [progreso]="65" fecha="26 de Abril" modalidad="remoto">
             </app-card2>
           </div>
-          <div class="bg-white rounded-xl shadow-sm p-6 hover:shadow-sm hover:-translate-y-0.5 hover:scale-[1.005] transition-all duration-150 cursor-grab active:cursor-grabbing border-2 border-transparent hover:border-primario/10 hover:bg-primario/5">
+          <div class="bg-white rounded-xl shadow-sm p-2 hover:shadow-sm hover:-translate-y-0.5 hover:scale-[1.005] transition-all duration-150 cursor-grab active:cursor-grabbing border-transparent hover:border-primario/10 hover:bg-primario/5">
             <app-card2 [id]="4" (navigate)="irADetalle($event)" titulo="Diseño de producto" profesor="Diana"
               lecciones="10" duracion="6 semanas" [progreso]="45" fecha="20 de Mayo" modalidad="remoto">
             </app-card2>
@@ -66,44 +66,24 @@
     </div>
 
     <!-- Lista de tareas -->
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-      <div class="p-6 border-b border-gray-100">
-        <div class="flex items-center justify-between">
-          <div>
-            <h2 class="text-lg font-semibold text-gray-800">Tareas Pendientes</h2>
-            <p class="text-gray-500 text-sm mt-1">Mantén el ritmo con tus actividades</p>
-          </div>
-          <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">3 pendientes</span>
-        </div>
-      </div>
-      <div class="p-4">
-        <div class="bg-white rounded-xl shadow-sm p-6 border-2 border-transparent">
+    <div class="bg-white rounded-2xl border-2 overflow-hidden">
+        <div class="bg-white rounded-xl p-6 border-2 border-transparent">
           <task-list [tasks]="tasks" (taskStatusChanged)="onTaskStatusChanged($event)" (taskAdded)="onTaskAdded($event)"></task-list>
         </div>
-      </div>
     </div>
   </div>
 
   <!-- Sidebar derecho -->
-  <div class="lg:col-span-2 space-y-6 mr-4">
+  <div class="lg:col-span-2 space-y-6 mr-4 mb-4">
     <!-- Calendario -->
     <div class="w-full">
       <app-mini-calendar></app-mini-calendar>
     </div>
 
     <!-- Cursos Recomendados -->
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-      <div class="p-6 border-b border-gray-100">
-        <div class="flex items-center justify-between">
-          <div>
-            <h2 class="text-lg font-semibold text-gray-800">Cursos Recomendados</h2>
-            <p class="text-gray-500 text-sm mt-1">Basado en tu perfil</p>
-          </div>
-        </div>
-      </div>
-      <div class="p-4">
+    <div class="bg-white border-2 rounded-2xl overflow-hidden">
         <recommended-courses [courses]="recommendedCourses"></recommended-courses>
-      </div>
+      
     </div>
   </div>
 </div>
