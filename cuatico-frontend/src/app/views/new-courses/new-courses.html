@@ -6,30 +6,9 @@
 
     <!-- Grid de cursos -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
-        <!-- Curso 1 -->
-        <div class="col-span-1">
-            <app-card2
-                tipo="venta"
-                titulo="Curso de Figma UX/UI"
-                profesor="Diana"
-                lecciones="14"
-                duracion="6 semanas"
-                fecha="5 de julio"
-                modalidad="remoto">
-            </app-card2>
-        </div>
-
-        <!-- Curso 2 -->
-        <div class="col-span-1">
-            <app-card2
-                tipo="venta"
-                titulo="Masterclass de Marketing Digital"
-                profesor="Diana"
-                lecciones="10"
-                duracion="4 semanas"
-                fecha="12 de julio"
-                modalidad="presencial">
-            </app-card2>
-        </div>
+        <app-card tipo="venta" precio="229" titulo="Machine Learning" fecha="15 de Mayo" duracion="8 semanas" profesor="Ana García">
+        </app-card>
+        <app-card tipo="venta" precio="249" titulo="Diseño UX/UI" fecha="22 de Mayo" duracion="6 semanas" profesor="Carlos Ruiz">
+        </app-card>
     </div>
 </div>
