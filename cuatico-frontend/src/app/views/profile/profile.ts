@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Sidebar } from "../../components/sidebar/sidebar";
 import { RouterModule } from '@angular/router';
+import { UserStatsComponent } from '../user-stats/user-stats.component';
 
 @Component({
   selector: 'app-profile',
-  imports: [Sidebar, RouterModule],
+  imports: [Sidebar, RouterModule, UserStatsComponent],
   templateUrl: './profile.html'
 })
 export class Profile {

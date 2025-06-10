@@ -6,9 +6,7 @@
     <main class="flex-1 overflow-y-auto bg-gray-50 p-8">
         <!-- Botón editar en esquina superior derecha -->
         <div class="relative">
-            <button title="Modificar perfil"
-            routerLink="/editar-perfil"
-            aria-label="Modificar perfil"
+            <button title="Modificar perfil" routerLink="/editar-perfil" aria-label="Modificar perfil"
                 class="absolute top-0 right-0 px-4 py-2 bg-primario text-white font-medium rounded-lg hover:bg-primario/90 transition-colors">
                 Modificar perfil
             </button>
@@ -64,25 +62,14 @@
 
             <!-- Estadísticas en horizontal, debajo de la zona de foto y nombre -->
             <div class="flex justify-center mb-12">
-                <div class="flex flex-row gap-4 w-11/12 md:w-4/5 lg:w-3/4">
-                    <!-- Tarjeta 1 -->
-                    <div class="flex-1 rounded-xl p-4 text-center border border-primario border-opacity-50"
-                        style="background: linear-gradient(to right, #f5f6fb, #e8e6fb);">
-                        <h3 class="text-2xl font-bold text-primario">{{ user.projects }}</h3>
-                        <p class="text-gray-500">Proyectos</p>
-                    </div>
-                    <!-- Tarjeta 2 -->
-                    <div class="flex-1 rounded-xl p-4 text-center border border-primario border-opacity-50"
-                        style="background: linear-gradient(to right, #f5f6fb, #e8e6fb);">
-                        <h3 class="text-2xl font-bold text-primario">{{ user.followers }}</h3>
-                        <p class="text-gray-500">Seguidores</p>
-                    </div>
-                    <!-- Tarjeta 3 -->
-                    <div class="flex-1 rounded-xl p-4 text-center border border-primario border-opacity-50"
-                        style="background: linear-gradient(to right, #f5f6fb, #e8e6fb);">
-                        <h3 class="text-2xl font-bold text-primario">{{ user.following }}</h3>
-                        <p class="text-gray-500">Siguiendo</p>
-                    </div>
+                <div
+                    class="flex flex-row gap-4 justify-center w-12 md:w-5 lg:w-3/4 bg-gradient-to-r from-primario to-primario/80 rounded-2xl p-6 text-white shadow-lg relative overflow-hidden ">
+
+                    <app-user-stats [stats]="{
+      completedLessons: '5/7',
+      studyTime: '2.5h',
+      overallProgress: '85%'
+    }"></app-user-stats>
                 </div>
             </div>
 
