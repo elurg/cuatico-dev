@@ -19,19 +19,21 @@
       <!-- Formulario -->
       <div class="p-10">
         <form (ngSubmit)="onRegister()">
-          <app-label-input label="Nombre completo" id="name" type="text" placeholder="Nombre" [(model)]="formData.name"
+          <app-label-input label="Nombre" id="name" type="text" placeholder="Nombre" [(model)]="formData.name"
             [required]="true"></app-label-input>
+          <app-label-input label="Apellidos" id="surnames" type="text" placeholder="Apellidos"
+            [(model)]="formData.surnames" [required]="true"></app-label-input>
           <app-label-input label="Correo electrónico" id="email" type="email" placeholder="tucorreo@ejemplo.com"
             [(model)]="formData.email" [required]="true"></app-label-input>
-          <app-label-input label="Contraseña" id="password" type="password" placeholder="••••••••"
-            [(model)]="formData.password" [required]="true"></app-label-input>
-          <app-label-input label="Confirmar contraseña" id="confirm-password" type="password" placeholder="••••••••"
-            [(model)]="formData.confirmPassword" [required]="true"></app-label-input>
+          <app-label-input label="Contraseña" id="passwordHash" type="password" placeholder="••••••••"
+            [(model)]="formData.passwordHash" [required]="true"></app-label-input>
+          <!-- Falta el confirm password -->
           <app-label-input label="Usuario" id="username" type="text" placeholder="Usuario" [(model)]="formData.username"
             [required]="true"></app-label-input>
           <app-label-input label="Teléfono" id="phone" type="text" placeholder="Teléfono"
             [(model)]="formData.phone"></app-label-input>
-          <button type="submit" class="w-full ...">Crear cuenta</button>
+            <!-- HE PUESTO TYPE BUTTON PARA HACER PRUEBAS Y QUE NO ME RECARGUE EL NAVEGADOR AUTMATICAMENTE. HABRA QUE CAMBIAR A TYPE SUBMIT -->
+          <button type="button" (click)="onRegister()" routerLink="/dashboard" class="w-full mt-4 bg-primario text-white font-semibold py-3 px-4 rounded-xl hover:bg-indigo-700 transition duration-300">Crear cuenta</button>
         </form>
 
 

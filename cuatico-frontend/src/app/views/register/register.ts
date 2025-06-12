@@ -14,9 +14,9 @@ export class Register implements AfterViewInit {
   // -- Llamada API Backend -- 
  formData = {
     name: '',
+    surnames: '',
     email: '',
-    password: '',
-    confirmPassword: '',
+    passwordHash: '',
     username: '',
     phone: ''
   };
@@ -24,8 +24,9 @@ export class Register implements AfterViewInit {
   constructor(private http: HttpClient) {}
 
   onRegister() {
-    const { name, email, password } = this.formData;
-    this.http.post('http://localhost:8080/student', this.formData)
+    const { } = this.formData;
+    console.log('Datos a enviar:', this.formData);
+    this.http.post('http://localhost:8080/api/students/register', this.formData)
       .subscribe({
         next: (res) => {
           // Maneja la respuesta de éxito
