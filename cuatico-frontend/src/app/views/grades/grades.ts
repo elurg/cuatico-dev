@@ -16,11 +16,12 @@ export class Grades {
       fecha: 'May 15, 2025',
       nota: 100,
       estado: 'Cuatico!',
-      modulos: [
-        { nombre: 'Introducion a la creatividad', nota: 100 },
-        { nombre: 'Procesos creativos', nota: 100 },
-        { nombre: 'Tecnicas de generacion de ideas', nota: 100 }
-      ]
+      teacherName: 'Diana Henao',
+      teacherAvatar: 'assets/Diana.png',
+      task: 'Módulo 1: Diseño de producto',
+      message: '¡Muchas felicidades por tu excelente desempeño en la entrega 2 del Módulo 1: Diseño de producto! Quiero destacar especialmente la profundidad de tu análisis de usuarios, ya que demuestra una comprensión clara de las necesidades y expectativas del público objetivo. Tu trabajo refleja un gran esfuerzo por aplicar las metodologías presentadas en clase y tu enfoque es muy profesional. Además, la claridad en la presentación de tus conclusiones facilita la comprensión de los resultados y las recomendaciones propuestas. Sigue así, porque tu dedicación y atención al detalle te están llevando por el camino correcto. Si tienes alguna duda o sugerencia para próximas entregas, no dudes en consultarme. ¡Estoy muy orgullosa de tu progreso!',
+      response: '',
+      expanded: false
     },
     {
       id: 2,
@@ -28,11 +29,12 @@ export class Grades {
       fecha: 'Apr 20, 2025',
       nota: 68,
       estado: 'En proceso',
-      modulos: [
-        { nombre: 'Diseño de experiencia, intertaz y estrategia de contenido', nota: 100 },
-        { nombre: 'Edad Trasnformacion digital', nota: 0 },
-        { nombre: 'Direcion de producto', nota: 0 }
-      ]
+      teacherName: 'Diana Henao',
+      teacherAvatar: 'assets/Diana.png',
+      task: 'Módulo 1: Diseño de producto',
+      message: '¡Muchas felicidades por tu excelente desempeño en la entrega 2 del Módulo 1: Diseño de producto! Quiero destacar especialmente la profundidad de tu análisis de usuarios, ya que demuestra una comprensión clara de las necesidades y expectativas del público objetivo. Tu trabajo refleja un gran esfuerzo por aplicar las metodologías presentadas en clase y tu enfoque es muy profesional. Además, la claridad en la presentación de tus conclusiones facilita la comprensión de los resultados y las recomendaciones propuestas. Sigue así, porque tu dedicación y atención al detalle te están llevando por el camino correcto. Si tienes alguna duda o sugerencia para próximas entregas, no dudes en consultarme. ¡Estoy muy orgullosa de tu progreso!',
+      response: '',
+      expanded: false
     },
     {
       id: 3,
@@ -40,11 +42,12 @@ export class Grades {
       fecha: 'Mar 10, 2025',
       nota: 48,
       estado: 'Suspenso',
-      modulos: [
-        { nombre: 'Fundamentos de la inteligencia artificial', nota: 35 },
-        { nombre: 'Redes neuronales y deep learning', nota: 45 },
-        { nombre: 'Vision por computador', nota: 65 }
-      ]
+     teacherName: 'Diana Henao',
+      teacherAvatar: 'assets/Diana.png',
+      task: 'Módulo 1: Diseño de producto',
+      message: '¡Muchas felicidades por tu excelente desempeño en la entrega 2 del Módulo 1: Diseño de producto! Quiero destacar especialmente la profundidad de tu análisis de usuarios, ya que demuestra una comprensión clara de las necesidades y expectativas del público objetivo. Tu trabajo refleja un gran esfuerzo por aplicar las metodologías presentadas en clase y tu enfoque es muy profesional. Además, la claridad en la presentación de tus conclusiones facilita la comprensión de los resultados y las recomendaciones propuestas. Sigue así, porque tu dedicación y atención al detalle te están llevando por el camino correcto. Si tienes alguna duda o sugerencia para próximas entregas, no dudes en consultarme. ¡Estoy muy orgullosa de tu progreso!',
+      response: '',
+      expanded: false
     }
   ];
 

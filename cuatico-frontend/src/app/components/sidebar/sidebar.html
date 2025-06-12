@@ -55,15 +55,7 @@
     <span
       class="absolute left-14 bg-gray-800 text-white text-xs rounded py-1 px-2 hidden group-hover:block">Insignias</span>
   </a>
-  <a routerLink="/feedback" class="relative group" aria-label="Feedback">
-    <svg class="h-5 w-5 text-gray-500 group-hover:text-primario" [ngClass]="{ 'text-primario': isActive('/feedback') }"
-      fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-        d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-    </svg>
-    <span
-      class="absolute left-14 bg-gray-800 text-white text-xs rounded py-1 px-2 hidden group-hover:block">Feedback</span>
-  </a>
+  
   <a routerLink="/organizacion" class="relative group" aria-label="Mi Agenda">
     <svg class="h-5 w-5 text-gray-500 group-hover:text-primario" [ngClass]="{ 'text-primario': isActive('/organizacion') }"
       fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -159,18 +151,7 @@
         <span [ngClass]="{ 'font-bold': isActive('/insignias') }">Insignias</span>
       </a>
       <!-- Feedback -->
-      <a routerLink="/feedback" routerLinkActive="bg-primario/10 text-primario shadow"
-        [routerLinkActiveOptions]="{ exact: true }"
-        class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-primario/5 rounded-lg group"
-        aria-label="Feedback">
-        <svg class="h-5 w-5 mr-3"
-          [ngClass]="{ 'text-primario': isActive('/feedback'), 'text-gray-500': !isActive('/feedback') }" fill="none"
-          viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-        </svg>
-        <span [ngClass]="{ 'font-bold': isActive('/feedback') }">Feedback</span>
-      </a>
+      
       <!-- Mi Agenda -->
       <a routerLink="/organizacion" routerLinkActive="bg-primario/10 text-primario shadow"
         [routerLinkActiveOptions]="{ exact: true }"

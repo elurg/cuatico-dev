@@ -40,9 +40,6 @@ export class Feedback {
       subject: 'UX Research',
       task: 'Módulo 1: Diseño de producto',
       message: '¡Muchas felicidades por tu excelente desempeño en la entrega 2 del Módulo 1: Diseño de producto! Quiero destacar especialmente la profundidad de tu análisis de usuarios, ya que demuestra una comprensión clara de las necesidades y expectativas del público objetivo. Tu trabajo refleja un gran esfuerzo por aplicar las metodologías presentadas en clase y tu enfoque es muy profesional. Además, la claridad en la presentación de tus conclusiones facilita la comprensión de los resultados y las recomendaciones propuestas. Sigue así, porque tu dedicación y atención al detalle te están llevando por el camino correcto. Si tienes alguna duda o sugerencia para próximas entregas, no dudes en consultarme. ¡Estoy muy orgullosa de tu progreso!',
-      resources: [
-        { title: 'Guía de entrevistas', url: 'https://ejemplo.com/guia-entrevistas' }
-      ],
       response: '',
       rating: 5,
       expanded: false
