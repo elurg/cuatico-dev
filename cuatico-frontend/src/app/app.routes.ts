@@ -15,6 +15,7 @@ import { Grades } from './views/grades/grades';
 import { Calendar } from './components/calendar/calendar';
 import { NotFound } from './views/not-found/not-found';
 import { NewCourses } from './views/new-courses/new-courses';
+import { Blog } from './views/blog/blog';
 
 export const routes: Routes = [
   {path: 'dashboard',component: Dashboard},
@@ -37,6 +38,8 @@ export const routes: Routes = [
   {path: 'calendario',component: Calendar},
   {path: '404',component: NotFound},
   {path: 'nuevoscursos',component: NewCourses},
+  {path: 'blog', component: Blog
+  },
 
   {path: '', redirectTo: 'login', pathMatch: 'full' },
   {path: '**', redirectTo: '404' }
