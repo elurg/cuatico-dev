@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Sidebar } from "../../components/sidebar/sidebar";
 import { RouterModule } from '@angular/router';
 import { UserStatsComponent } from '../user-stats/user-stats.component';
 import { HttpClient } from '@angular/common/http';
@@ -7,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-profile',
-  imports: [Sidebar, RouterModule, UserStatsComponent],
+  imports: [RouterModule, UserStatsComponent],
   templateUrl: './profile.html'
 })
 export class Profile {
@@ -19,7 +18,7 @@ export class Profile {
     username: '',
   };
 
-  private apiUrl = 'http://localhost:8080/api/student/1';
+  private apiUrl = 'http://localhost:8080/api/students/2';
 
   constructor(private http: HttpClient) { }
 
@@ -36,7 +35,7 @@ export class Profile {
         };
       },
       error: (err) => {
-        console.error('Error al cargar los datos del usuario:', err);
+        //console.error('Error al cargar los datos del usuario:', err);
       }
     });
   }
