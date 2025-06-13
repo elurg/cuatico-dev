@@ -28,7 +28,7 @@ export class App {
 
 
   get showSidebar(): boolean {
-  const rutasSinSidebar = ['/login', '/register', '/', '/perfil', '/404'];
+  const rutasSinSidebar = ['/login', '/register', '/', '/404'];
   return !rutasSinSidebar.includes(this.currentRoute);
 }
 }

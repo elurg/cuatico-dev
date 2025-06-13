@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Sidebar } from "../../components/sidebar/sidebar";
 import { RouterModule } from '@angular/router';
 import { UserStatsComponent } from '../user-stats/user-stats.component';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-profile',
@@ -10,21 +12,33 @@ import { UserStatsComponent } from '../user-stats/user-stats.component';
 })
 export class Profile {
   user = {
-    name: 'Juan Pérez',
-    role: 'Product Designer',
-    email: 'juan.perez@email.com',
-    phone: '+34 600 123 456',
-    address: 'Calle Falsa 123, Madrid',
-    memberSince: 'Marzo 2021',
-    avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
-    projects: 245,
-    followers: 1200,
-    following: 36,
-    profileProgress: 75, // Porcentaje de completado del perfil (0-100)
-    linkedin: 'https://linkedin.com/in/tuperfil',
-    github: 'https://github.com/tuperfil',
+    name: '',
+    email: '',
+    phone: '',
+    surnames: '',
+    username: '',
   };
 
+  private apiUrl = 'http://localhost:8080/api/student/1';
 
-  
+  constructor(private http: HttpClient) { }
+
+  ngOnInit() {
+    this.http.get<any>(this.apiUrl).subscribe({
+      next: (data) => {
+        // Asigna los datos recibidos al objeto user
+        this.user = {
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          surnames: data.surnames,
+          username: data.username,
+        };
+      },
+      error: (err) => {
+        console.error('Error al cargar los datos del usuario:', err);
+      }
+    });
+  }
+
 }

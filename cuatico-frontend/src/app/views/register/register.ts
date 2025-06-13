@@ -25,18 +25,8 @@ export class Register implements AfterViewInit {
 
   onRegister() {
     const { } = this.formData;
-    console.log('Datos a enviar:', this.formData);
     this.http.post('http://localhost:8080/api/students/register', this.formData)
-      .subscribe({
-        next: (res) => {
-          // Maneja la respuesta de éxito
-          console.log('Registro exitoso', res);
-        },
-        error: (err) => {
-          // Maneja el error
-          console.error('Error en el registro', err);
-        }
-      });
+    // TODO: Ver si necesitamos cachear el error
   }
 
 
