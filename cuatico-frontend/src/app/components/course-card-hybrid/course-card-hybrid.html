@@ -1,0 +1,88 @@
+<div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden group border border-gray-100"
+     (click)="onNavigate()">
+  
+  <!-- Imagen del curso -->
+  <div class="relative">
+    <img [src]="course.thumbnail || 'assets/curso.avif'" 
+         [alt]="course.titulo" 
+         class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300">
+    
+    <!-- Etiqueta de modalidad -->
+    <span class="absolute top-3 right-3 px-3 py-1 text-white text-xs font-semibold rounded-full shadow-lg"
+          [ngClass]="getModalidadColor()">
+      {{ getModalidadText() }}
+    </span>
+  </div>
+
+  <!-- Contenido de la tarjeta -->
+  <div class="p-5">
+    
+    <!-- Título del curso -->
+    <h3 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
+      {{ course.titulo }}
+    </h3>
+
+    <!-- Información del profesor -->
+    <div class="flex items-center mb-3">
+      <img src="assets/Diana.png" alt="Profesor" class="w-6 h-6 rounded-full mr-2">
+      <span class="text-sm text-gray-600">Por {{ course.profesor }}</span>
+    </div>
+
+    <!-- Precio -->
+    @if (showPrice && course.precio) {
+      <div class="flex items-center justify-center bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full mb-3 w-fit">
+        <span class="font-semibold text-lg">{{ course.precio }}</span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-1">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 7.756a4.5 4.5 0 1 0 0 8.488M7.5 10.5h5.25m-5.25 3h5.25M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+      </div>
+    }
+
+    <!-- Información del curso con iconos -->
+    <div class="space-y-2 mb-3">
+      @if (course.lecciones) {
+        <div class="flex items-center text-sm text-gray-600">
+          <svg class="w-4 h-4 mr-2 text-purple-500" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+          </svg>
+          <span>{{ course.lecciones }} semanas</span>
+        </div>
+      }
+      
+      @if (course.duracion) {
+        <div class="flex items-center text-sm text-gray-600">
+          <svg class="w-4 h-4 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+          </svg>
+          <span>{{ course.duracion }}</span>
+        </div>
+      }
+      
+      @if (course.fecha) {
+        <div class="flex items-center text-sm text-gray-600">
+          <svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+          </svg>
+          <span>{{ course.fecha }}</span>
+        </div>
+      }
+    </div>
+
+
+
+    <!-- Botón de acción -->
+    <div class="mt-4">
+      @if (showProgress) {
+        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+                (click)="$event.stopPropagation(); onNavigate()">
+          Continuar Curso
+        </button>
+      } @else {
+        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+                (click)="$event.stopPropagation(); onEnroll()">
+          Accede
+        </button>
+      }
+    </div>
+  </div>
+</div>

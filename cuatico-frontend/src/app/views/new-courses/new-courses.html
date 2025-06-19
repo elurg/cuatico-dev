@@ -1,14 +1,88 @@
-<div class="container mx-auto px-4 py-8">
+<div class="min-h-screen bg-gray-50 py-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Encabezado -->
     <app-header [titulo]="'Cursos Nuevos'"
         [iconoD]="'M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25'">
-        
     </app-header>
 
-    <!-- Grid de cursos -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
-        <app-card tipo="venta" precio="229" titulo="Machine Learning" fecha="15 de Mayo" duracion="8 semanas" profesor="Ana García">
-        </app-card>
-        <app-card tipo="venta" precio="249" titulo="Diseño UX/UI" fecha="22 de Mayo" duracion="6 semanas" profesor="Carlos Ruiz">
-        </app-card>
+    <!-- Filtros -->
+    <div class="bg-white rounded-xl shadow-sm p-6 mb-8 mt-6">
+      <div class="flex flex-wrap gap-4 items-center">
+        <div class="flex items-center space-x-2">
+          <label class="text-sm font-medium text-gray-700">Modalidad:</label>
+          <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  [(ngModel)]="selectedModality" (change)="filterCourses()">
+            <option value="all">Todas</option>
+            <option value="remoto">Remoto</option>
+            <option value="presencial">Presencial</option>
+          </select>
+        </div>
+        
+        <div class="flex items-center space-x-2">
+          <label class="text-sm font-medium text-gray-700">Precio:</label>
+          <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  [(ngModel)]="selectedPriceRange" (change)="filterCourses()">
+            <option value="all">Todos</option>
+            <option value="free">Gratis</option>
+            <option value="low">Hasta €200</option>
+            <option value="medium">€200 - €400</option>
+            <option value="high">Más de €400</option>
+          </select>
+        </div>
+
+        <div class="flex-1">
+          <input type="text" 
+                 placeholder="Buscar cursos..."
+                 class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                 [(ngModel)]="searchTerm" 
+                 (input)="filterCourses()">
+        </div>
+      </div>
     </div>
+
+    <!-- Grid de cursos -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <app-course-card-hybrid 
+        *ngFor="let course of filteredCourses"
+        [course]="course"
+        [showProgress]="false"
+        [showPrice]="true"
+        (navigate)="navigateToCourse($event)"
+        (enroll)="enrollInCourse($event)">
+      </app-course-card-hybrid>
+    </div>
+
+    <!-- Mensaje cuando no hay resultados -->
+    <div *ngIf="filteredCourses.length === 0" class="text-center py-12">
+      <div class="text-gray-400 mb-4">
+        <svg class="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.47-.881-6.08-2.33" />
+        </svg>
+      </div>
+      <h3 class="text-lg font-medium text-gray-900 mb-2">No se encontraron cursos</h3>
+      <p class="text-gray-500">Intenta ajustar los filtros o el término de búsqueda</p>
+    </div>
+
+    <!-- Paginación -->
+    <div *ngIf="filteredCourses.length > 0" class="mt-12 flex justify-center">
+      <nav class="flex items-center space-x-2">
+        <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50"
+                [disabled]="currentPage === 1"
+                (click)="previousPage()">
+          Anterior
+        </button>
+        
+        <span class="px-4 py-2 text-sm text-gray-700">
+          Página {{ currentPage }} de {{ totalPages }}
+        </span>
+        
+        <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50"
+                [disabled]="currentPage === totalPages"
+                (click)="nextPage()">
+          Siguiente
+        </button>
+      </nav>
+    </div>
+  </div>
 </div>
