@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
+import { CourseCardHybrid, CourseData } from '../course-card-hybrid/course-card-hybrid';
 
 interface RecommendedCourse {
   id: number;
@@ -16,9 +17,32 @@ interface RecommendedCourse {
 @Component({
   selector: 'recommended-courses',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, CourseCardHybrid],
   templateUrl: './recommended-courses.html'
 })
 export class RecommendedCourses {
   @Input() courses: RecommendedCourse[] = [];
-} 
+
+  constructor(private router: Router) {}
+
+  get hybridCourses(): CourseData[] {
+    return this.courses.map(course => ({
+      id: course.id,
+      titulo: course.title,
+      profesor: course.instructor,
+      precio: course.price,
+      modalidad: course.modality.toLowerCase() === 'remoto' ? 'remoto' : 'presencial',
+      duracion: course.duration,
+      fecha: course.startDate,
+      thumbnail: course.thumbnail
+    }));
+  }
+
+  onNavigate(courseId: number) {
+    this.router.navigate(['/curso', courseId]);
+  }
+
+  onEnroll(courseId: number) {
+    this.router.navigate(['/inscripcion', courseId]);
+  }
+}

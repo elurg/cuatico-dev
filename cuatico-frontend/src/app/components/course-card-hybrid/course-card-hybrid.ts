@@ -46,4 +46,10 @@ export class CourseCardHybrid {
   getModalidadText(): string {
     return this.course.modalidad === 'remoto' ? 'Remoto' : 'Presencial';
   }
+
+  getPriceModalidadText(): string {
+    const modalidad = this.course.modalidad === 'remoto' ? 'Remoto' : 'Presencial';
+    const precio = this.course.precio ? `€${this.course.precio}` : '';
+    return precio ? `${modalidad} - ${precio}` : modalidad;
+  }
 }
