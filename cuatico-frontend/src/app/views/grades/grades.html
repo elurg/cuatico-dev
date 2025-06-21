@@ -95,7 +95,7 @@
             <!-- Botón expandir -->
             @if (calificacion.message) {
             <button class="text-sm text-primario font-medium underline mt-1"
-              (click)="calificacion.expanded = !calificacion.expanded">
+              (click)="toggleExpansion(calificacion)">
               {{ calificacion.expanded ? 'Ocultar retroalimentación' : 'Ver retroalimentación' }}
             </button>
             }

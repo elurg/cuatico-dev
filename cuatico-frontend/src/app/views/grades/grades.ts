@@ -76,47 +76,42 @@ export class Grades {
     }
   ];
 
-  enviarRespuesta(calificacion: Calificacion) {
+  toggleExpansion(calificacion: Calificacion) {
+    this.calificaciones.forEach(c => {
+      if (c !== calificacion) {
+        c.expanded = false;
+      }
+    });
+    calificacion.expanded = !calificacion.expanded;
+  }
 
+  enviarRespuesta(calificacion: Calificacion) {
     if (!calificacion.TextoRespuesta || calificacion.TextoRespuesta.trim() === '') {
       alert('Por favor, escribe una respuesta.');
       return;
     }
 
-
     calificacion.response = calificacion.TextoRespuesta;
-
-
     calificacion.TextoRespuesta = '';
-
-
     calificacion.RespuestaAbierta = false;
-
-
     alert('¡Respuesta enviada!');
   }
 
-
-   solicitarTutoria(): void {
+  solicitarTutoria(): void {
     alert('¡Tutoría solicitada! Te contactaremos pronto.');
   }
 
   abiertos: Record<number, boolean> = {};
-
   etiquetas: string[] = [];
   etiquetaSeleccionada: string | null = null;
 
   constructor() {
-    // Extrae las asignaturas únicas para las burbujas de filtro
     this.etiquetas = [...new Set(this.calificaciones.map(c => c.asignatura))];
-
     this.calificaciones.forEach(c => {
       c.RespuestaAbierta = false;
       c.TextoRespuesta = '';
     });
   }
-
-
 
   seleccionarEtiqueta(etiqueta: string | null) {
     this.etiquetaSeleccionada = etiqueta;
@@ -131,25 +126,21 @@ export class Grades {
     this.abiertos[id] = !this.abiertos[id];
   }
 
-  // Asocia color a cada asignatura
   asignaturaColorIdx(asignatura: string): number {
     return this.etiquetas.indexOf(asignatura);
   }
 
   getGradientColorByAsignatura(asignatura: string): string {
     const gradients = [
-      '#a855f7, #ec4899', // morado a rosa
-      '#3b82f6, #60a5fa', // azul
-      '#f97316, #f59e0b', // naranja
-      '#ef4444, #f87171', // rojo
-      '#eab308, #fde047', // amarillo
-      '#8b5cf6, #c084fc', // morado claro
-      '#14b8a6, #2dd4bf'  // verde turquesa
+      '#a855f7, #ec4899',
+      '#3b82f6, #60a5fa',
+      '#f97316, #f59e0b',
+      '#ef4444, #f87171',
+      '#eab308, #fde047',
+      '#8b5cf6, #c084fc',
+      '#14b8a6, #2dd4bf'
     ];
     const idx = this.asignaturaColorIdx(asignatura);
     return gradients[idx % gradients.length];
-
-
-
   }
 }
