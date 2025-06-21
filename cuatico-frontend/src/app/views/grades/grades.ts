@@ -1,12 +1,31 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
 import { Header } from 'src/app/components/header/header';
+
+
+interface Calificacion {
+
+  id: number;
+  asignatura: string;
+  fecha: string;
+  nota: number;
+  teacherName: string;
+  teacherAvatar: string;
+  task: string;
+  message: string;
+  response: string;
+  expanded?: boolean;
+  RespuestaAbierta?: boolean;
+  TextoRespuesta?: string;
+}
 
 @Component({
   selector: 'app-grades',
   templateUrl: './grades.html',
   standalone: true,
-  imports: [CommonModule, Header],
+  imports: [CommonModule, Header,FormsModule],
 })
 export class Grades {
   calificaciones = [
@@ -21,7 +40,9 @@ export class Grades {
       task: 'Módulo 1: Diseño de producto',
       message: '¡Muchas felicidades por tu excelente desempeño en la entrega 2 del Módulo 1: Diseño de producto! Quiero destacar especialmente la profundidad de tu análisis de usuarios, ya que demuestra una comprensión clara de las necesidades y expectativas del público objetivo. Tu trabajo refleja un gran esfuerzo por aplicar las metodologías presentadas en clase y tu enfoque es muy profesional. Además, la claridad en la presentación de tus conclusiones facilita la comprensión de los resultados y las recomendaciones propuestas. Sigue así, porque tu dedicación y atención al detalle te están llevando por el camino correcto. Si tienes alguna duda o sugerencia para próximas entregas, no dudes en consultarme. ¡Estoy muy orgullosa de tu progreso!',
       response: '',
-      expanded: false
+      expanded: false,
+      RespuestaAbierta: false,
+      TextoRespuesta: ''
     },
     {
       id: 2,
@@ -34,7 +55,9 @@ export class Grades {
       task: 'Módulo 1: Diseño de producto',
       message: '¡Muchas felicidades por tu excelente desempeño en la entrega 2 del Módulo 1: Diseño de producto! Quiero destacar especialmente la profundidad de tu análisis de usuarios, ya que demuestra una comprensión clara de las necesidades y expectativas del público objetivo. Tu trabajo refleja un gran esfuerzo por aplicar las metodologías presentadas en clase y tu enfoque es muy profesional. Además, la claridad en la presentación de tus conclusiones facilita la comprensión de los resultados y las recomendaciones propuestas. Sigue así, porque tu dedicación y atención al detalle te están llevando por el camino correcto. Si tienes alguna duda o sugerencia para próximas entregas, no dudes en consultarme. ¡Estoy muy orgullosa de tu progreso!',
       response: '',
-      expanded: false
+      expanded: false,
+      RespuestaAbierta: false,
+      TextoRespuesta: ''
     },
     {
       id: 3,
@@ -42,14 +65,41 @@ export class Grades {
       fecha: 'Mar 10, 2025',
       nota: 48,
       estado: 'Suspenso',
-     teacherName: 'Diana Henao',
+      teacherName: 'Diana Henao',
       teacherAvatar: 'assets/Diana.png',
       task: 'Módulo 1: Diseño de producto',
       message: '¡Muchas felicidades por tu excelente desempeño en la entrega 2 del Módulo 1: Diseño de producto! Quiero destacar especialmente la profundidad de tu análisis de usuarios, ya que demuestra una comprensión clara de las necesidades y expectativas del público objetivo. Tu trabajo refleja un gran esfuerzo por aplicar las metodologías presentadas en clase y tu enfoque es muy profesional. Además, la claridad en la presentación de tus conclusiones facilita la comprensión de los resultados y las recomendaciones propuestas. Sigue así, porque tu dedicación y atención al detalle te están llevando por el camino correcto. Si tienes alguna duda o sugerencia para próximas entregas, no dudes en consultarme. ¡Estoy muy orgullosa de tu progreso!',
       response: '',
-      expanded: false
+      expanded: false,
+      RespuestaAbierta: false,
+      TextoRespuesta: ''
     }
   ];
+
+  enviarRespuesta(calificacion: Calificacion) {
+
+    if (!calificacion.TextoRespuesta || calificacion.TextoRespuesta.trim() === '') {
+      alert('Por favor, escribe una respuesta.');
+      return;
+    }
+
+
+    calificacion.response = calificacion.TextoRespuesta;
+
+
+    calificacion.TextoRespuesta = '';
+
+
+    calificacion.RespuestaAbierta = false;
+
+
+    alert('¡Respuesta enviada!');
+  }
+
+
+   solicitarTutoria(): void {
+    alert('¡Tutoría solicitada! Te contactaremos pronto.');
+  }
 
   abiertos: Record<number, boolean> = {};
 
@@ -59,7 +109,14 @@ export class Grades {
   constructor() {
     // Extrae las asignaturas únicas para las burbujas de filtro
     this.etiquetas = [...new Set(this.calificaciones.map(c => c.asignatura))];
+
+    this.calificaciones.forEach(c => {
+      c.RespuestaAbierta = false;
+      c.TextoRespuesta = '';
+    });
   }
+
+
 
   seleccionarEtiqueta(etiqueta: string | null) {
     this.etiquetaSeleccionada = etiqueta;
@@ -80,7 +137,7 @@ export class Grades {
   }
 
   getGradientColorByAsignatura(asignatura: string): string {
-  const gradients = [
+    const gradients = [
       '#a855f7, #ec4899', // morado a rosa
       '#3b82f6, #60a5fa', // azul
       '#f97316, #f59e0b', // naranja
@@ -88,8 +145,11 @@ export class Grades {
       '#eab308, #fde047', // amarillo
       '#8b5cf6, #c084fc', // morado claro
       '#14b8a6, #2dd4bf'  // verde turquesa
-  ];
-  const idx = this.asignaturaColorIdx(asignatura);
-  return gradients[idx % gradients.length];
-}
+    ];
+    const idx = this.asignaturaColorIdx(asignatura);
+    return gradients[idx % gradients.length];
+
+
+
+  }
 }
