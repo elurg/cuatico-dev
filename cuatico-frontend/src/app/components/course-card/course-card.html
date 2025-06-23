@@ -1,0 +1,148 @@
+<app-card 
+  [hover]="true" 
+  [clickable]="true" 
+  [padding]="variant === 'compact' ? 'sm' : 'md'" 
+  [rounded]="'lg'" 
+  (click)="onNavigate()">
+  
+  <!-- Imagen del curso con etiquetas superpuestas -->
+  <div class="relative mb-4">
+    <img 
+      [src]="course.thumbnail || 'assets/curso.avif'" 
+      [alt]="course.title" 
+      class="w-full h-48 object-cover rounded-t-lg">
+    
+    <!-- Etiquetas superpuestas -->
+    <div class="absolute top-0 left-0 w-full p-3 flex justify-between">
+      <!-- Etiqueta de precio -->
+      @if (showPrice && course.price) {
+        <app-badge variant="warning" size="md">
+          €{{ course.price }}
+        </app-badge>
+      } @else {
+        <div></div> <!-- Espaciador -->
+      }
+      
+      <!-- Etiqueta de modalidad -->
+      <app-badge [variant]="getModalityVariant()" size="md">
+        {{ getModalityText() }}
+      </app-badge>
+    </div>
+    
+    <!-- Categoría y nivel (si están disponibles) -->
+    @if (course.category || course.level) {
+      <div class="absolute bottom-0 left-0 w-full p-3 flex justify-between items-center bg-gradient-to-t from-black/70 to-transparent">
+        @if (course.category) {
+          <span class="text-white text-sm font-medium">{{ course.category }}</span>
+        } @else {
+          <div></div>
+        }
+        
+        @if (course.level) {
+          <app-badge [variant]="getLevelVariant()" size="sm">
+            {{ getLevelText() }}
+          </app-badge>
+        }
+      </div>
+    }
+  </div>
+  
+  <!-- Contenido principal -->
+  <div>
+    <!-- Título del curso -->
+    <h3 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2">
+      {{ course.title }}
+    </h3>
+    
+    <!-- Información del instructor -->
+    <div class="flex items-center mb-3">
+      <app-avatar 
+        [src]="course.instructorAvatar || 'assets/Diana.png'" 
+        [alt]="course.instructor" 
+        size="xs" 
+        [border]="true"
+        [fallbackText]="course.instructor">
+      </app-avatar>
+      <span class="ml-2 text-sm text-gray-600">{{ course.instructor }}</span>
+      
+      <!-- Valoración (si está disponible) -->
+      @if (course.rating) {
+        <div class="ml-auto flex items-center">
+          <app-icon name="fas fa-star" size="sm" color="yellow-500"></app-icon>
+          <span class="ml-1 text-sm font-medium">{{ course.rating }}</span>
+        </div>
+      }
+    </div>
+    
+    <!-- Descripción (solo en variante detallada) -->
+    @if (variant === 'detailed' && course.description) {
+      <p class="text-sm text-gray-600 mb-3 line-clamp-2">{{ course.description }}</p>
+    }
+    
+    <!-- Barra de progreso (si es necesario) -->
+    @if (showProgress && course.progress !== undefined) {
+      <div class="mb-3">
+        <app-progress 
+          [value]="course.progress" 
+          [max]="100" 
+          size="sm" 
+          variant="primary" 
+          [showLabel]="true">
+        </app-progress>
+      </div>
+    }
+    
+    <!-- Detalles del curso -->
+    <div class="grid grid-cols-2 gap-2 mb-4">
+      @if (course.lessons) {
+        <div class="flex items-center text-sm text-gray-600">
+          <app-icon name="fas fa-book" size="sm" color="purple-500" class="mr-2"></app-icon>
+          <span>{{ course.lessons }} lecciones</span>
+        </div>
+      }
+      
+      @if (course.duration) {
+        <div class="flex items-center text-sm text-gray-600">
+          <app-icon name="fas fa-clock" size="sm" color="blue-500" class="mr-2"></app-icon>
+          <span>{{ course.duration }}</span>
+        </div>
+      }
+      
+      @if (course.startDate) {
+        <div class="flex items-center text-sm text-gray-600">
+          <app-icon name="fas fa-calendar" size="sm" color="green-500" class="mr-2"></app-icon>
+          <span>{{ course.startDate }}</span>
+        </div>
+      }
+    </div>
+    
+    <!-- Botones de acción -->
+    <div class="flex gap-2">
+      @if (course.enrolled) {
+        <app-button 
+          variant="primary" 
+          [fullWidth]="true" 
+          (clicked)="onNavigate()">
+          Continuar
+        </app-button>
+      } @else {
+        <app-button 
+          variant="primary" 
+          [fullWidth]="true" 
+          (clicked)="onEnroll()">
+          Inscribirse
+        </app-button>
+      }
+      
+      <!-- Botón de favorito (solo en variante detallada) -->
+      @if (variant === 'detailed') {
+        <app-button 
+          variant="outline" 
+          [fullWidth]="false" 
+          icon="fas fa-heart"
+          (clicked)="onFavorite()">
+        </app-button>
+      }
+    </div>
+  </div>
+</app-card>

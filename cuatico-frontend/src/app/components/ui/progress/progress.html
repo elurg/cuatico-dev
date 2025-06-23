@@ -1,0 +1,12 @@
+<div>
+  @if (showLabel) {
+    <div [class]="labelClasses" class="mb-1">{{ percentage.toFixed(0) }}%</div>
+  }
+  
+  <div [class]="containerClasses">
+    <div 
+      [class]="barClasses"
+      [style.width.%]="percentage">
+    </div>
+  </div>
+</div>

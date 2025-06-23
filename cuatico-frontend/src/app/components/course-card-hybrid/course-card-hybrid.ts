@@ -2,6 +2,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+// Import UI components
+import { Card, Button, Badge, Avatar, Icon } from '../../components/ui';
+
 export interface CourseData {
   id: number;
   titulo: string;
@@ -19,7 +22,15 @@ export interface CourseData {
 @Component({
   selector: 'app-course-card-hybrid',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [
+    CommonModule, 
+    RouterModule,
+    Card,
+    Button,
+    Badge,
+    Avatar,
+    Icon
+  ],
   templateUrl: './course-card-hybrid.html'
 })
 export class CourseCardHybrid {
@@ -31,16 +42,17 @@ export class CourseCardHybrid {
   @Output() navigate = new EventEmitter<number>();
   @Output() enroll = new EventEmitter<number>();
 
-  onNavigate() {
+  onNavigate(): void {
     this.navigate.emit(this.course.id);
   }
 
-  onEnroll() {
+  onEnroll(): void {
     this.enroll.emit(this.course.id);
   }
 
-  getModalidadColor(): string {
-    return this.course.modalidad === 'remoto' ? 'bg-blue-500' : 'bg-green-500';
+  getModalidadVariant(): 'primary' | 'success' {
+    // Mantenemos los colores originales: remoto es primary, presencial es success
+    return this.course.modalidad === 'remoto' ? 'primary' : 'success';
   }
 
   getModalidadText(): string {
@@ -49,7 +61,7 @@ export class CourseCardHybrid {
 
   getPriceModalidadText(): string {
     const modalidad = this.course.modalidad === 'remoto' ? 'Remoto' : 'Presencial';
-    const precio = this.course.precio ? `€${this.course.precio}` : '';
-    return precio ? `${modalidad} - ${precio}` : modalidad;
+    const precio = this.course.precio ? `${this.course.precio}€` : '';
+    return precio ? `${modalidad}/${precio}` : modalidad;
   }
 }

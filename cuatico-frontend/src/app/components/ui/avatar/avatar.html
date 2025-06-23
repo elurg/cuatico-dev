@@ -1,0 +1,15 @@
+@if (!hasError && src) {
+  <div [class]="containerClasses">
+    <img 
+      [src]="src" 
+      [alt]="alt" 
+      class="h-full w-full object-cover rounded-full"
+      (error)="onError()" />
+    <span [class]="statusClasses"></span>
+  </div>
+} @else {
+  <div [class]="fallbackClasses">
+    {{ initials }}
+    <span [class]="statusClasses"></span>
+  </div>
+}

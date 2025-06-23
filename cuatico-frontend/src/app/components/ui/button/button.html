@@ -1,0 +1,24 @@
+<button 
+  [type]="type" 
+  [disabled]="disabled"
+  [class]="classes"
+  (click)="onClick($event)">
+  
+  @if (icon && iconPosition === 'left') {
+    <span class="mr-2">
+      <ng-container [ngTemplateOutlet]="iconTemplate"></ng-container>
+    </span>
+  }
+  
+  <ng-content></ng-content>
+  
+  @if (icon && iconPosition === 'right') {
+    <span class="ml-2">
+      <ng-container [ngTemplateOutlet]="iconTemplate"></ng-container>
+    </span>
+  }
+</button>
+
+<ng-template #iconTemplate>
+  <i [class]="icon"></i>
+</ng-template>

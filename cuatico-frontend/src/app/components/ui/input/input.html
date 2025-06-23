@@ -1,0 +1,55 @@
+<div [class]="containerClasses">
+  @if (label) {
+    <label [for]="label" [class]="labelClasses">
+      {{ label }}
+      @if (required) {
+        <span class="text-red-500">*</span>
+      }
+    </label>
+  }
+  
+  <div class="relative">
+    @if (icon && iconPosition === 'left') {
+      <div [class]="leftIconClasses" (click)="onIconClicked()">
+        <i [class]="icon"></i>
+      </div>
+    }
+    
+    <input
+      #inputElement
+      [type]="type"
+      [id]="label"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+      [readonly]="readonly"
+      [required]="required"
+      [class]="inputClasses"
+      [value]="value"
+      (input)="onInputChange($event)"
+      (focus)="onFocus()"
+      (blur)="onBlur()">
+    
+    @if (icon && iconPosition === 'right') {
+      <div [class]="rightIconClasses" (click)="onIconClicked()">
+        <i [class]="icon"></i>
+      </div>
+    }
+    
+    @if (clearable && hasValue && !disabled && !readonly) {
+      <button 
+        type="button" 
+        [class]="rightIconClasses + ' cursor-pointer hover:text-gray-700'"
+        (click)="onClear()">
+        <i class="fas fa-times-circle"></i>
+      </button>
+    }
+  </div>
+  
+  @if (hint && !error) {
+    <p [class]="hintClasses">{{ hint }}</p>
+  }
+  
+  @if (error) {
+    <p [class]="errorClasses">{{ error }}</p>
+  }
+</div>

@@ -16,6 +16,8 @@ import { Calendar } from './components/calendar/calendar';
 import { NotFound } from './views/not-found/not-found';
 import { NewCourses } from './views/new-courses/new-courses';
 import { Blog } from './views/blog/blog';
+// Importamos el componente de ejemplo de cursos
+import { CoursesExampleComponent } from './pages/courses-example/courses-example';
 
 export const routes: Routes = [
   {path: 'dashboard',component: Dashboard},
@@ -38,8 +40,9 @@ export const routes: Routes = [
   {path: 'calendario',component: Calendar},
   {path: '404',component: NotFound},
   {path: 'nuevoscursos',component: NewCourses},
-  {path: 'blog', component: Blog
-  },
+  {path: 'blog', component: Blog},
+  // Ruta para la página de ejemplo de componentes UI
+  {path: 'componentes-ejemplo', component: CoursesExampleComponent},
 
   {path: '', redirectTo: 'login', pathMatch: 'full' },
   {path: '**', redirectTo: '404' }

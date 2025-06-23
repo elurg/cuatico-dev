@@ -1,8 +1,14 @@
-import { Component, Input, Output, EventEmitter, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, Input as InputDecorator, Output, EventEmitter, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
+// Import UI components
+import { InputComponent } from '../../components/ui';
 
 @Component({
   selector: 'app-label-input',
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, InputComponent],
   templateUrl: './label-input.html',
   providers: [
     {
@@ -13,14 +19,19 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ]
 })
 export class LabelInput implements ControlValueAccessor {
-  @Input() label = '';
-  @Input() id = '';
-  @Input() type: 'text' | 'email' | 'password' | 'number' | 'textarea' | 'checkbox' | 'select' | 'tel' | 'url' = 'text';
-  @Input() placeholder = '';
-  @Input() required = false;
-  @Input() horizontal = false;
-  @Input() options?: string[];
-  @Input() model: any = '';
+  @InputDecorator() label = '';
+  @InputDecorator() id = '';
+  @InputDecorator() type: 'text' | 'email' | 'password' | 'number' | 'textarea' | 'checkbox' | 'select' | 'tel' | 'url' = 'text';
+  @InputDecorator() placeholder = '';
+  @InputDecorator() required = false;
+  @InputDecorator() horizontal = false;
+  @InputDecorator() options?: string[];
+  @InputDecorator() model: any = '';
+  @InputDecorator() hint?: string;
+  @InputDecorator() error?: string;
+  @InputDecorator() disabled = false;
+  @InputDecorator() readonly = false;
+  
   @Output() modelChange = new EventEmitter<any>();
   @Output() change = new EventEmitter<any>(); // Opcional, para mayor flexibilidad
 
@@ -34,14 +45,17 @@ export class LabelInput implements ControlValueAccessor {
     this.model = value;
     this.selectedOption = value;
   }
+  
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
+  
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
+  
   setDisabledState?(isDisabled: boolean): void {
-    // Implementar si necesitas soporte para disabled
+    this.disabled = isDisabled;
   }
 
   toggleSelect() {
@@ -59,8 +73,8 @@ export class LabelInput implements ControlValueAccessor {
   }
 
   // Para input, textarea, etc.
-  onInput(event: Event) {
-    const value = (event.target as HTMLInputElement | HTMLTextAreaElement).value;
+  onInput(event: any) {
+    const value = event;
     this.model = value;
     this.onChange(value);
     this.onTouched();
@@ -68,22 +82,40 @@ export class LabelInput implements ControlValueAccessor {
     this.change.emit(value);
   }
 
-onCheckboxChange(event: Event): void {
-  this.model = (event.target as HTMLInputElement).checked;
-  this.modelChange.emit(this.model);
-  this.onChange(this.model);
-  this.onTouched();
-}
+  onCheckboxChange(event: Event): void {
+    this.model = (event.target as HTMLInputElement).checked;
+    this.modelChange.emit(this.model);
+    this.onChange(this.model);
+    this.onTouched();
+  }
 
-showPassword: boolean = false;
+  onIconClick(): void {
+    if (this.type === 'password') {
+      this.togglePasswordVisibility();
+    }
+  }
+
+  showPassword: boolean = false;
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
 
-  get currentInputType(): string {
-    return this.type === 'password' && this.showPassword ? 'text' : this.type;
+  get currentInputType(): 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search' | 'date' | 'time' | 'datetime-local' {
+    if (this.type === 'password' && this.showPassword) {
+      return 'text';
+    }
+    
+    // Asegurarse de que solo se devuelvan tipos compatibles con InputType
+    const validTypes: Record<string, boolean> = {
+      'text': true, 'email': true, 'password': true, 'number': true, 'tel': true, 
+      'url': true, 'search': true, 'date': true, 'time': true, 'datetime-local': true
+    };
+    
+    return validTypes[this.type] ? this.type as any : 'text';
   }
 
-
+  get passwordIcon(): string {
+    return this.showPassword ? 'fas fa-eye' : 'fas fa-eye-slash';
+  }
 }

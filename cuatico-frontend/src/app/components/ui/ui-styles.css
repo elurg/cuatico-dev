@@ -1,0 +1,360 @@
+/* Estilos globales para componentes UI */
+
+/* Variables de colores */
+:root {
+  --primary-50: #eff6ff;
+  --primary-100: #dbeafe;
+  --primary-200: #bfdbfe;
+  --primary-300: #93c5fd;
+  --primary-400: #60a5fa;
+  --primary-500: #3b82f6;
+  --primary-600: #2563eb;
+  --primary-700: #1d4ed8;
+  --primary-800: #1e40af;
+  --primary-900: #1e3a8a;
+  
+  --success-50: #f0fdf4;
+  --success-100: #dcfce7;
+  --success-200: #bbf7d0;
+  --success-300: #86efac;
+  --success-400: #4ade80;
+  --success-500: #22c55e;
+  --success-600: #16a34a;
+  --success-700: #15803d;
+  --success-800: #166534;
+  --success-900: #14532d;
+  
+  --warning-50: #fffbeb;
+  --warning-100: #fef3c7;
+  --warning-200: #fde68a;
+  --warning-300: #fcd34d;
+  --warning-400: #fbbf24;
+  --warning-500: #f59e0b;
+  --warning-600: #d97706;
+  --warning-700: #b45309;
+  --warning-800: #92400e;
+  --warning-900: #78350f;
+  
+  --danger-50: #fef2f2;
+  --danger-100: #fee2e2;
+  --danger-200: #fecaca;
+  --danger-300: #fca5a5;
+  --danger-400: #f87171;
+  --danger-500: #ef4444;
+  --danger-600: #dc2626;
+  --danger-700: #b91c1c;
+  --danger-800: #991b1b;
+  --danger-900: #7f1d1d;
+  
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+}
+
+/* Utilidades para tamaños */
+.ui-size-xs {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.ui-size-sm {
+  font-size: 0.875rem;
+  padding: 0.375rem 0.75rem;
+}
+
+.ui-size-md {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.ui-size-lg {
+  font-size: 1.125rem;
+  padding: 0.75rem 1.5rem;
+}
+
+.ui-size-xl {
+  font-size: 1.25rem;
+  padding: 1rem 2rem;
+}
+
+/* Utilidades para variantes de color */
+.ui-variant-primary {
+  background-color: var(--primary-500);
+  color: white;
+  border-color: var(--primary-600);
+}
+
+.ui-variant-primary:hover {
+  background-color: var(--primary-600);
+}
+
+.ui-variant-success {
+  background-color: var(--success-500);
+  color: white;
+  border-color: var(--success-600);
+}
+
+.ui-variant-success:hover {
+  background-color: var(--success-600);
+}
+
+.ui-variant-warning {
+  background-color: var(--warning-500);
+  color: white;
+  border-color: var(--warning-600);
+}
+
+.ui-variant-warning:hover {
+  background-color: var(--warning-600);
+}
+
+.ui-variant-danger {
+  background-color: var(--danger-500);
+  color: white;
+  border-color: var(--danger-600);
+}
+
+.ui-variant-danger:hover {
+  background-color: var(--danger-600);
+}
+
+.ui-variant-info {
+  background-color: var(--primary-400);
+  color: white;
+  border-color: var(--primary-500);
+}
+
+.ui-variant-info:hover {
+  background-color: var(--primary-500);
+}
+
+.ui-variant-default {
+  background-color: var(--gray-100);
+  color: var(--gray-800);
+  border-color: var(--gray-300);
+}
+
+.ui-variant-default:hover {
+  background-color: var(--gray-200);
+}
+
+/* Variantes de contorno */
+.ui-variant-outline-primary {
+  background-color: transparent;
+  color: var(--primary-600);
+  border: 1px solid var(--primary-600);
+}
+
+.ui-variant-outline-primary:hover {
+  background-color: var(--primary-50);
+}
+
+.ui-variant-outline-success {
+  background-color: transparent;
+  color: var(--success-600);
+  border: 1px solid var(--success-600);
+}
+
+.ui-variant-outline-success:hover {
+  background-color: var(--success-50);
+}
+
+.ui-variant-outline-warning {
+  background-color: transparent;
+  color: var(--warning-600);
+  border: 1px solid var(--warning-600);
+}
+
+.ui-variant-outline-warning:hover {
+  background-color: var(--warning-50);
+}
+
+.ui-variant-outline-danger {
+  background-color: transparent;
+  color: var(--danger-600);
+  border: 1px solid var(--danger-600);
+}
+
+.ui-variant-outline-danger:hover {
+  background-color: var(--danger-50);
+}
+
+/* Utilidades para bordes redondeados */
+.ui-rounded-none {
+  border-radius: 0;
+}
+
+.ui-rounded-sm {
+  border-radius: 0.125rem;
+}
+
+.ui-rounded-md {
+  border-radius: 0.375rem;
+}
+
+.ui-rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.ui-rounded-xl {
+  border-radius: 0.75rem;
+}
+
+.ui-rounded-full {
+  border-radius: 9999px;
+}
+
+/* Utilidades para sombras */
+.ui-shadow-none {
+  box-shadow: none;
+}
+
+.ui-shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.ui-shadow-md {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.ui-shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.ui-shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Utilidades para espaciado */
+.ui-padding-none {
+  padding: 0;
+}
+
+.ui-padding-xs {
+  padding: 0.25rem;
+}
+
+.ui-padding-sm {
+  padding: 0.5rem;
+}
+
+.ui-padding-md {
+  padding: 1rem;
+}
+
+.ui-padding-lg {
+  padding: 1.5rem;
+}
+
+.ui-padding-xl {
+  padding: 2rem;
+}
+
+/* Utilidades para estados */
+.ui-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.ui-loading {
+  position: relative;
+  color: transparent !important;
+}
+
+.ui-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1rem;
+  height: 1rem;
+  margin: -0.5rem 0 0 -0.5rem;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  animation: ui-spin 0.6s linear infinite;
+}
+
+@keyframes ui-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Utilidades para animaciones */
+.ui-animated {
+  transition: all 0.2s ease-in-out;
+}
+
+.ui-hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.ui-hover-shadow:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Utilidades para texto */
+.ui-text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ui-text-center {
+  text-align: center;
+}
+
+.ui-text-left {
+  text-align: left;
+}
+
+.ui-text-right {
+  text-align: right;
+}
+
+/* Utilidades para flexbox */
+.ui-flex {
+  display: flex;
+}
+
+.ui-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.ui-items-center {
+  align-items: center;
+}
+
+.ui-justify-center {
+  justify-content: center;
+}
+
+.ui-justify-between {
+  justify-content: space-between;
+}
+
+.ui-gap-1 {
+  gap: 0.25rem;
+}
+
+.ui-gap-2 {
+  gap: 0.5rem;
+}
+
+.ui-gap-3 {
+  gap: 0.75rem;
+}
+
+.ui-gap-4 {
+  gap: 1rem;
+}
