@@ -11,14 +11,21 @@ import { Router } from '@angular/router';
 export class Module {
   @Input() titulo!: string;
   @Input() numero!: number;
-  @Input() estado!: 'habilitado'| 'deshabilitado';
+  @Input() estado!: 'habilitado' | 'deshabilitado';
   @Input() nota?: number;
+
+  expandido = false; // <- Nuevo estado
 
   constructor(private router: Router) {}
 
-  onClick() {
+  toggleExpandir() {
     if (this.estado === 'habilitado') {
-      this.router.navigate(['/modulo', this.numero]);
+      this.expandido = !this.expandido;
     }
   }
+
+  onClick() {
+    this.router.navigate(['/modulo', this.numero]);
+  }
 }
+
