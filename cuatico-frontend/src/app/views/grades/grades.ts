@@ -25,7 +25,7 @@ interface Calificacion {
   selector: 'app-grades',
   templateUrl: './grades.html',
   standalone: true,
-  imports: [CommonModule, Header,FormsModule],
+  imports: [CommonModule, Header, FormsModule],
 })
 export class Grades {
   calificaciones = [

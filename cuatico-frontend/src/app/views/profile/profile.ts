@@ -22,6 +22,10 @@ export class Profile {
 
   constructor(private http: HttpClient) { }
 
+   solicitarTutoria(): void {
+    alert('¡Tutoría solicitada! Te contactaremos pronto.');
+  }
+
   ngOnInit() {
     this.http.get<any>(this.apiUrl).subscribe({
       next: (data) => {
