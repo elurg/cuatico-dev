@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -6,6 +7,12 @@ import { Component } from '@angular/core';
 })
 export class Footer {
   currentYear = new Date().getFullYear();
+
+  constructor(private router: Router) {}
+
+  navigateToFaq(): void {
+    this.router.navigate(['/faq']);
+  }
 
   socialLinks = [
     {
