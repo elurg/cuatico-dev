@@ -50,76 +50,35 @@
       </div>
 
       <div class="flex gap-6 mb-4">
-        <!-- TAREAS -->
-        <div id="tareas" class="flex-1 bg-white border border-gray-200 rounded-md p-6 shadow-sm">
+        <!-- ENTREGABLES -->
+        <div id="entregas" class="flex-1 bg-white border border-gray-200 rounded-md p-6 shadow-sm">
           <button
             class="px-5 py-2 rounded-full text-sm font-semibold text-white shadow-md hover:opacity-90 transition bg-gradient-to-br from-orange-500 to-yellow-400">
-            Tareas
+            Entregables
           </button>
-
-          <!-- Tarea 1 -->
-          <div
-            class="w-72 mt-6 flex items-center bg-gray-50 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-            <div class="w-24 h-24 bg-gray-100 flex items-center justify-center">
-              <img src="/assets/curso.avif" alt="PDF" class="w-full h-full object-cover" />
-            </div>
-            <div class="flex-1 px-5 py-4">
-              <h3 class="text-base font-semibold text-gray-900">Tarea de UX</h3>
-              <p class="text-xs text-gray-500 mt-1">Duración: 2h</p>
-              <a href="#" class="text-blue-600 text-sm font-medium hover:underline mt-2 inline-block">
-                Descargar PDF
-              </a>
-            </div>
-          </div>
-
-          <!-- Tarea 2 -->
-          <div
-            class="w-72 mt-6 flex items-center bg-gray-50 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-            <div class="w-24 h-24 bg-gray-100 flex items-center justify-center">
-              <img src="/assets/curso.avif" alt="PDF" class="w-full h-full object-cover" />
-            </div>
-            <div class="flex-1 px-5 py-4">
-              <h3 class="text-base font-semibold text-gray-900">Tarea de UI</h3>
-              <p class="text-xs text-gray-500 mt-1">Duración: 1.5h</p>
-              <a href="#" class="text-blue-600 text-sm font-medium hover:underline mt-2 inline-block">
-                Descargar PDF
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- ENTREGAS -->
-        <div id="entregas" class="flex-1 bg-white border border-gray-200 rounded-md p-6 shadow-sm">
-          <h3 class="text-xl font-semibold text-primario mb-4">Entregas</h3>
-
           <div class="space-y-4">
-           @for (entrega of entregas; let i = $index; track i) {
+            @for (entrega of entregas; let i = $index; track i) {
             <div class="bg-gray-50 border border-gray-200 rounded-md p-4">
               <div class="flex justify-between items-start">
                 <div>
                   <h4 class="font-medium text-gray-800">{{ entrega.titulo }}</h4>
                   <p class="text-sm text-gray-500 mt-1">{{ entrega.descripcion }}</p>
                 </div>
-                <div class="flex gap-2">
+                <div class="flex flex-col items-end">
                   <span class="px-2 py-1 rounded-full text-white text-xs font-medium"
                     [style.background]="'linear-gradient(to right, ' + entrega.estadoColor + ')'">
                     {{ entrega.estado }}
                   </span>
-                  <span class="px-2 py-1 rounded-full text-white text-xs font-medium"
-                    [style.background]="'linear-gradient(to right, ' + entrega.prioridadColor + ')'">
-                    {{ entrega.prioridad }}
-                  </span>
+                  <button (click)="verEntrega(entrega.id, entrega.titulo, entrega.descripcion)"
+                    class="mt-2 px-3 py-1.5 text-sm font-medium text-white bg-gradient-to-br from-blue-600 to-blue-700 rounded-md hover:opacity-90 transition">
+                    Ver Entregable
+                  </button>
                 </div>
               </div>
             </div>
             }
-
-            <div class="flex items-center gap-5 mt-4">
-              <app-input-file (fileSelected)="handleFile($event)"></app-input-file>
-            </div>
           </div>
         </div>
-
       </div>
 
       <!-- TEST -->

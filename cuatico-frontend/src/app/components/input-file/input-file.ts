@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input} from '@angular/core';
 
 @Component({
   selector: 'app-input-file',
@@ -6,6 +6,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   templateUrl: './input-file.html'
 })
 export class InputFile {
+  @Input() disabled: boolean = false;
   selectedFileName: string = '';
 
   @Output() fileSelected = new EventEmitter<File>();

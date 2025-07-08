@@ -2,18 +2,27 @@ import { Component } from '@angular/core';
 import { InputFile } from '../../components/input-file/input-file';
 import { CommonModule } from '@angular/common';
 import { Header } from 'src/app/components/header/header';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-module-id',
-  imports: [CommonModule, InputFile, Header],
+  imports: [CommonModule,Header],
   templateUrl: './module-id.html'
 })
 export class ModuleId {
   selectedFileName: string = '';
   
+  constructor(private router: Router) {}
+
   handleFile(file: File) {
     this.selectedFileName = file.name;
-}
+  }
+
+  verEntrega(id: number, titulo: string, descripcion: string) {
+    this.router.navigate(['/deliveries', id], {
+      state: { titulo, descripcion }
+    });
+  }
 
 preguntas = [
   {
@@ -45,6 +54,7 @@ preguntas = [
 
 entregas = [
     {
+      id: 1,
       titulo: 'Tarea de UX',
       descripcion: 'Análisis de usabilidad sobre la app mobile.',
       estado: 'Completada',
@@ -53,9 +63,10 @@ entregas = [
       prioridadColor: '#ef4444, #f87171'
     },
     {
-      titulo: 'Tarea de UI',
-      descripcion: 'Validación de contenido con usuarios reales.',
-      estado: 'Pendiente',
+      id: 2,
+      titulo: 'Diseño de UI',
+      descripcion: 'Prototipo de la interfaz de usuario.',
+      estado: 'En progreso',
       estadoColor: '#eab308, #fde047',
       prioridad: 'Media',
       prioridadColor: '#8b5cf6, #c084fc'

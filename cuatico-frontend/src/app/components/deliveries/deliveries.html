@@ -1,0 +1,56 @@
+<div class="flex min-h-screen">
+    <main class="flex-1 p-8">
+        <!-- Enunciado -->
+        <div class="mb-6">
+            <h1 class="text-2xl font-bold border-b pb-2 mb-4">{{ titulo }}</h1>
+            <p>{{ descripcion }}</p>
+        </div>
+
+        <!-- Sección de Entrega y Nota/Feedback -->
+        <div class="flex gap-8">
+            <!-- Columna Entrega -->
+            <section class="flex-1 bg-white rounded-xl shadow p-6 border">
+                <h2 class="text-lg font-semibold mb-4">Mi entrega</h2>
+                <textarea 
+                    [(ngModel)]="respuesta" 
+                    [disabled]="submitted"
+                    class="w-full p-3 border rounded-md mb-4" 
+                    rows="6" 
+                    placeholder="Escribe tu respuesta aquí...">
+                </textarea>
+                
+                <div class="flex items-center gap-5 mt-4">
+                    <app-input-file (fileSelected)="handleFile($event)" [disabled]="submitted"></app-input-file>
+                </div>
+
+                <button 
+                    class="w-full px-4 py-2 rounded-md text-sm font-semibold text-white bg-green-600 hover:bg-green-700 transition duration-200 mt-4"
+                    (click)="enviarEntrega()">
+                    <span class="flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                        {{submitted ? 'Cancelar entrega' : 'Enviar ejercicio'}}
+                    </span>
+                </button>
+
+                <div *ngIf="archivoUrl" class="mb-4">
+                    <a [href]="archivoUrl" class="text-blue-600 underline">Archivo adjunto: {{ archivo?.name }}</a>
+                </div>
+            </section>
+
+            <!-- Columna Nota y Feedback -->
+            <section class="flex-1 bg-white rounded-xl shadow p-6 border">
+                <h2 class="text-lg font-semibold mb-4">Nota y Feedback</h2>
+                <div class="mb-4">
+                    <div class="font-bold mb-1">Nota</div>
+                    <div class="border rounded p-2 bg-gray-50">{{ entrega?.nota || 'Sin calificar' }}</div>
+                </div>
+                <div>
+                    <div class="font-bold mb-1">Feedback</div>
+                    <div class="border rounded p-2 bg-gray-50 min-h-[80px]">{{ entrega?.feedback || 'Sin feedback' }}</div>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>

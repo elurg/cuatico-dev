@@ -19,6 +19,7 @@ import { Blog } from './views/blog/blog';
 // Importamos el componente de ejemplo de cursos
 import { CoursesExampleComponent } from './pages/courses-example/courses-example';
 import { Faq } from './views/faq/faq';
+import { Deliveries } from './components/deliveries/deliveries';
 
 export const routes: Routes = [
   {path: 'dashboard',component: Dashboard},
@@ -26,6 +27,7 @@ export const routes: Routes = [
   {path: 'login',component: Login},
   {path: 'register',component: Register},
   {path: 'perfil',component: Profile},
+  
   {
     path: 'cursos/:id',
     component: CourseId,
@@ -43,6 +45,7 @@ export const routes: Routes = [
   {path: 'nuevoscursos',component: NewCourses},
   {path: 'blog', component: Blog},
   {path: 'faq', component: Faq},
+  {path: 'deliveries/:id', component: Deliveries},
   // Ruta para la página de ejemplo de componentes UI
   {path: 'componentes-ejemplo', component: CoursesExampleComponent},
 
